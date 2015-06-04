@@ -1,4 +1,4 @@
-require_relative 'lib/rentlinx/version'
+require File.expand_path('lib/rentlinx/version', File.dirname(__FILE__))
 
 Gem::Specification.new do |s|
   s.author = 'AppFolio, Inc.'
