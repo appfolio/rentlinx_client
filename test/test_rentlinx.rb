@@ -1,17 +1,21 @@
 require 'minitest/autorun'
 require 'rentlinx'
+require 'vcr'
 
 # Test for Rentlinx module
 class TestRentlinx < MiniTest::Test
   def setup
     # We use hide the real values using VCR
-    @username = ENV['RENTLINX_USER'] || 'dummy'
-    @password = ENV['RENTLINX_PASSWORD'] || 'dummy'
-    @site_url = ENV['RENTLINX_URL'] || 'http://httpbin.org'
+    @auth_key = ENV['RENTLINX_AUTH_KEY'] || '<AUTH_KEY>'
+    @password = ENV['RENTLINX_PASSWORD'] || '<PASSWORD>'
+    @username = ENV['RENTLINX_USERNAME'] || '<USERNAME>'
+    @site_url = ENV['RENTLINX_SITE_URL'] || 'http://localhost'
   end
 
   def test_client
-    Rentlinx.client(@username, @password, @site_url)
+    VCR.use_cassette('test_client') do
+      Rentlinx.client(@username, @password, @site_url)
+    end
   end
 
   def test_version
