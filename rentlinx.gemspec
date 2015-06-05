@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.license = 'Simplified BSD'
   s.name = 'rentlinx'
   s.post_install_message = 'Thanks for installing!'
+  s.required_ruby_version = '>= 1.9.3'
   s.summary = 'API Wrapper for '
   s.version = Rentlinx::VERSION
 

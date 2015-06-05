@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'rentlinx'
 require 'vcr'
+require_relative 'helper'
 
 # Test for Rentlinx module
 class TestRentlinx < MiniTest::Test
