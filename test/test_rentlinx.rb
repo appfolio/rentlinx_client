@@ -2,7 +2,18 @@ require 'minitest/autorun'
 require 'rentlinx'
 
 # Test for Rentlinx module
-class TestRentlinx < MiniTest::Unit::TestCase
+class TestRentlinx < MiniTest::Test
+  def setup
+    # We use hide the real values using VCR
+    @username = ENV['RENTLINX_USER'] || 'dummy'
+    @password = ENV['RENTLINX_PASSWORD'] || 'dummy'
+    @site_url = ENV['RENTLINX_URL'] || 'http://httpbin.org'
+  end
+
+  def test_client
+    Rentlinx.client(@username, @password, @site_url)
+  end
+
   def test_version
     version_regex = /^\d+\.\d+(\.\d+)?((a|b|rc)\d+)?$/
     # Test the regex

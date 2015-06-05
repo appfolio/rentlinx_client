@@ -10,4 +10,7 @@ Gem::Specification.new do |s|
   s.post_install_message = 'Thanks for installing!'
   s.summary = 'API Wrapper for '
   s.version = Rentlinx::VERSION
+
+  s.add_runtime_dependency 'httpclient', '~> 2.6.0'
+  s.add_runtime_dependency 'json', '~> 1.8'
 end
