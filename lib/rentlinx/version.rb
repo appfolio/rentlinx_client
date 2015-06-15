@@ -1,4 +1,4 @@
 # Rentlinx
 module Rentlinx
-  VERSION = '0.0.1a1'
+  VERSION = '0.0.2'
 end
