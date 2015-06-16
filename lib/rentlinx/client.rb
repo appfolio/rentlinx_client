@@ -11,10 +11,6 @@ module Rentlinx
       @api_token ||= authenticate(username, password)
     end
 
-    def self.health_check(username, password, api_url_prefix)
-      new(username, password, api_url_prefix)
-    end
-
     private
 
     def authenticate(username, password)
