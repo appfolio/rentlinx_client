@@ -24,3 +24,28 @@ module SetupMethods
     end
   end
 end
+
+VALID_PROPERTY_ATTRS = {
+  propertyID: 'test-property-id',
+  description: 'This is a test property.',
+  address: '55 Castilian',
+  city: 'Santa Barbara',
+  state: 'CA',
+  zip: '93117',
+  marketingName: '',
+  hideAddress: '',
+  latitude: '',
+  longitude: '',
+  website: '',
+  yearBuilt: '',
+  numUnits: '',
+  phoneNumber: '(805) 555-5554',
+  extension: '',
+  faxNumber: '',
+  emailAddress: 'support@appfolio.com',
+  acceptsHcv: '',
+  propertyType: '',
+  activeURL: '',
+  companyID: 'test-id',
+  companyName: 'test company'
+}

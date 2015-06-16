@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/properties
+    body:
+      encoding: UTF-8
+      string: '{"companyID":"test-id","propertyID":"test-property-id","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
+        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
+        company"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.0.3
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 17 Jun 2015 00:13:16 GMT
+      Content-Type:
+      - application/json
+      Authentication-Token:
+      - <AUTH TOKEN>
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 17 Jun 2015 00:09:26 GMT
+      Content-Length:
+      - '186'
+    body:
+      encoding: UTF-8
+      string: '{"details":"That property already exists.  To update this property
+        send a ''PUT'' update request to ''/mongoose/v2/properties/test-property-id''
+        instead.","title":null,"status":"BadRequest"}'
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 00:13:17 GMT
+recorded_with: VCR 2.9.3

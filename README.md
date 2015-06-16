@@ -49,6 +49,15 @@ test files can be executed via:
     ruby -Ilib:test test/FILENAME.rb
 
 
+### Usage
+
+These are methods
+
+    client.post(property)
+    client.delete(property)
+    client.get(:property, property_id)
+
+
 ## Copyright and license
 
 Source released under the Simplified BSD License.
