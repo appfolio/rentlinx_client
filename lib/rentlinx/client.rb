@@ -10,7 +10,7 @@ module Rentlinx
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
 
-    def post object
+    def post(object)
       case object
       when Rentlinx::Property
         post_property(object)
@@ -19,15 +19,18 @@ module Rentlinx
       end
     end
 
-    def get type, id
+    def get(type, id)
       case type
       when :property
-        data = request('GET', "properties/#{id}")["data"]
-        data = data.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+        data = request('GET', "properties/#{id}")['data']
+        data = data.each_with_object({}) do |(k, v), memo|
+          memo[k.to_sym] = v
+          memo
+        end
         data.delete(:type)
         Property.new(data)
       when :unit
-        #todo
+        # todo
       else
         raise ProgrammerError, "Type not recognized: #{type}"
       end
@@ -35,7 +38,7 @@ module Rentlinx
 
     private
 
-    def post_property prop
+    def post_property(prop)
       return false unless prop.valid?
       request('POST', 'properties', prop.to_hash)
     end

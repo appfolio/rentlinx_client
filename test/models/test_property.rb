@@ -9,14 +9,16 @@ class PropertyTest < MiniTest::Test
 
     assert property.valid?
 
-    VALID_PROPERTY_ATTRS.each do |k,v|
+    VALID_PROPERTY_ATTRS.each do |k, v|
       assert_equal v, property.send(k)
     end
   end
 
   def test_new__unexpected_attribute_throws_error
     property_params = { walkscore: '50505' }
-    assert_raises(Rentlinx::ProgrammerError) { Rentlinx::Property.new(property_params) }
+    assert_raises(Rentlinx::ProgrammerError) do
+      Rentlinx::Property.new(property_params)
+    end
   end
 
   def test_valid__missing_required_params
@@ -45,7 +47,14 @@ class PropertyTest < MiniTest::Test
 
   def test_to_hash
     property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
-    hash = {:companyID=>"test-id", :propertyID=>"test-property-id", :description=>"This is a test property.", :address=>"55 Castilian", :city=>"Santa Barbara", :state=>"CA", :zip=>"93117", :marketingName=>"", :hideAddress=>"", :latitude=>"", :longitude=>"", :website=>"", :yearBuilt=>"", :numUnits=>"", :phoneNumber=>"(805) 555-5554", :extension=>"", :faxNumber=>"", :emailAddress=>"support@appfolio.com", :acceptsHcv=>"", :propertyType=>"", :activeURL=>"", :companyName=>"test company"}
+    hash = { companyID: 'test-id', propertyID: 'test-property-id',
+             description: 'This is a test property.', address: '55 Castilian',
+             city: 'Santa Barbara', state: 'CA', zip: '93117',
+             marketingName: '', hideAddress: '', latitude: '', longitude: '',
+             website: '', yearBuilt: '', numUnits: '',
+             phoneNumber: '(805) 555-5554', extension: '', faxNumber: '',
+             emailAddress: 'support@appfolio.com', acceptsHcv: '',
+             propertyType: '', activeURL: '', companyName: 'test company' }
     assert_equal hash, property.to_hash
   end
 end

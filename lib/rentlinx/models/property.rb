@@ -1,4 +1,5 @@
 module Rentlinx
+  # Defines the property object used for returning and sending properties
   class Property
     ATTRIBUTES = [:companyID, :propertyID, :description, :address, :city, :state,
                   :zip, :marketingName, :hideAddress, :latitude, :longitude,
@@ -11,32 +12,32 @@ module Rentlinx
 
     REQUIRED_FOR_POST = REQUIRED_ATTRIBUTES + [:companyID, :companyName]
 
-    attr_accessor *ATTRIBUTES
+    attr_accessor(*ATTRIBUTES)
 
-    def initialize attrs
+    def initialize(attrs)
       ATTRIBUTES.each do |at|
-        self.send("#{at}=", attrs[at])
+        send("#{at}=", attrs[at])
       end
       remaining_attrs = attrs.keys - ATTRIBUTES
-      raise ProgrammerError, "Unexpected Attributes: #{ remaining_attrs.join(', ') }" if remaining_attrs.size > 0
+      raise ProgrammerError, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
     end
 
     def valid?
-      REQUIRED_ATTRIBUTES.map { |at|
-        !self.send(at).nil? && self.send(at) != ''
-      }.inject(&:&)
+      REQUIRED_ATTRIBUTES.map do |at|
+        !send(at).nil? && send(at) != ''
+      end .inject(&:&)
     end
 
     def valid_for_post?
-      REQUIRED_FOR_POST.map { |at|
-        !self.send(at).nil? && self.send(at) != ''
-      }.inject(&:&)
+      REQUIRED_FOR_POST.map do |at|
+        !send(at).nil? && send(at) != ''
+      end .inject(&:&)
     end
 
     def to_hash
       {}.tap do |hash|
         ATTRIBUTES.each do |at|
-          hash[at] = self.send(at)
+          hash[at] = send(at)
         end
       end
     end

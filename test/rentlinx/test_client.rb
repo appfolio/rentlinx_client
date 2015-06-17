@@ -29,7 +29,6 @@ class ClientTest < MiniTest::Test
 
       prop = client.get(:property, 'test-property-id')
 
-      puts prop.inspect
       assert prop.valid?
       assert_equal 'test-property-id', prop.propertyID
     end
