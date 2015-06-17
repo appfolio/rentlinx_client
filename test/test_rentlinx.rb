@@ -2,13 +2,12 @@ require 'minitest/autorun'
 require 'rentlinx'
 require_relative 'helper'
 
-# Test Rentlinx
 class TestRentlinx < MiniTest::Test
   include SetupMethods
 
   def test_client
     VCR.use_cassette('test_client') do
-      Rentlinx.client(@username, @password, @site_url)
+      Rentlinx.client
     end
   end
 

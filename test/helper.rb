@@ -17,9 +17,10 @@ end
 # We use hide the real values using VCR
 module SetupMethods
   def setup
-    @auth_key = ENV['RENTLINX_AUTH_KEY'] || '<AUTH_KEY>'
-    @password = ENV['RENTLINX_PASSWORD'] || '<PASSWORD>'
-    @username = ENV['RENTLINX_USERNAME'] || '<USERNAME>'
-    @site_url = ENV['RENTLINX_SITE_URL'] || 'http://localhost'
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username ENV['RENTLINX_USERNAME'] || '<USERNAME>'
+      rentlinx.password ENV['RENTLINX_PASSWORD'] || '<PASSWORD>'
+      rentlinx.api_url_prefix ENV['RENTLINX_SITE_URL'] || 'http://localhost'
+    end
   end
 end
