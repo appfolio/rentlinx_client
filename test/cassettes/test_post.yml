@@ -2,6 +2,49 @@
 http_interactions:
 - request:
     method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.0.3
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 17 Jun 2015 18:30:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 17 Jun 2015 18:27:07 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"B9B89B91-53AA-4B42-A95D-6243F8E21382"}'
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 18:30:50 GMT
+- request:
+    method: post
     uri: http://localhost/properties
     body:
       encoding: UTF-8
@@ -15,11 +58,11 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 00:13:16 GMT
+      - Wed, 17 Jun 2015 18:30:50 GMT
       Content-Type:
       - application/json
       Authentication-Token:
-      - <AUTH TOKEN>
+      - B9B89B91-53AA-4B42-A95D-6243F8E21382
   response:
     status:
       code: 400
@@ -40,7 +83,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 00:09:26 GMT
+      - Wed, 17 Jun 2015 18:27:09 GMT
       Content-Length:
       - '186'
     body:
@@ -49,5 +92,5 @@ http_interactions:
         send a ''PUT'' update request to ''/mongoose/v2/properties/test-property-id''
         instead.","title":null,"status":"BadRequest"}'
     http_version: 
-  recorded_at: Wed, 17 Jun 2015 00:13:17 GMT
+  recorded_at: Wed, 17 Jun 2015 18:30:51 GMT
 recorded_with: VCR 2.9.3

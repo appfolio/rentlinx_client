@@ -19,7 +19,7 @@ module Rentlinx
         send("#{at}=", attrs[at])
       end
       remaining_attrs = attrs.keys - ATTRIBUTES
-      raise ProgrammerError, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
+      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
     end
 
     def valid?

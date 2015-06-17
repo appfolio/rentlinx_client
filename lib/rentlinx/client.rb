@@ -15,7 +15,7 @@ module Rentlinx
       when Rentlinx::Property
         post_property(object)
       else
-        raise ProgrammerError, "Invalid object: #{object.class}"
+        raise TypeError, "Invalid object: #{object.class}"
       end
     end
 
@@ -32,7 +32,7 @@ module Rentlinx
       when :unit
         # todo
       else
-        raise ProgrammerError, "Type not recognized: #{type}"
+        raise InvalidTypeParam, "Type not recognized: #{type}"
       end
     end
 

@@ -9,7 +9,7 @@ class ClientTest < MiniTest::Test
     VCR.use_cassette('test_post') do
       property = Rentlinx::Property.new(::VALID_PROPERTY_ATTRS)
 
-      client = Rentlinx.client(@username, @password, @site_url)
+      client = Rentlinx::Client.new(@username, @password, @site_url)
 
       client.post(property)
     end
@@ -17,15 +17,15 @@ class ClientTest < MiniTest::Test
 
   def test_post__invalid_object
     VCR.use_cassette('test_client') do
-      client = Rentlinx.client(@username, @password, @site_url)
+      client = Rentlinx::Client.new(@username, @password, @site_url)
 
-      assert_raises(Rentlinx::ProgrammerError) { client.post(1234) }
+      assert_raises(TypeError) { client.post(1234) }
     end
   end
 
   def test_get
     VCR.use_cassette('test_get') do
-      client = Rentlinx.client(@username, @password, @site_url)
+      client = Rentlinx::Client.new(@username, @password, @site_url)
 
       prop = client.get(:property, 'test-property-id')
 
@@ -36,9 +36,9 @@ class ClientTest < MiniTest::Test
 
   def test_get__invalid_type
     VCR.use_cassette('test_client') do
-      client = Rentlinx.client(@username, @password, @site_url)
+      client = Rentlinx::Client.new(@username, @password, @site_url)
 
-      assert_raises(Rentlinx::ProgrammerError) { client.get(:space_ship, 1) }
+      assert_raises(Rentlinx::InvalidTypeParam) { client.get(:space_ship, 1) }
     end
   end
 end

@@ -16,7 +16,7 @@ class PropertyTest < MiniTest::Test
 
   def test_new__unexpected_attribute_throws_error
     property_params = { walkscore: '50505' }
-    assert_raises(Rentlinx::ProgrammerError) do
+    assert_raises(Rentlinx::UnexpectedAttributes) do
       Rentlinx::Property.new(property_params)
     end
   end
