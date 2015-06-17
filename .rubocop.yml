@@ -15,3 +15,7 @@ Style/SignalException:
 
 Documentation:
   Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+

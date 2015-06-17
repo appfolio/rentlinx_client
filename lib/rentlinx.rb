@@ -1,9 +1,9 @@
 require 'rentlinx/client'
 
 module Rentlinx
-  @@username = nil
-  @@password = nil
-  @@api_url_prefix = nil
+  @username = nil
+  @password = nil
+  @api_url_prefix = nil
 
   class << self
     def configure(&block)
@@ -12,25 +12,25 @@ module Rentlinx
 
     def username(*args)
       if args.empty?
-        @@username
+        @username
       else
-        @@username = args.first
+        @username = args.first
       end
     end
 
     def password(*args)
       if args.empty?
-        @@password
+        @password
       else
-        @@password = args.first
+        @password = args.first
       end
     end
 
     def api_url_prefix(*args)
       if args.empty?
-        @@api_url_prefix
+        @api_url_prefix
       else
-        @@api_url_prefix = args.first
+        @api_url_prefix = args.first
       end
     end
 
