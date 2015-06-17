@@ -1,6 +1,5 @@
 require 'rentlinx/client'
 
-# The Rentlinx module provides the means to interact with the Rentlinx API.
 module Rentlinx
   @@username = nil
   @@password = nil

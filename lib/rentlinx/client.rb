@@ -4,7 +4,6 @@ require 'uri'
 require 'rentlinx/default'
 
 module Rentlinx
-  # Client is the primary interface that users of this gem will utilize.
   class Client
     def initialize
       @url_prefix = (Rentlinx.api_url_prefix + '/').freeze  # Extra slashes are fine

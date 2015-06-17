@@ -1,7 +1,6 @@
 require 'rentlinx/version'
 
 module Rentlinx
-  # The Default module provides the default configuration options.
   module Default
     USER_AGENT = "Rentlinx Ruby Client #{Rentlinx::VERSION}".freeze
 

@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'rentlinx'
 require_relative 'helper'
 
-# Test Rentlinx
 class TestRentlinx < MiniTest::Test
   include SetupMethods
 

@@ -12,3 +12,6 @@ Metrics/MethodLength:
 
 Style/SignalException:
   EnforcedStyle: only_raise
+
+Documentation:
+  Enabled: false
