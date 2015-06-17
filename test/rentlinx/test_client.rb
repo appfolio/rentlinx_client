@@ -5,27 +5,27 @@ require_relative '../helper'
 class ClientTest < MiniTest::Test
   include SetupMethods
 
-  def test_post
-    VCR.use_cassette('test_post') do
-      property = Rentlinx::Property.new(::VALID_PROPERTY_ATTRS)
+  def test_post_with_property
+    VCR.use_cassette('test_post_with_property') do
+      property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
 
-      client = Rentlinx::Client.new(@username, @password, @site_url)
+      client = Rentlinx::Client.new
 
       client.post(property)
     end
   end
 
   def test_post__invalid_object
-    VCR.use_cassette('test_client') do
-      client = Rentlinx::Client.new(@username, @password, @site_url)
+    VCR.use_cassette('test_post__invalid_object') do
+      client = Rentlinx::Client.new
 
       assert_raises(TypeError) { client.post(1234) }
     end
   end
 
-  def test_get
-    VCR.use_cassette('test_get') do
-      client = Rentlinx::Client.new(@username, @password, @site_url)
+  def test_get_property
+    VCR.use_cassette('test_get_property') do
+      client = Rentlinx::Client.new
 
       prop = client.get(:property, 'test-property-id')
 
@@ -35,8 +35,8 @@ class ClientTest < MiniTest::Test
   end
 
   def test_get__invalid_type
-    VCR.use_cassette('test_client') do
-      client = Rentlinx::Client.new(@username, @password, @site_url)
+    VCR.use_cassette('test_get__invalid_type') do
+      client = Rentlinx::Client.new
 
       assert_raises(Rentlinx::InvalidTypeParam) { client.get(:space_ship, 1) }
     end

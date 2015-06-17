@@ -50,9 +50,15 @@ module Rentlinx
     end
 
     def request(method, path, data = nil)
-      options = { body: data.to_json, header: Rentlinx::Default.headers(token: @api_token) }
+      options = { body: data.to_json, header: authenticated_headers }
       response = session.request(method, URI.join(@url_prefix, path), options)
       JSON.parse(response.body)
+    end
+
+    def authenticated_headers
+      Rentlinx::Default.headers.tap do |headers|
+        headers['Authentication-Token'] = @api_token unless @api_token.nil?
+      end
     end
 
     def session

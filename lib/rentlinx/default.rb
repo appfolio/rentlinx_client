@@ -5,11 +5,9 @@ module Rentlinx
     USER_AGENT = "Rentlinx Ruby Client #{Rentlinx::VERSION}".freeze
 
     class << self
-      def headers(token: nil)
+      def headers
         { 'Content-Type' => 'application/json',
-          'User-Agent' => USER_AGENT }.tap do |headers|
-            headers['Authentication-Token'] = token unless token.nil?
-          end
+          'User-Agent' => USER_AGENT }
       end
     end
   end

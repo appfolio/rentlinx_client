@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 18:36:06 GMT
+      - Wed, 17 Jun 2015 18:36:07 GMT
       Content-Type:
       - application/json
   response:
@@ -42,5 +42,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"AccessToken":"B9B89B91-53AA-4B42-A95D-6243F8E21382"}'
     http_version: 
-  recorded_at: Wed, 17 Jun 2015 18:36:06 GMT
+  recorded_at: Wed, 17 Jun 2015 18:36:07 GMT
 recorded_with: VCR 2.9.3

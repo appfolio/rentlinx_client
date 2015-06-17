@@ -23,15 +23,15 @@ module Rentlinx
     end
 
     def valid?
-      REQUIRED_ATTRIBUTES.map do |at|
+      REQUIRED_ATTRIBUTES.all? do |at|
         !send(at).nil? && send(at) != ''
-      end .inject(&:&)
+      end
     end
 
     def valid_for_post?
-      REQUIRED_FOR_POST.map do |at|
+      REQUIRED_FOR_POST.all? do |at|
         !send(at).nil? && send(at) != ''
-      end .inject(&:&)
+      end
     end
 
     def to_hash
