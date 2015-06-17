@@ -2,9 +2,41 @@ require 'rentlinx/client'
 
 # The Rentlinx module provides the means to interact with the Rentlinx API.
 module Rentlinx
+  @@username = nil
+  @@password = nil
+  @@api_url_prefix = nil
+
   class << self
-    def client(*args)
-      @client ||= Rentlinx::Client.new(*args)
+    def configure(&block)
+      block.call(self)
+    end
+
+    def username(*args)
+      if args.empty?
+        @@username
+      else
+        @@username = args.first
+      end
+    end
+
+    def password(*args)
+      if args.empty?
+        @@password
+      else
+        @@password = args.first
+      end
+    end
+
+    def api_url_prefix(*args)
+      if args.empty?
+        @@api_url_prefix
+      else
+        @@api_url_prefix = args.first
+      end
+    end
+
+    def client
+      @client ||= Rentlinx::Client.new
     end
   end
 end

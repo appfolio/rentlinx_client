@@ -6,9 +6,9 @@ require 'rentlinx/default'
 module Rentlinx
   # Client is the primary interface that users of this gem will utilize.
   class Client
-    def initialize(username, password, api_url_prefix)
-      @url_prefix = (api_url_prefix + '/').freeze  # Extra slashes are fine
-      @api_token ||= authenticate(username, password)
+    def initialize
+      @url_prefix = (Rentlinx.api_url_prefix + '/').freeze  # Extra slashes are fine
+      @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
 
     private

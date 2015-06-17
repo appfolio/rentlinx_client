@@ -8,7 +8,7 @@ class TestRentlinx < MiniTest::Test
 
   def test_client
     VCR.use_cassette('test_client') do
-      Rentlinx.client(@username, @password, @site_url)
+      Rentlinx.client
     end
   end
 
