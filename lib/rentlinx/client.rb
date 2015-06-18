@@ -14,6 +14,8 @@ module Rentlinx
       case object
       when Rentlinx::Property
         post_property(object)
+      when Rentlinx::Unit
+        post_unit(object)
       else
         raise TypeError, "Invalid object: #{object.class}"
       end
@@ -22,15 +24,9 @@ module Rentlinx
     def get(type, id)
       case type
       when :property
-        data = request('GET', "properties/#{id}")['data']
-        data = data.each_with_object({}) do |(k, v), memo|
-          memo[k.to_sym] = v
-          memo
-        end
-        data.delete(:type)
-        Property.new(data)
+        Property.new(process_get("properties/#{id}"))
       when :unit
-        # todo
+        Unit.new(process_get("units/#{id}"))
       else
         raise InvalidTypeParam, "Type not recognized: #{type}"
       end
@@ -38,9 +34,24 @@ module Rentlinx
 
     private
 
+    def process_get(route)
+      data = request('GET', route)['data']
+      data = data.each_with_object({}) do |(k, v), memo|
+        memo[k.to_sym] = v
+        memo
+      end
+      data.delete(:type)
+      data
+    end
+
     def post_property(prop)
       return false unless prop.valid?
       request('PUT', "properties/#{prop.propertyID}", prop.to_hash)
+    end
+
+    def post_unit(unit)
+      return false unless unit.valid?
+      request('PUT', "units/#{unit.unitID}", unit.to_hash)
     end
 
     def authenticate(username, password)

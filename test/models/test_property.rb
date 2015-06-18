@@ -70,12 +70,12 @@ class PropertyTest < MiniTest::Test
     use_vcr do
       prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
       prop.propertyID = 'test_property_post_method_posts_and_updates'
-      prop.marketingName = 'Hello this is dog'
+      prop.marketingName = 'Hello this is mad dog'
       prop.post
 
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
 
-      assert_equal 'Hello this is dog', prop.marketingName
+      assert_equal 'Hello this is mad dog', prop.marketingName
       assert_equal 'test_property_post_method_posts_and_updates', prop.propertyID
       assert_equal 'This is a test property.', prop.description
 

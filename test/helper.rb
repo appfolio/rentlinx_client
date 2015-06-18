@@ -63,3 +63,28 @@ VALID_PROPERTY_ATTRS = {
   companyID: 'test-id',
   companyName: 'test company'
 }
+
+VALID_UNIT_ATTRS = {
+  propertyID: 'test-property-id',
+  unitID: 'test-unit-id',
+  isOpenToLease: true,
+  name: 'My new unit',
+  description: 'Fabulous unit on the ocean side',
+  rent: '1600',
+  maxRent: '',
+  deposit: '3200',
+  maxDeposit: '',
+  squareFeet: '',
+  maxSquareFeet: '',
+  bedrooms: '3',
+  fullBaths: '2',
+  halfBaths: '',
+  isMobilityAccessible: '',
+  isVisionAccessible: '',
+  isHearingAccessible: '',
+  rentIsBasedOnIncome: '',
+  dateAvailable: '06/15/2015',
+  dateLeasedThrough: '',
+  numUnits: '',
+  numAvailable: ''
+}

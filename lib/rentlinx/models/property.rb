@@ -13,36 +13,20 @@ module Rentlinx
 
     attr_accessor(*ATTRIBUTES)
 
-    def initialize(attrs)
-      ATTRIBUTES.each do |at|
-        send("#{at}=", attrs[at])
-      end
-      remaining_attrs = attrs.keys - ATTRIBUTES
-      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
+    def attributes
+      ATTRIBUTES
+    end
+
+    def required_attributes
+      REQUIRED_ATTRIBUTES
+    end
+
+    def required_attributes_for_post
+      REQUIRED_FOR_POST
     end
 
     def self.from_id(id)
       get_from_id(:property, id)
-    end
-
-    def valid?
-      REQUIRED_ATTRIBUTES.all? do |at|
-        !send(at).nil? && send(at) != ''
-      end
-    end
-
-    def valid_for_post?
-      REQUIRED_FOR_POST.all? do |at|
-        !send(at).nil? && send(at) != ''
-      end
-    end
-
-    def to_hash
-      {}.tap do |hash|
-        ATTRIBUTES.each do |at|
-          hash[at] = send(at)
-        end
-      end
     end
   end
 end
