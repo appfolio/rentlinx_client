@@ -1,4 +1,7 @@
 require 'rentlinx/client'
+require 'rentlinx/errors'
+require 'rentlinx/models/base'
+require 'rentlinx/models/property'
 
 module Rentlinx
   @username = nil
