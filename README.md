@@ -51,11 +51,17 @@ test files can be executed via:
 
 ### Usage
 
-These are methods
+For all endpoints, attributes are defined by the API: https://www.rentlinx.com/mongoose/help
 
-    client.post(property)
-    client.delete(property)
-    client.get(:property, property_id)
+Properties can be created, updated, and fetched from Rentlinx like so:
+
+    prop = Property.new(attributes)
+    prop.post # creates
+
+    prop.website = 'http://example.com'
+    prop.post # updates
+
+    prop = Property.from_id('property-id') # fetches
 
 
 ## Copyright and license
