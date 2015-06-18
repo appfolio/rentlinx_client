@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 00:07:21 GMT
+      - Thu, 18 Jun 2015 17:47:21 GMT
       Content-Type:
       - application/json
   response:
@@ -35,34 +35,29 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 00:03:38 GMT
+      - Thu, 18 Jun 2015 17:43:32 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
-    http_version:
-  recorded_at: Thu, 18 Jun 2015 00:07:22 GMT
+      string: '{"AccessToken":"B9B89B91-53AA-4B42-A95D-6243F8E21382"}'
+    http_version: 
+  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
 - request:
-    method: put
+    method: get
     uri: http://localhost/properties/test-property-id
     body:
       encoding: UTF-8
-      string: '{"companyID":"test-id","propertyID":"test-property-id","description":"This
-        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
-        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
-        company"}'
+      string: 'null'
     headers:
       User-Agent:
       - Rentlinx Ruby Client 0.1.0
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 00:07:22 GMT
+      - Thu, 18 Jun 2015 17:47:21 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -83,7 +78,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 00:03:38 GMT
+      - Thu, 18 Jun 2015 17:43:32 GMT
       Content-Length:
       - '529'
     body:
@@ -91,6 +86,6 @@ http_interactions:
       string: '{"data":{"type":"property","propertyID":"test-property-id","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117"}}'
-    http_version:
-  recorded_at: Thu, 18 Jun 2015 00:07:22 GMT
+    http_version: 
+  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
 recorded_with: VCR 2.9.3

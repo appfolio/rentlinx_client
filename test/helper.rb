@@ -12,9 +12,22 @@ VCR.configure do |config|
   config.filter_sensitive_data('<PASSWORD>') { ENV['RENTLINX_PASSWORD'] }
   config.filter_sensitive_data('<USERNAME>') { ENV['RENTLINX_USERNAME'] }
   config.filter_sensitive_data('http://localhost') { ENV['RENTLINX_SITE_URL'] }
+
+  config.before_record do |i|
+    i.request.headers.delete('Authentication-Token')
+  end
 end
 
-# We use hide the real values using VCR
+def use_vcr
+  # Builds a cassette with the format:
+  #   name_of_file-name_of_test.yml
+  cassette_name =  caller[0][%r{/.*\.}].split('/').last[0..-2] +
+                   '-' + caller[0][/`.*'/][1..-2]
+  VCR.use_cassette(cassette_name) do
+    yield
+  end
+end
+
 module SetupMethods
   def setup
     Rentlinx.configure do |rentlinx|

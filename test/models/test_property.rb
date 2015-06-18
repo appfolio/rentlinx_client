@@ -23,7 +23,7 @@ class PropertyTest < MiniTest::Test
   end
 
   def test_property_from_id
-    VCR.use_cassette('test_property_from_id') do
+    use_vcr do
       prop = Rentlinx::Property.from_id('test-property-id')
 
       assert prop.valid?
@@ -69,7 +69,7 @@ class PropertyTest < MiniTest::Test
   end
 
   def test_property_post_method_posts_and_updates
-    VCR.use_cassette('test_property_post_method') do
+    use_vcr do
       prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
       prop.propertyID = 'test_property_post_method_posts_and_updates'
       prop.marketingName = 'Hello this is dog'
