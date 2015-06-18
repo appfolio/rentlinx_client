@@ -39,21 +39,5 @@ module Rentlinx
         !send(at).nil? && send(at) != ''
       end
     end
-
-    def attributes
-      raise NotImplemented, 'This method is not implemented on the base class'
-    end
-
-    def required_attributes_for_post
-      raise NotImplemented
-    end
-
-    def required_attributes
-      raise NotImplemented
-    end
-
-    def self.from_id
-      raise NotImplemented
-    end
   end
 end
