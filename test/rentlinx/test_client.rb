@@ -39,4 +39,14 @@ class ClientTest < MiniTest::Test
       assert_raises(Rentlinx::InvalidTypeParam) { client.get(:space_ship, 1) }
     end
   end
+
+  def test_get_units_for_property_id
+    use_vcr do
+      client = Rentlinx::Client.new
+      units = client.get_units_for_property_id('test-property-id')
+
+      assert_equal 2, units.count
+      assert_equal Rentlinx::Unit, units.first.class
+    end
+  end
 end

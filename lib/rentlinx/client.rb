@@ -32,10 +32,21 @@ module Rentlinx
       end
     end
 
+    def get_units_for_property_id(id)
+      data = request('GET', "properties/#{id}/units")['data']
+      data.map do |unit_data|
+        Unit.new(symbolize_data(unit_data))
+      end
+    end
+
     private
 
     def process_get(route)
       data = request('GET', route)['data']
+      symbolize_data(data)
+    end
+
+    def symbolize_data(data)
       data = data.each_with_object({}) do |(k, v), memo|
         memo[k.to_sym] = v
         memo

@@ -87,4 +87,23 @@ class PropertyTest < MiniTest::Test
       assert_equal 'This is the new description', prop.description
     end
   end
+
+  def test_units
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_units_property'
+      prop.units = [Rentlinx::Unit.new(unitID: 'test_units_unit_1'),
+                    Rentlinx::Unit.new(unitID: 'test_units_unit_2'),
+                    Rentlinx::Unit.new(unitID: 'test_units_unit_3')]
+
+      assert_equal 3, prop.units.count
+
+      prop.post_with_units
+
+      remote_prop = Rentlinx::Property.from_id('test_units_property')
+
+      assert_equal 3, remote_prop.units.count
+      assert_equal 'test_units_unit_1', remote_prop.units.first.unitID
+    end
+  end
 end

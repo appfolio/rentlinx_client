@@ -25,6 +25,22 @@ module Rentlinx
       REQUIRED_FOR_POST
     end
 
+    def post_with_units
+      post
+      units.each(&:post) unless units.nil? || units.empty?
+    end
+
+    def units
+      @units ||= get_units_for_property_id(propertyID)
+    end
+
+    def units=(unit_list)
+      @units = unit_list.map do |unit|
+        unit.propertyID = propertyID
+        unit
+      end
+    end
+
     def self.from_id(id)
       get_from_id(:property, id)
     end
