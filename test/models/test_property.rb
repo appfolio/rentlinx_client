@@ -2,8 +2,9 @@ require 'minitest/autorun'
 require 'rentlinx'
 require_relative '../helper'
 
-# Test the property object
 class PropertyTest < MiniTest::Test
+  include SetupMethods
+
   def test_new
     property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
 
@@ -18,6 +19,15 @@ class PropertyTest < MiniTest::Test
     property_params = { walkscore: '50505' }
     assert_raises(Rentlinx::UnexpectedAttributes) do
       Rentlinx::Property.new(property_params)
+    end
+  end
+
+  def test_property_from_id
+    VCR.use_cassette('test_property_from_id') do
+      prop = Rentlinx::Property.from_id('test-property-id')
+
+      assert prop.valid?
+      assert_equal 'test-property-id', prop.propertyID
     end
   end
 
@@ -56,5 +66,27 @@ class PropertyTest < MiniTest::Test
              emailAddress: 'support@appfolio.com', acceptsHcv: '',
              propertyType: '', activeURL: '', companyName: 'test company' }
     assert_equal hash, property.to_hash
+  end
+
+  def test_property_post_method_posts_and_updates
+    VCR.use_cassette('test_property_post_method') do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_property_post_method_posts_and_updates'
+      prop.marketingName = 'Hello this is dog'
+      prop.post
+
+      prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
+
+      assert_equal 'Hello this is dog', prop.marketingName
+      assert_equal 'test_property_post_method_posts_and_updates', prop.propertyID
+      assert_equal 'This is a test property.', prop.description
+
+      prop.description = 'This is the new description'
+      prop.post
+
+      prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
+
+      assert_equal 'This is the new description', prop.description
+    end
   end
 end

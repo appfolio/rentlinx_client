@@ -40,7 +40,7 @@ module Rentlinx
 
     def post_property(prop)
       return false unless prop.valid?
-      request('POST', 'properties', prop.to_hash)
+      request('PUT', "properties/#{prop.propertyID}", prop.to_hash)
     end
 
     def authenticate(username, password)

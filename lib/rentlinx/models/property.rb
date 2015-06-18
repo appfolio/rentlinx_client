@@ -1,6 +1,5 @@
 module Rentlinx
-  # Defines the property object used for returning and sending properties
-  class Property
+  class Property < Base
     ATTRIBUTES = [:companyID, :propertyID, :description, :address, :city, :state,
                   :zip, :marketingName, :hideAddress, :latitude, :longitude,
                   :website, :yearBuilt, :numUnits, :phoneNumber, :extension,
@@ -20,6 +19,10 @@ module Rentlinx
       end
       remaining_attrs = attrs.keys - ATTRIBUTES
       raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
+    end
+
+    def self.from_id(id)
+      get_from_id(:property, id)
     end
 
     def valid?
