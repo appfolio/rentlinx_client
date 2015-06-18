@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 00:05:10 GMT
+      - Thu, 18 Jun 2015 17:46:14 GMT
       Content-Type:
       - application/json
   response:
@@ -35,31 +35,32 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 00:01:30 GMT
+      - Thu, 18 Jun 2015 17:42:23 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"<AUTH_KEY>"}'
     http_version:
-  recorded_at: Thu, 18 Jun 2015 00:05:13 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:14 GMT
 - request:
-    method: get
+    method: put
     uri: http://localhost/properties/test-property-id
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '{"companyID":"test-id","propertyID":"test-property-id","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
+        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
+        company"}'
     headers:
       User-Agent:
       - Rentlinx Ruby Client 0.1.0
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 00:05:13 GMT
+      - Thu, 18 Jun 2015 17:46:14 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -80,7 +81,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 00:01:30 GMT
+      - Thu, 18 Jun 2015 17:42:25 GMT
       Content-Length:
       - '529'
     body:
@@ -89,5 +90,5 @@ http_interactions:
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117"}}'
     http_version:
-  recorded_at: Thu, 18 Jun 2015 00:05:14 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:14 GMT
 recorded_with: VCR 2.9.3

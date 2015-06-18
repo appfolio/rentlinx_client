@@ -6,7 +6,7 @@ class TestRentlinx < MiniTest::Test
   include SetupMethods
 
   def test_client
-    VCR.use_cassette('test_client') do
+    use_vcr do
       Rentlinx.client
     end
   end

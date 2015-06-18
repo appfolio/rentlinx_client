@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 23:49:36 GMT
+      - Thu, 18 Jun 2015 17:46:10 GMT
       Content-Type:
       - application/json
   response:
@@ -35,14 +35,14 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 23:45:57 GMT
+      - Thu, 18 Jun 2015 17:42:21 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"<AUTH_KEY>"}'
     http_version:
-  recorded_at: Wed, 17 Jun 2015 23:49:40 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:10 GMT
 - request:
     method: put
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
@@ -59,11 +59,9 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 23:49:40 GMT
+      - Thu, 18 Jun 2015 17:46:10 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -84,7 +82,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 23:45:57 GMT
+      - Thu, 18 Jun 2015 17:42:22 GMT
       Content-Length:
       - '575'
     body:
@@ -94,7 +92,7 @@ http_interactions:
         this is dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4"}}'
     http_version:
-  recorded_at: Wed, 17 Jun 2015 23:49:41 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:12 GMT
 - request:
     method: get
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
@@ -107,11 +105,9 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 23:49:41 GMT
+      - Thu, 18 Jun 2015 17:46:12 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -132,7 +128,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 23:45:58 GMT
+      - Thu, 18 Jun 2015 17:42:22 GMT
       Content-Length:
       - '575'
     body:
@@ -142,7 +138,7 @@ http_interactions:
         this is dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4"}}'
     http_version:
-  recorded_at: Wed, 17 Jun 2015 23:49:41 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:12 GMT
 - request:
     method: put
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
@@ -158,11 +154,9 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 23:49:41 GMT
+      - Thu, 18 Jun 2015 17:46:12 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -183,7 +177,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 23:45:58 GMT
+      - Thu, 18 Jun 2015 17:42:23 GMT
       Content-Length:
       - '576'
     body:
@@ -193,7 +187,7 @@ http_interactions:
         this is dog","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5"}}'
     http_version:
-  recorded_at: Wed, 17 Jun 2015 23:49:42 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:13 GMT
 - request:
     method: get
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
@@ -206,11 +200,9 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 17 Jun 2015 23:49:42 GMT
+      - Thu, 18 Jun 2015 17:46:13 GMT
       Content-Type:
       - application/json
-      Authentication-Token:
-      - <AUTH-TOKEN>
   response:
     status:
       code: 200
@@ -231,7 +223,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 17 Jun 2015 23:45:59 GMT
+      - Thu, 18 Jun 2015 17:42:23 GMT
       Content-Length:
       - '578'
     body:
@@ -241,5 +233,5 @@ http_interactions:
         this is dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5"}}'
     http_version:
-  recorded_at: Wed, 17 Jun 2015 23:49:42 GMT
+  recorded_at: Thu, 18 Jun 2015 17:46:13 GMT
 recorded_with: VCR 2.9.3
