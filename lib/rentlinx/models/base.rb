@@ -8,6 +8,18 @@ module Rentlinx
       raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
     end
 
+    def attributes
+      self.class::ATTRIBUTES
+    end
+
+    def required_attributes
+      self.class::REQUIRED_ATTRIBUTES
+    end
+
+    def required_attributes_for_post
+      self.class::REQUIRED_ATTRIBUTES_FOR_POST
+    end
+
     def post
       Rentlinx.client.post(self)
     end

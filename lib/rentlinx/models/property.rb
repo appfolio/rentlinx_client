@@ -9,21 +9,9 @@ module Rentlinx
     REQUIRED_ATTRIBUTES = [:propertyID, :address, :city, :state, :zip,
                            :phoneNumber, :emailAddress]
 
-    REQUIRED_FOR_POST = REQUIRED_ATTRIBUTES + [:companyID, :companyName]
+    REQUIRED_ATTRIBUTES_FOR_POST = REQUIRED_ATTRIBUTES + [:companyID, :companyName]
 
     attr_accessor(*ATTRIBUTES)
-
-    def attributes
-      ATTRIBUTES
-    end
-
-    def required_attributes
-      REQUIRED_ATTRIBUTES
-    end
-
-    def required_attributes_for_post
-      REQUIRED_FOR_POST
-    end
 
     def post_with_units
       post
