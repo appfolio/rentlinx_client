@@ -6,10 +6,16 @@ class ClientTest < MiniTest::Test
   def test_post_with_property
     use_vcr do
       property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
-
       client = Rentlinx::Client.new
-
       client.post(property)
+    end
+  end
+
+  def test_post_with_unit
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      client = Rentlinx::Client.new
+      client.post(unit)
     end
   end
 
@@ -29,6 +35,17 @@ class ClientTest < MiniTest::Test
 
       assert prop.valid?
       assert_equal 'test-property-id', prop.propertyID
+    end
+  end
+
+  def test_get_unit
+    use_vcr do
+      client = Rentlinx::Client.new
+
+      unit = client.get(:unit, 'test-unit-id')
+
+      assert unit.valid?
+      assert_equal 'test-unit-id', unit.unitID
     end
   end
 
