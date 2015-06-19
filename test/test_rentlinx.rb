@@ -1,5 +1,3 @@
-require 'minitest/autorun'
-require 'rentlinx'
 require_relative 'helper'
 
 class TestRentlinx < MiniTest::Test
@@ -9,6 +7,17 @@ class TestRentlinx < MiniTest::Test
     use_vcr do
       Rentlinx.client
     end
+  end
+
+  def test_credentials
+    Rentlinx.username('Test')
+    assert_equal 'Test', Rentlinx.username
+
+    Rentlinx.password('Test')
+    assert_equal 'Test', Rentlinx.password
+
+    Rentlinx.api_url_prefix('Test')
+    assert_equal 'Test', Rentlinx.api_url_prefix
   end
 
   def test_version

@@ -1,9 +1,10 @@
-require 'vcr'
-
 if ENV['TRAVIS']
   require 'coveralls'
   Coveralls.wear!
 end
+require 'minitest/autorun'
+require 'rentlinx'
+require 'vcr'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'

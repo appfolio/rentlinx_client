@@ -1,5 +1,3 @@
-require 'minitest/autorun'
-require 'rentlinx'
 require_relative '../helper'
 
 class PropertyTest < MiniTest::Test
