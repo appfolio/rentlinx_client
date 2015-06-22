@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.1.0
+      - Rentlinx Ruby Client 0.2.0
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 17:47:21 GMT
+      - Fri, 19 Jun 2015 00:46:28 GMT
       Content-Type:
       - application/json
   response:
@@ -35,27 +35,27 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 17:43:32 GMT
+      - Fri, 19 Jun 2015 00:42:37 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
-    http_version:
-  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
+      string: '{"AccessToken":"B9B89B91-53AA-4B42-A95D-6243F8E21382"}'
+    http_version: 
+  recorded_at: Fri, 19 Jun 2015 00:46:28 GMT
 - request:
     method: get
-    uri: http://localhost/properties/test-property-id
+    uri: http://localhost/units/test-unit-id
     body:
       encoding: UTF-8
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.1.0
+      - Rentlinx Ruby Client 0.2.0
       Accept:
       - "*/*"
       Date:
-      - Thu, 18 Jun 2015 17:47:21 GMT
+      - Fri, 19 Jun 2015 00:46:28 GMT
       Content-Type:
       - application/json
   response:
@@ -78,14 +78,13 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 18 Jun 2015 17:43:32 GMT
+      - Fri, 19 Jun 2015 00:42:37 GMT
       Content-Length:
-      - '529'
+      - '534'
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"property","propertyID":"test-property-id","description":"This
-        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117"}}'
-    http_version:
-  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
+      string: '{"data":{"type":"unit","unitID":"test-unit-id","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version: 
+  recorded_at: Fri, 19 Jun 2015 00:46:28 GMT
 recorded_with: VCR 2.9.3

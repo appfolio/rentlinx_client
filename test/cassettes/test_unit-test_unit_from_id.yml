@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.2.0
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 18 Jun 2015 22:00:54 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 18 Jun 2015 21:57:04 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+    http_version:
+  recorded_at: Thu, 18 Jun 2015 22:00:54 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-unit-id
+    body:
+      encoding: UTF-8
+      string: '{"unitID":"test-unit-id","propertyID":"test-property-id","name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":"1600","maxRent":"","deposit":"3200","maxDeposit":"","squareFeet":"","maxSquareFeet":"","bedrooms":"3","fullBaths":"2","halfBaths":"","isMobilityAccessible":"","isVisionAccessible":"","isHearingAccessible":"","rentIsBasedOnIncome":"","isOpenToLease":true,"dateAvailable":"06/15/2015","dateLeasedThrough":"","numUnits":"","numAvailable":""}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.2.0
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 18 Jun 2015 22:00:54 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 18 Jun 2015 21:57:05 GMT
+      Content-Length:
+      - '522'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-id","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version:
+  recorded_at: Thu, 18 Jun 2015 22:00:56 GMT
+- request:
+    method: get
+    uri: http://localhost/units/test-unit-id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.2.0
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 18 Jun 2015 22:00:56 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 18 Jun 2015 21:57:05 GMT
+      Content-Length:
+      - '534'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-id","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version:
+  recorded_at: Thu, 18 Jun 2015 22:00:56 GMT
+recorded_with: VCR 2.9.3

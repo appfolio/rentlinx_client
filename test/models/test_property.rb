@@ -70,12 +70,12 @@ class PropertyTest < MiniTest::Test
     use_vcr do
       prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
       prop.propertyID = 'test_property_post_method_posts_and_updates'
-      prop.marketingName = 'Hello this is dog'
+      prop.marketingName = 'Hello this is mad dog'
       prop.post
 
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
 
-      assert_equal 'Hello this is dog', prop.marketingName
+      assert_equal 'Hello this is mad dog', prop.marketingName
       assert_equal 'test_property_post_method_posts_and_updates', prop.propertyID
       assert_equal 'This is a test property.', prop.description
 
@@ -85,6 +85,25 @@ class PropertyTest < MiniTest::Test
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
 
       assert_equal 'This is the new description', prop.description
+    end
+  end
+
+  def test_units
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_units_property'
+      prop.units = [Rentlinx::Unit.new(unitID: 'test_units_unit_1'),
+                    Rentlinx::Unit.new(unitID: 'test_units_unit_2'),
+                    Rentlinx::Unit.new(unitID: 'test_units_unit_3')]
+
+      assert_equal 3, prop.units.count
+
+      prop.post_with_units
+
+      remote_prop = Rentlinx::Property.from_id('test_units_property')
+
+      assert_equal 3, remote_prop.units.count
+      assert_equal 'test_units_unit_1', remote_prop.units.first.unitID
     end
   end
 end
