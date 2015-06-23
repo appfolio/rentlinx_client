@@ -7,8 +7,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/appfolio/rentlinx_client'
   s.license = 'Simplified BSD'
   s.name = 'rentlinx'
-  s.post_install_message = 'Thanks for installing!'
-  s.summary = 'API Wrapper for '
+  s.summary = 'API Wrapper for the Rentlinx API'
   s.version = Rentlinx::VERSION
 
   s.add_runtime_dependency 'httpclient', '~> 2.6.0'
