@@ -74,6 +74,7 @@ module Rentlinx
     def request(method, path, data = nil)
       options = { body: data.to_json, header: authenticated_headers }
       response = session.request(method, URI.join(@url_prefix, path), options)
+      Rentlinx.logger.debug "#{method} Request to #{path}\n#{options.inspect}"
       JSON.parse(response.body)
     end
 

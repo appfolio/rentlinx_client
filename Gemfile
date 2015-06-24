@@ -8,6 +8,7 @@ group :test do
   gem 'rake'
   gem 'vcr'
   gem 'webmock'
+  gem 'logging'
 end
 
 group :development do
