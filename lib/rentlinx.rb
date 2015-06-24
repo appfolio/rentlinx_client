@@ -1,3 +1,4 @@
+require 'logging'
 require 'rentlinx/client'
 require 'rentlinx/errors'
 require 'rentlinx/models/base'
@@ -38,8 +39,22 @@ module Rentlinx
       end
     end
 
+    def log_level(*args)
+      if args.empty?
+        @log_level
+      else
+        @log_level = args.first
+      end
+    end
+
     def client
       @client ||= Rentlinx::Client.new
+    end
+
+    def logger
+      lgr = Logging.logger(STDOUT)
+      lgr.level = (@log_level || :error)
+      lgr
     end
   end
 end

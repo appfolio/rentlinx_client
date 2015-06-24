@@ -35,6 +35,7 @@ module SetupMethods
       rentlinx.username ENV['RENTLINX_USERNAME'] || '<USERNAME>'
       rentlinx.password ENV['RENTLINX_PASSWORD'] || '<PASSWORD>'
       rentlinx.api_url_prefix ENV['RENTLINX_SITE_URL'] || 'http://localhost'
+      rentlinx.log_level :error
     end
   end
 end
