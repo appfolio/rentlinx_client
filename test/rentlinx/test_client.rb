@@ -66,4 +66,44 @@ class ClientTest < MiniTest::Test
       assert_equal Rentlinx::Unit, units.first.class
     end
   end
+
+  def test_204_does_not_json_parse
+    use_vcr do
+      assert_raises(NoMethodError) do
+        Rentlinx::Property.from_id('test_204_does_not_json_parse')
+      end
+    end
+  end
+
+  def test_400_raises_bad_request
+    use_vcr do
+      assert_raises(Rentlinx::BadRequest) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_403_raises_forbidden
+    use_vcr do
+      assert_raises(Rentlinx::Forbidden) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_404_raises_not_found
+    use_vcr do
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_500_raises_server_error
+    use_vcr do
+      assert_raises(Rentlinx::ServerError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
 end

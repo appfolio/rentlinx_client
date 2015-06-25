@@ -75,7 +75,24 @@ module Rentlinx
       options = { body: data.to_json, header: authenticated_headers }
       response = session.request(method, URI.join(@url_prefix, path), options)
       Rentlinx.logger.debug "#{method} Request to #{path}\n#{options.inspect}"
-      JSON.parse(response.body)
+      response_handler(response)
+    end
+
+    def response_handler(response)
+      case response.status
+      when 200, 201, 202
+        JSON.parse(response.body)
+      when 204
+        nil # don't attempt to JSON parse emptystring
+      when 400
+        raise Rentlinx::BadRequest
+      when 403
+        raise Rentlinx::Forbidden
+      when 404
+        raise Rentlinx::NotFound
+      when 500, 501, 502, 503, 504, 505
+        raise Rentlinx::ServerError
+      end
     end
 
     def authenticated_headers
