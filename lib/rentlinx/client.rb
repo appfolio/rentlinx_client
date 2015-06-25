@@ -94,6 +94,8 @@ module Rentlinx
         raise Rentlinx::NotFound
       when 500, 501, 502, 503, 504, 505
         raise Rentlinx::ServerError
+      else
+        raise Rentlinx::HTTPError, 'Unexpected HTTP response code.'
       end
     end
 

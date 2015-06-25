@@ -115,6 +115,14 @@ class ClientTest < MiniTest::Test
     end
   end
 
+  def test_unhandled_response_code_raises_http_error
+    use_vcr do
+      assert_raises(Rentlinx::HTTPError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
   def test_invalid_object
     use_vcr do
       assert_raises(Rentlinx::InvalidObject) do
