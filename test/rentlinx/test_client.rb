@@ -106,4 +106,16 @@ class ClientTest < MiniTest::Test
       end
     end
   end
+
+  def test_invalid_object
+    use_vcr do
+      assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx::Property.new({}).post
+      end
+
+      assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx::Unit.new({}).post
+      end
+    end
+  end
 end

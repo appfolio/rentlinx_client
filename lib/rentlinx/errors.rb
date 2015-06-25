@@ -10,25 +10,31 @@ module Rentlinx
 
   class BadRequest < RentlinxError
     def initialize
-      super("The request sent to the server was invalid.")
+      super('The request sent to the server was invalid.')
     end
   end
 
   class NotFound < RentlinxError
     def initialize
-      super("The item you requested could not be found on the remote server.")
+      super('The item you requested could not be found on the remote server.')
     end
   end
 
   class Forbidden < RentlinxError
     def initialize
-      super("You are not permitted to access the item you requested.")
+      super('You are not permitted to access the item you requested.')
     end
   end
 
   class ServerError < RentlinxError
     def initialize
-      super("The remote server has experienced an error.")
+      super('The remote server has experienced an error.')
+    end
+  end
+
+  class InvalidObject < RentlinxError
+    def initialize(type)
+      super("The given #{type} is missing required attributes and cannot be posted.")
     end
   end
 end
