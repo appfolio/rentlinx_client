@@ -83,6 +83,14 @@ class ClientTest < MiniTest::Test
     end
   end
 
+  def test_http_errors_are_httperrors
+    use_vcr do
+      assert_raises(Rentlinx::HTTPError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
   def test_403_raises_forbidden
     use_vcr do
       assert_raises(Rentlinx::Forbidden) do
