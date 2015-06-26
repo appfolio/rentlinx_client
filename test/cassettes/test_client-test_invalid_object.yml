@@ -40,7 +40,7 @@ http_interactions:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
     http_version: 
   recorded_at: Thu, 25 Jun 2015 21:34:11 GMT
 recorded_with: VCR 2.9.3

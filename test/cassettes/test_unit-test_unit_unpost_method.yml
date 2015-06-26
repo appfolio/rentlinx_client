@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:47 GMT
+      - Fri, 26 Jun 2015 21:24:38 GMT
       Content-Type:
       - application/json
   response:
@@ -35,20 +35,20 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:21 GMT
+      - Fri, 26 Jun 2015 21:21:22 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:47 GMT
+  recorded_at: Fri, 26 Jun 2015 21:24:38 GMT
 - request:
     method: put
-    uri: http://localhost/properties/test_unpost_with_unit_property
+    uri: http://localhost/properties/test_unit_unpost_method__property2
     body:
       encoding: UTF-8
-      string: '{"companyID":"test-id","propertyID":"test_unpost_with_unit_property","description":"This
+      string: '{"companyID":"test-id","propertyID":"test_unit_unpost_method__property2","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
         555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
         company"}'
@@ -58,7 +58,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:47 GMT
+      - Fri, 26 Jun 2015 21:24:38 GMT
       Content-Type:
       - application/json
   response:
@@ -81,22 +81,22 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:21 GMT
+      - Fri, 26 Jun 2015 21:21:22 GMT
       Content-Length:
-      - '546'
+      - '550'
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"property","propertyID":"test_unpost_with_unit_property","description":"This
+      string: '{"data":{"type":"property","propertyID":"test_unit_unpost_method__property2","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-15"}}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-34"}}'
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:47 GMT
+  recorded_at: Fri, 26 Jun 2015 21:24:39 GMT
 - request:
     method: put
-    uri: http://localhost/units/test_unpost_with_unit_unit
+    uri: http://localhost/units/test_unit_unpost_method2
     body:
       encoding: UTF-8
-      string: '{"unitID":"test_unpost_with_unit_unit","propertyID":"test_unpost_with_unit_property","name":"My
+      string: '{"unitID":"test_unit_unpost_method2","propertyID":"test_unit_unpost_method__property2","name":"My
         new unit","description":"Fabulous unit on the ocean side","rent":"1600","maxRent":"","deposit":"3200","maxDeposit":"","squareFeet":"","maxSquareFeet":"","bedrooms":"3","fullBaths":"2","halfBaths":"","isMobilityAccessible":"","isVisionAccessible":"","isHearingAccessible":"","rentIsBasedOnIncome":"","isOpenToLease":true,"dateAvailable":"06/15/2015","dateLeasedThrough":"","numUnits":"","numAvailable":""}'
     headers:
       User-Agent:
@@ -104,7 +104,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:47 GMT
+      - Fri, 26 Jun 2015 21:24:39 GMT
       Content-Type:
       - application/json
   response:
@@ -127,28 +127,28 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:23 GMT
+      - Fri, 26 Jun 2015 21:21:25 GMT
       Content-Length:
-      - '550'
+      - '552'
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"unit","unitID":"test_unpost_with_unit_unit","propertyID":"test_unpost_with_unit_property","isOpenToLease":true,"name":"My
+      string: '{"data":{"type":"unit","unitID":"test_unit_unpost_method2","propertyID":"test_unit_unpost_method__property2","isOpenToLease":true,"name":"My
         new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:49 GMT
+  recorded_at: Fri, 26 Jun 2015 21:24:41 GMT
 - request:
-    method: post
-    uri: http://localhost/authentication/login
+    method: get
+    uri: http://localhost/units/test_unit_unpost_method2
     body:
       encoding: UTF-8
-      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+      string: 'null'
     headers:
       User-Agent:
       - Rentlinx Ruby Client 0.3.0
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:49 GMT
+      - Fri, 26 Jun 2015 21:24:41 GMT
       Content-Type:
       - application/json
   response:
@@ -171,17 +171,18 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:23 GMT
+      - Fri, 26 Jun 2015 21:21:25 GMT
       Content-Length:
-      - '54'
+      - '564'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"data":{"type":"unit","unitID":"test_unit_unpost_method2","propertyID":"test_unit_unpost_method__property2","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:49 GMT
+  recorded_at: Fri, 26 Jun 2015 21:24:41 GMT
 - request:
     method: delete
-    uri: http://localhost/units/test_unpost_with_unit_unit
+    uri: http://localhost/units/test_unit_unpost_method2
     body:
       encoding: UTF-8
       string: 'null'
@@ -191,7 +192,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:49 GMT
+      - Fri, 26 Jun 2015 21:24:41 GMT
       Content-Type:
       - application/json
   response:
@@ -214,15 +215,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:23 GMT
+      - Fri, 26 Jun 2015 21:21:25 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:50 GMT
+  recorded_at: Fri, 26 Jun 2015 21:24:42 GMT
 - request:
     method: get
-    uri: http://localhost/units/test_unpost_with_unit_unit
+    uri: http://localhost/units/test_unit_unpost_method2
     body:
       encoding: UTF-8
       string: 'null'
@@ -232,7 +233,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 23:42:50 GMT
+      - Fri, 26 Jun 2015 21:25:12 GMT
       Content-Type:
       - application/json
   response:
@@ -255,12 +256,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 23:39:23 GMT
+      - Fri, 26 Jun 2015 21:21:56 GMT
       Content-Length:
       - '62'
     body:
       encoding: UTF-8
       string: '{"details":"Unit not found.","title":null,"status":"NotFound"}'
     http_version: 
-  recorded_at: Thu, 25 Jun 2015 23:42:50 GMT
+  recorded_at: Fri, 26 Jun 2015 21:25:12 GMT
 recorded_with: VCR 2.9.3

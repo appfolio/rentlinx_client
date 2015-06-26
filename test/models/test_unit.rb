@@ -93,15 +93,21 @@ class UnitTest < MiniTest::Test
 
   def test_unit_unpost_method
     use_vcr do
+      property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      property.propertyID = 'test_unit_unpost_method__property2'
+      property.post
+
       unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
-      unit.unitID = 'test_unit_uasdfasdfasdfnpost_method'
+      unit.propertyID = property.propertyID
+      unit.unitID = 'test_unit_unpost_method2'
       unit.post
 
-      unit = Rentlinx::Unit.from_id('test_unit_uasdfasdfasdfnpost_method')
-
+      unit = Rentlinx::Unit.from_id(unit.unitID)
       unit.unpost
 
-      unit = Rentlinx::Unit.from_id('test_unit_uasdfasdfasdfnpost_method')
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Unit.from_id('test_unit_unpost_method2')
+      end
     end
   end
 end

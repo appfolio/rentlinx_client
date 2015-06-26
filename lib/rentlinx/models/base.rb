@@ -25,7 +25,7 @@ module Rentlinx
     end
 
     def unpost
-      Rentlinx.client.unpost(type, propertyID)
+      Rentlinx.client.unpost(type, send(type.to_s + 'ID'))
     end
 
     def self.unpost(id)
