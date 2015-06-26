@@ -6,6 +6,10 @@ require 'rentlinx/default'
 module Rentlinx
   class Client
     def initialize
+      raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
+                                       Rentlinx.password.nil? ||
+                                       Rentlinx.api_url_prefix.nil?
+
       @url_prefix = (Rentlinx.api_url_prefix + '/').freeze  # Extra slashes are fine
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end

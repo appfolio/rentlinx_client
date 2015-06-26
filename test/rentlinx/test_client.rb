@@ -3,6 +3,27 @@ require_relative '../helper'
 class ClientTest < MiniTest::Test
   include SetupMethods
 
+  def test_initialize
+    use_vcr do
+      Rentlinx::Client.new
+    end
+  end
+
+  def test_initialize_not_configured
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username nil
+    end
+
+    assert_raises(Rentlinx::NotConfigured) do
+      Rentlinx::Client.new
+    end
+
+  ensure
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username ENV['RENTLINX_USERNAME'] || '<USERNAME>'
+    end
+  end
+
   def test_post_with_property
     use_vcr do
       property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)

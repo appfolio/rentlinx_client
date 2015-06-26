@@ -8,6 +8,12 @@ module Rentlinx
   class InvalidTypeParam < RentlinxError
   end
 
+  class NotConfigured < RentlinxError
+    def initialize
+      super('Rentlinx is not configured.')
+    end
+  end
+
   class InvalidObject < RentlinxError
     def initialize(object)
       super("#{object.class} is invalid: #{object.missing_attributes}")
