@@ -91,15 +91,15 @@ module Rentlinx
       when 204
         nil # don't attempt to JSON parse emptystring
       when 400
-        raise Rentlinx::BadRequest
+        raise Rentlinx::BadRequest, response
       when 403
-        raise Rentlinx::Forbidden
+        raise Rentlinx::Forbidden, response
       when 404
-        raise Rentlinx::NotFound
+        raise Rentlinx::NotFound, response
       when 500, 501, 502, 503, 504, 505
-        raise Rentlinx::ServerError
+        raise Rentlinx::ServerError, response
       else
-        raise Rentlinx::HTTPError, 'Unexpected HTTP response code.'
+        raise Rentlinx::HTTPError, response
       end
     end
 

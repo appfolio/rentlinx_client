@@ -21,29 +21,37 @@ module Rentlinx
   end
 
   class HTTPError < RentlinxError
+    def initialize(response, msg=nil)
+      @response = response
+      super(msg.nil? ? 'Received an unexpected response from the server' : msg)
+    end
+
+    def response
+      @response
+    end
   end
 
   class BadRequest < HTTPError
-    def initialize
-      super('The request sent to the server was invalid.')
+    def initialize(response)
+      super(response, 'The request sent to the server was invalid.')
     end
   end
 
   class NotFound < HTTPError
-    def initialize
-      super('The item you requested could not be found on the remote server.')
+    def initialize(response)
+      super(response, 'The item you requested could not be found on the remote server.')
     end
   end
 
   class Forbidden < HTTPError
-    def initialize
-      super('You are not permitted to access the item you requested.')
+    def initialize(response)
+      super(response, 'You are not permitted to access the item you requested.')
     end
   end
 
   class ServerError < HTTPError
-    def initialize
-      super('The remote server has experienced an error.')
+    def initialize(response)
+      super(response, 'The remote server has experienced an error.')
     end
   end
 end
