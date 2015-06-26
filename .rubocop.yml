@@ -10,9 +10,6 @@ Metrics/PerceivedComplexity:
 Metrics/MethodLength:
   Max: 20
 
-Metrics/LineLength:
-  Max: 150
-
 Style/SignalException:
   EnforcedStyle: only_raise
 
@@ -22,3 +19,6 @@ Documentation:
 Metrics/LineLength:
   Enabled: false
 
+Metrics/ClassLength:
+  Exclude:
+    - test/**/* # long test classes are a good thing

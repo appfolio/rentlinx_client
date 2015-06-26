@@ -6,6 +6,10 @@ require 'rentlinx/default'
 module Rentlinx
   class Client
     def initialize
+      raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
+                                       Rentlinx.password.nil? ||
+                                       Rentlinx.api_url_prefix.nil?
+
       @url_prefix = (Rentlinx.api_url_prefix + '/').freeze  # Extra slashes are fine
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
@@ -13,11 +17,13 @@ module Rentlinx
     def post(object)
       case object
       when Rentlinx::Property
+        raise Rentlinx::InvalidObject, object unless object.valid?
         post_property(object)
       when Rentlinx::Unit
+        raise Rentlinx::InvalidObject, object unless object.valid?
         post_unit(object)
       else
-        raise TypeError, "Invalid object: #{object.class}"
+        raise TypeError, "Type not permitted: #{object.class}"
       end
     end
 
@@ -75,7 +81,26 @@ module Rentlinx
       options = { body: data.to_json, header: authenticated_headers }
       response = session.request(method, URI.join(@url_prefix, path), options)
       Rentlinx.logger.debug "#{method} Request to #{path}\n#{options.inspect}"
-      JSON.parse(response.body)
+      response_handler(response)
+    end
+
+    def response_handler(response)
+      case response.status
+      when 200, 201, 202
+        JSON.parse(response.body)
+      when 204
+        nil # don't attempt to JSON parse emptystring
+      when 400
+        raise Rentlinx::BadRequest, response
+      when 403
+        raise Rentlinx::Forbidden, response
+      when 404
+        raise Rentlinx::NotFound, response
+      when 500, 501, 502, 503, 504, 505
+        raise Rentlinx::ServerError, response
+      else
+        raise Rentlinx::HTTPError, response
+      end
     end
 
     def authenticated_headers

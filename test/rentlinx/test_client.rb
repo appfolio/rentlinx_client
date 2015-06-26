@@ -3,6 +3,27 @@ require_relative '../helper'
 class ClientTest < MiniTest::Test
   include SetupMethods
 
+  def test_initialize
+    use_vcr do
+      Rentlinx::Client.new
+    end
+  end
+
+  def test_initialize_not_configured
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username nil
+    end
+
+    assert_raises(Rentlinx::NotConfigured) do
+      Rentlinx::Client.new
+    end
+
+  ensure
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username ENV['RENTLINX_USERNAME'] || '<USERNAME>'
+    end
+  end
+
   def test_post_with_property
     use_vcr do
       property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
@@ -19,7 +40,7 @@ class ClientTest < MiniTest::Test
     end
   end
 
-  def test_post__invalid_object
+  def test_post__type_error
     use_vcr do
       client = Rentlinx::Client.new
 
@@ -64,6 +85,74 @@ class ClientTest < MiniTest::Test
 
       assert_equal 2, units.count
       assert_equal Rentlinx::Unit, units.first.class
+    end
+  end
+
+  def test_204_does_not_json_parse
+    use_vcr do
+      assert_raises(NoMethodError) do
+        Rentlinx::Property.from_id('test_204_does_not_json_parse')
+      end
+    end
+  end
+
+  def test_400_raises_bad_request
+    use_vcr do
+      assert_raises(Rentlinx::BadRequest) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_http_errors_are_httperrors
+    use_vcr do
+      assert_raises(Rentlinx::HTTPError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_403_raises_forbidden
+    use_vcr do
+      assert_raises(Rentlinx::Forbidden) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_404_raises_not_found
+    use_vcr do
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_500_raises_server_error
+    use_vcr do
+      assert_raises(Rentlinx::ServerError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_unhandled_response_code_raises_http_error
+    use_vcr do
+      assert_raises(Rentlinx::HTTPError) do
+        Rentlinx::Client.new
+      end
+    end
+  end
+
+  def test_invalid_object
+    use_vcr do
+      assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx::Property.new({}).post
+      end
+
+      assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx::Unit.new({}).post
+      end
     end
   end
 end

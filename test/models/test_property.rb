@@ -106,4 +106,15 @@ class PropertyTest < MiniTest::Test
       assert_equal 'test_units_unit_1', remote_prop.units.first.unitID
     end
   end
+
+  def test_missing_attributes
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.propertyID = nil
+    prop.address = nil
+
+    assert !prop.valid?
+    assert_equal 'Missing required attributes: propertyID, address', prop.missing_attributes
+  end
 end
