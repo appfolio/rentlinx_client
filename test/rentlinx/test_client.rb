@@ -19,7 +19,7 @@ class ClientTest < MiniTest::Test
     end
   end
 
-  def test_post__invalid_object
+  def test_post__type_error
     use_vcr do
       client = Rentlinx::Client.new
 

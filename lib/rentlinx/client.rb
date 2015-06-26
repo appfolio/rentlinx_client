@@ -13,10 +13,10 @@ module Rentlinx
     def post(object)
       case object
       when Rentlinx::Property
-        raise Rentlinx::InvalidObject, 'property' unless object.valid?
+        raise Rentlinx::InvalidObject, object unless object.valid?
         post_property(object)
       when Rentlinx::Unit
-        raise Rentlinx::InvalidObject, 'unit' unless object.valid?
+        raise Rentlinx::InvalidObject, object unless object.valid?
         post_unit(object)
       else
         raise TypeError, "Type not permitted: #{object.class}"

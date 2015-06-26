@@ -80,4 +80,14 @@ class UnitTest < MiniTest::Test
       assert_equal 'This is the new description', unit.description
     end
   end
+
+  def test_missing_attributes
+    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+    assert unit.valid?
+
+    unit.unitID = nil
+
+    assert !unit.valid?
+    assert_equal 'Missing required attributes: unitID', unit.missing_attributes
+  end
 end

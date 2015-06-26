@@ -51,5 +51,13 @@ module Rentlinx
         !send(at).nil? && send(at) != ''
       end
     end
+
+    def missing_attributes
+      missing = required_attributes.select do |at|
+        send(at).nil? || send(at) == ''
+      end
+
+      "Missing required attributes: #{ missing.join(', ') }"
+    end
   end
 end

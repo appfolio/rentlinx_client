@@ -9,8 +9,8 @@ module Rentlinx
   end
 
   class InvalidObject < RentlinxError
-    def initialize(type)
-      super("The given #{type} is missing required attributes and cannot be posted.")
+    def initialize(object)
+      super("#{object.class} is invalid: #{object.missing_attributes}")
     end
   end
 
