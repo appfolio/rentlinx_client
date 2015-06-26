@@ -41,23 +41,23 @@ module Rentlinx
     end
 
     def valid?
-      required_attributes.all? do |at|
-        !send(at).nil? && send(at) != ''
-      end
+      required_attributes.none? { |at| blank?(send(at)) }
     end
 
     def valid_for_post?
-      required_attributes_for_post.all? do |at|
-        !send(at).nil? && send(at) != ''
-      end
+      required_attributes_for_post.none? { |at| blank?(send(at)) }
     end
 
     def missing_attributes
-      missing = required_attributes.select do |at|
-        send(at).nil? || send(at) == ''
-      end
+      missing = required_attributes.select { |at| blank?(send(at)) }
 
       "Missing required attributes: #{missing.join(', ')}"
+    end
+
+    private
+
+    def blank?(str)
+      str.nil? || str == ''
     end
   end
 end
