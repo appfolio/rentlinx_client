@@ -52,10 +52,4 @@ module Rentlinx
       super(response, 'The remote server has experienced an error.')
     end
   end
-
-  class InvalidObject < RentlinxError
-    def initialize type
-      super("The given #{type} is missing required attributes and cannot be posted.")
-    end
-  end
 end

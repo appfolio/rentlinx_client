@@ -40,7 +40,42 @@ class ClientTest < MiniTest::Test
     end
   end
 
-  def test_post__type_error
+  def test_unpost_with_property
+    use_vcr do
+      property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      property.propertyID = 'test_unpost_with_property'
+      property.post
+
+      client = Rentlinx::Client.new
+      client.unpost(:property, property.propertyID)
+
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Property.from_id('test_unpost_with_property')
+      end
+    end
+  end
+
+  def test_unpost_with_unit
+    use_vcr do
+      property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      property.propertyID = 'test_unpost_with_unit_property'
+      property.post
+
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.propertyID = property.propertyID
+      unit.unitID = 'test_unpost_with_unit_unit'
+      unit.post
+
+      client = Rentlinx::Client.new
+      client.unpost(:unit, unit.unitID)
+
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Unit.from_id('test_unpost_with_unit_unit')
+      end
+    end
+  end
+
+  def test_post__invalid_object
     use_vcr do
       client = Rentlinx::Client.new
 

@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Fri, 26 Jun 2015 00:32:36 GMT
+      - Thu, 25 Jun 2015 21:34:11 GMT
       Content-Type:
       - application/json
   response:
@@ -35,12 +35,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 26 Jun 2015 00:29:10 GMT
+      - Thu, 25 Jun 2015 21:30:46 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH_KEY>"}'
-    http_version:
-  recorded_at: Fri, 26 Jun 2015 00:32:36 GMT
+      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
+    http_version: 
+  recorded_at: Thu, 25 Jun 2015 21:34:11 GMT
 recorded_with: VCR 2.9.3

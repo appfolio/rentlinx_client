@@ -90,4 +90,18 @@ class UnitTest < MiniTest::Test
     assert !unit.valid?
     assert_equal 'Missing required attributes: unitID', unit.missing_attributes
   end
+
+  def test_unit_unpost_method
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.unitID = 'test_unit_uasdfasdfasdfnpost_method'
+      unit.post
+
+      unit = Rentlinx::Unit.from_id('test_unit_uasdfasdfasdfnpost_method')
+
+      unit.unpost
+
+      unit = Rentlinx::Unit.from_id('test_unit_uasdfasdfasdfnpost_method')
+    end
+  end
 end
