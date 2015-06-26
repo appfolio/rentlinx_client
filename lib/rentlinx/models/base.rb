@@ -57,7 +57,7 @@ module Rentlinx
         send(at).nil? || send(at) == ''
       end
 
-      "Missing required attributes: #{ missing.join(', ') }"
+      "Missing required attributes: #{missing.join(', ')}"
     end
   end
 end

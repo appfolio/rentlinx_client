@@ -21,13 +21,11 @@ module Rentlinx
   end
 
   class HTTPError < RentlinxError
-    def initialize(response, msg=nil)
+    attr_reader :response
+
+    def initialize(response, msg = nil)
       @response = response
       super(msg.nil? ? 'Received an unexpected response from the server' : msg)
-    end
-
-    def response
-      @response
     end
   end
 
