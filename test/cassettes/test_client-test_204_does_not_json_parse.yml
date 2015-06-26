@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.3.0
+      - Rentlinx Ruby Client 0.3.1
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 21:25:24 GMT
+      - Fri, 26 Jun 2015 23:15:15 GMT
       Content-Type:
       - application/json
   response:
@@ -35,33 +35,36 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 21:21:59 GMT
+      - Fri, 26 Jun 2015 23:11:59 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH_KEY>"}'
-    http_version:
-  recorded_at: Thu, 25 Jun 2015 21:25:24 GMT
+      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
+    http_version: 
+  recorded_at: Fri, 26 Jun 2015 23:15:15 GMT
 - request:
-    method: get
+    method: put
     uri: http://localhost/properties/test_204_does_not_json_parse
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '{"companyID":"test-id","propertyID":"test_204_does_not_json_parse","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
+        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
+        company"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.3.0
+      - Rentlinx Ruby Client 0.3.1
       Accept:
       - "*/*"
       Date:
-      - Thu, 25 Jun 2015 21:25:24 GMT
+      - Fri, 26 Jun 2015 23:15:15 GMT
       Content-Type:
       - application/json
   response:
     status:
-      code: 204
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Cache-Control:
       - no-cache
@@ -78,12 +81,55 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 25 Jun 2015 21:21:59 GMT
+      - Fri, 26 Jun 2015 23:12:00 GMT
       Content-Length:
-      - '66'
+      - '544'
     body:
       encoding: UTF-8
-      string: '{"details":"Property not found.","title":null,"status":"NotFound"}'
-    http_version:
-  recorded_at: Thu, 25 Jun 2015 21:25:24 GMT
+      string: '{"data":{"type":"property","propertyID":"test_204_does_not_json_parse","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-35"}}'
+    http_version: 
+  recorded_at: Fri, 26 Jun 2015 23:15:16 GMT
+- request:
+    method: delete
+    uri: http://localhost/properties/test_204_does_not_json_parse
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.3.1
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 26 Jun 2015 23:15:16 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 26 Jun 2015 23:12:00 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 26 Jun 2015 23:15:17 GMT
 recorded_with: VCR 2.9.3
