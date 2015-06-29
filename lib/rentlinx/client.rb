@@ -111,7 +111,7 @@ module Rentlinx
         nil # don't attempt to JSON parse emptystring
       when 400
         body = JSON.parse(response.body)
-        raise Rentlinx::BadRequest, body['details']
+        raise Rentlinx::BadRequest, response, body['details']
       when 403
         raise Rentlinx::Forbidden, response
       when 404

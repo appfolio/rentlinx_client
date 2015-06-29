@@ -30,8 +30,8 @@ module Rentlinx
   end
 
   class BadRequest < HTTPError
-    def initialize(response)
-      super(response, 'The request sent to the server was invalid.')
+    def initialize(response, message = nil)
+      super(response, message || 'The request sent to the server was invalid.')
     end
   end
 
