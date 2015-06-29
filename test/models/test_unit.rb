@@ -90,4 +90,24 @@ class UnitTest < MiniTest::Test
     assert !unit.valid?
     assert_equal 'Missing required attributes: unitID', unit.missing_attributes
   end
+
+  def test_unit_unpost_method
+    use_vcr do
+      property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      property.propertyID = 'test_unit_unpost_method__property2'
+      property.post
+
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.propertyID = property.propertyID
+      unit.unitID = 'test_unit_unpost_method2'
+      unit.post
+
+      unit = Rentlinx::Unit.from_id(unit.unitID)
+      unit.unpost
+
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Unit.from_id('test_unit_unpost_method2')
+      end
+    end
+  end
 end

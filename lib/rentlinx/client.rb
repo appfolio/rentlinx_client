@@ -27,6 +27,17 @@ module Rentlinx
       end
     end
 
+    def unpost(type, id)
+      case type
+      when :property
+        unpost_property(id)
+      when :unit
+        unpost_unit(id)
+      else
+        raise TypeError, "Invalid type: #{type}"
+      end
+    end
+
     def get(type, id)
       case type
       when :property
@@ -71,6 +82,14 @@ module Rentlinx
       request('PUT', "units/#{unit.unitID}", unit.to_hash)
     end
 
+    def unpost_property(id)
+      request('DELETE', "properties/#{id}")
+    end
+
+    def unpost_unit(id)
+      request('DELETE', "units/#{id}")
+    end
+
     def authenticate(username, password)
       data = { username: username, password: password }
       response = request('POST', 'authentication/login', data)
@@ -79,8 +98,8 @@ module Rentlinx
 
     def request(method, path, data = nil)
       options = { body: data.to_json, header: authenticated_headers }
-      response = session.request(method, URI.join(@url_prefix, path), options)
       Rentlinx.logger.debug "#{method} Request to #{path}\n#{options.inspect}"
+      response = session.request(method, URI.join(@url_prefix, path), options)
       response_handler(response)
     end
 
@@ -91,7 +110,8 @@ module Rentlinx
       when 204
         nil # don't attempt to JSON parse emptystring
       when 400
-        raise Rentlinx::BadRequest, response
+        body = JSON.parse(response.body)
+        raise Rentlinx::BadRequest, body['details']
       when 403
         raise Rentlinx::Forbidden, response
       when 404

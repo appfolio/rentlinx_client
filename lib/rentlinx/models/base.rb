@@ -24,6 +24,14 @@ module Rentlinx
       Rentlinx.client.post(self)
     end
 
+    def unpost
+      Rentlinx.client.unpost(type, send(type.to_s + 'ID'))
+    end
+
+    def self.unpost(id)
+      Rentlinx.client.unpost(type, id)
+    end
+
     def self.get_from_id(type, id)
       Rentlinx.client.get(type.to_sym, id)
     end
@@ -55,6 +63,14 @@ module Rentlinx
     end
 
     private
+
+    def type
+      self.class.type
+    end
+
+    def self.type
+      name.split('::').last.downcase.to_sym
+    end
 
     def blank?(str)
       str.nil? || str == ''

@@ -20,5 +20,4 @@ Metrics/LineLength:
   Enabled: false
 
 Metrics/ClassLength:
-  Exclude:
-    - test/**/* # long test classes are a good thing
+  Enabled: false

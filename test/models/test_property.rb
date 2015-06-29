@@ -117,4 +117,34 @@ class PropertyTest < MiniTest::Test
     assert !prop.valid?
     assert_equal 'Missing required attributes: propertyID, address', prop.missing_attributes
   end
+
+  def test_class_unpost
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_class_unpost'
+      prop.post
+
+      Rentlinx::Property.unpost('test_class_unpost')
+
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Property.from_id('test_class_unpost')
+      end
+    end
+  end
+
+  def test_unpost
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_4123434124'
+      prop.post
+
+      prop = Rentlinx::Property.from_id('test_4123434124')
+
+      prop.unpost
+
+      assert_raises(Rentlinx::NotFound) do
+        Rentlinx::Property.from_id('test_4123434124')
+      end
+    end
+  end
 end
