@@ -125,58 +125,46 @@ class ClientTest < MiniTest::Test
 
   def test_204_does_not_json_parse
     use_vcr do
-      assert_raises(NoMethodError) do
-        Rentlinx::Property.from_id('test_204_does_not_json_parse')
-      end
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_204_does_not_json_parse'
+      prop.post
+
+      # JSON should not be asked to parse the response of the delete action
+      JSON.expects(:parse).never
+
+      assert prop.unpost.nil?
     end
   end
 
   def test_400_raises_bad_request
-    use_vcr do
-      assert_raises(Rentlinx::BadRequest) do
-        Rentlinx::Client.new
-      end
+    request_mock = mock
+    request_mock.expects(:status).returns(400)
+    request_mock.expects(:body).returns({ details: 'There was an error.' }.to_json)
+    HTTPClient.any_instance.expects(:request).returns(request_mock)
+
+    assert_raises(Rentlinx::BadRequest) do
+      Rentlinx::Client.new
     end
   end
 
   def test_http_errors_are_httperrors
-    use_vcr do
-      assert_raises(Rentlinx::HTTPError) do
-        Rentlinx::Client.new
-      end
-    end
+    response_stub(500, Rentlinx::HTTPError)
   end
 
   def test_403_raises_forbidden
-    use_vcr do
-      assert_raises(Rentlinx::Forbidden) do
-        Rentlinx::Client.new
-      end
-    end
+    response_stub(403, Rentlinx::Forbidden)
   end
 
   def test_404_raises_not_found
-    use_vcr do
-      assert_raises(Rentlinx::NotFound) do
-        Rentlinx::Client.new
-      end
-    end
+    response_stub(404, Rentlinx::NotFound)
   end
 
   def test_500_raises_server_error
-    use_vcr do
-      assert_raises(Rentlinx::ServerError) do
-        Rentlinx::Client.new
-      end
-    end
+    response_stub(500, Rentlinx::ServerError)
   end
 
   def test_unhandled_response_code_raises_http_error
-    use_vcr do
-      assert_raises(Rentlinx::HTTPError) do
-        Rentlinx::Client.new
-      end
-    end
+    response_stub(100, Rentlinx::HTTPError)
   end
 
   def test_invalid_object
@@ -188,6 +176,18 @@ class ClientTest < MiniTest::Test
       assert_raises(Rentlinx::InvalidObject) do
         Rentlinx::Unit.new({}).post
       end
+    end
+  end
+
+  private
+
+  def response_stub(status_code, error_class)
+    request_mock = mock
+    request_mock.expects(:status).returns(status_code)
+    HTTPClient.any_instance.expects(:request).returns(request_mock)
+
+    assert_raises(error_class) do
+      Rentlinx::Client.new
     end
   end
 end

@@ -9,6 +9,7 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'logging'
+  gem 'mocha'
 end
 
 group :development do

@@ -3,6 +3,8 @@ if ENV['TRAVIS']
   Coveralls.wear!
 end
 require 'minitest/autorun'
+require 'mocha'
+require 'mocha/mini_test'
 require 'rentlinx'
 require 'vcr'
 
