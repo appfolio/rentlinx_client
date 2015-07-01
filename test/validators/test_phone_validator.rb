@@ -4,7 +4,7 @@ class PhoneValidatorTest < MiniTest::Test
   def test_validate
     v = Rentlinx::PhoneValidator.new('+112217 27 7 83')
     refute v.valid?
-    assert '+112217 27 7 83 is not a valid phone number', v.error
+    assert_equal '+112217 27 7 83 is not a valid phone number', v.error
 
     v = Rentlinx::PhoneValidator.new('+1-805-555-5555')
     assert v.valid?

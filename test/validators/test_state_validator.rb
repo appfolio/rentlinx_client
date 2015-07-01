@@ -4,7 +4,7 @@ class StateValidatorTest < MiniTest::Test
   def test_validate
     v = Rentlinx::StateValidator.new('California')
     refute v.valid?
-    assert 'California is not a valid state', v.error
+    assert_equal 'California is not a valid state, states must be two characters (CA)', v.error
 
     v = Rentlinx::StateValidator.new('CA')
     assert v.valid?

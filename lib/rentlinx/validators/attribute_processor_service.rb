@@ -10,7 +10,9 @@ module Rentlinx
     end
 
     def process
-      validators = { phoneNumber: PhoneValidator, state: StateValidator }
+      validators = { phoneNumber: PhoneValidator,
+                     state: StateValidator,
+                     zip: ZipValidator }
 
       @attrs.each do |field, val|
         next unless validators.keys.include?(field)

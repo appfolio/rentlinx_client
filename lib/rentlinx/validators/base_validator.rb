@@ -9,7 +9,7 @@ module Rentlinx
     end
 
     def valid?
-      @error.size == 0
+      @error == ''
     end
 
     def processed_value

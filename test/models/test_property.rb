@@ -140,7 +140,18 @@ class PropertyTest < MiniTest::Test
     prop.state = 'Merica'
 
     assert !prop.valid?
-    expected_errors = { state: 'Merica is not a valid state' }
+    expected_errors = { state: 'Merica is not a valid state, states must be two characters (CA)' }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages_invalid_zip
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.zip = '3'
+
+    assert !prop.valid?
+    expected_errors = { zip: '3 is not a valid zip code, zip codes must be five digits (93117)' }
     assert_equal expected_errors, prop.error_messages
   end
 

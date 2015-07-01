@@ -8,6 +8,7 @@ require 'rentlinx/validators/attribute_processor_service'
 require 'rentlinx/validators/base_validator'
 require 'rentlinx/validators/phone_validator'
 require 'rentlinx/validators/state_validator'
+require 'rentlinx/validators/zip_validator'
 
 module Rentlinx
   @username = nil
