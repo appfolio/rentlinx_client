@@ -7,6 +7,7 @@ require 'mocha'
 require 'mocha/mini_test'
 require 'rentlinx'
 require 'vcr'
+require 'phony'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'
@@ -56,7 +57,7 @@ VALID_PROPERTY_ATTRS = {
   website: '',
   yearBuilt: '',
   numUnits: '',
-  phoneNumber: '(805) 555-5554',
+  phoneNumber: '(805) 452-3214',
   extension: '',
   faxNumber: '',
   emailAddress: 'support@appfolio.com',

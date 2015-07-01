@@ -60,7 +60,7 @@ class PropertyTest < MiniTest::Test
              city: 'Santa Barbara', state: 'CA', zip: '93117',
              marketingName: '', hideAddress: '', latitude: '', longitude: '',
              website: '', yearBuilt: '', numUnits: '',
-             phoneNumber: '(805) 555-5554', extension: '', faxNumber: '',
+             phoneNumber: '8054523214', extension: '', faxNumber: '',
              emailAddress: 'support@appfolio.com', acceptsHcv: '',
              propertyType: '', activeURL: '', companyName: 'test company' }
     assert_equal hash, property.to_hash
@@ -107,7 +107,7 @@ class PropertyTest < MiniTest::Test
     end
   end
 
-  def test_missing_attributes
+  def test_error_messages
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     assert prop.valid?
 
@@ -115,7 +115,33 @@ class PropertyTest < MiniTest::Test
     prop.address = nil
 
     assert !prop.valid?
-    assert_equal 'Missing required attributes: propertyID, address', prop.missing_attributes
+    expected_errors = {
+      propertyID: 'is missing',
+      address: 'is missing'
+    }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages__invalid_phone
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.phoneNumber = '3'
+
+    assert !prop.valid?
+    expected_errors = { phoneNumber: '3 is not a valid phone number' }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages_invalid_state
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.state = 'Merica'
+
+    assert !prop.valid?
+    expected_errors = { state: 'Merica is not a valid state' }
+    assert_equal expected_errors, prop.error_messages
   end
 
   def test_class_unpost

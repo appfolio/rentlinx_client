@@ -81,14 +81,15 @@ class UnitTest < MiniTest::Test
     end
   end
 
-  def test_missing_attributes
+  def test_error_messages
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     assert unit.valid?
 
     unit.unitID = nil
 
     assert !unit.valid?
-    assert_equal 'Missing required attributes: unitID', unit.missing_attributes
+    expected = { unitID: 'is missing' }
+    assert_equal expected, unit.error_messages
   end
 
   def test_unit_unpost_method

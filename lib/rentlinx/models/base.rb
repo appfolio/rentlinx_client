@@ -1,11 +1,13 @@
 module Rentlinx
   class Base
     def initialize(attrs)
+      @processor = AttributeProcessor.new(attrs)
+      attrs = @processor.process
       attributes.each do |at|
         send("#{at}=", attrs[at])
       end
       remaining_attrs = attrs.keys - attributes
-      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.size > 0
+      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.compact.size > 0
     end
 
     def attributes
@@ -49,17 +51,24 @@ module Rentlinx
     end
 
     def valid?
-      required_attributes.none? { |at| blank?(send(at)) }
+      error_messages.empty?
     end
 
     def valid_for_post?
       required_attributes_for_post.none? { |at| blank?(send(at)) }
     end
 
-    def missing_attributes
-      missing = required_attributes.select { |at| blank?(send(at)) }
+    def error_messages
+      @processor = AttributeProcessor.new(to_hash)
+      @processor.process
 
-      "Missing required attributes: #{missing.join(', ')}"
+      missing_attrs = required_attributes.select { |at| blank?(send(at)) }
+
+      missing_errors = missing_attrs.each_with_object({}) do |at, obj|
+        obj[at] = 'is missing'
+      end
+
+      @processor.errors.merge(missing_errors)
     end
 
     private
