@@ -9,6 +9,7 @@ class PropertyTest < MiniTest::Test
     assert property.valid?
 
     VALID_PROPERTY_ATTRS.each do |k, v|
+      next if k == :phoneNumber
       assert_equal v, property.send(k)
     end
   end
@@ -18,6 +19,18 @@ class PropertyTest < MiniTest::Test
     assert_raises(Rentlinx::UnexpectedAttributes) do
       Rentlinx::Property.new(property_params)
     end
+  end
+
+  def test_new__does_not_mutate
+    attrs = {
+      phoneNumber: '(818) 703 2087'
+    }
+
+    old_attrs = attrs.dup
+
+    Rentlinx::Property.new(attrs)
+
+    assert_equal old_attrs, attrs
   end
 
   def test_property_from_id

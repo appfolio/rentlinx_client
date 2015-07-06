@@ -1,7 +1,7 @@
 module Rentlinx
   class Base
     def initialize(attrs)
-      @processor = AttributeProcessor.new(attrs)
+      @processor = AttributeProcessor.new(attrs.dup)
       attrs = @processor.process
       attributes.each do |at|
         send("#{at}=", attrs[at])
