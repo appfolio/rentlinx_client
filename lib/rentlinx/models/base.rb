@@ -1,3 +1,5 @@
+require 'rentlinx/validators/attribute_processor_service'
+
 module Rentlinx
   class Base
     def initialize(attrs)

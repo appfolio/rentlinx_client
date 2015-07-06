@@ -4,11 +4,6 @@ require 'rentlinx/errors'
 require 'rentlinx/models/base'
 require 'rentlinx/models/property'
 require 'rentlinx/models/unit'
-require 'rentlinx/validators/attribute_processor_service'
-require 'rentlinx/validators/base_validator'
-require 'rentlinx/validators/phone_validator'
-require 'rentlinx/validators/state_validator'
-require 'rentlinx/validators/zip_validator'
 
 module Rentlinx
   @username = nil

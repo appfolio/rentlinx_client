@@ -1,3 +1,8 @@
+require 'rentlinx/validators/base_validator'
+require 'rentlinx/validators/phone_validator'
+require 'rentlinx/validators/state_validator'
+require 'rentlinx/validators/zip_validator'
+
 module Rentlinx
   class AttributeProcessor
     attr_reader :errors
