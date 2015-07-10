@@ -56,7 +56,49 @@ module Rentlinx
       end
     end
 
+    def post_photos(photos)
+      return false unless photos.all?(&:valid?)
+      return false unless photos.all? { |p| p.propertyID == photos.first.propertyID }
+      property_photos = photos.select { |p| p.is_a? Rentlinx::PropertyPhoto }
+      unit_photos = photos - property_photos
+
+      post_property_photos(property_photos)
+      post_unit_photos(unit_photos)
+    end
+
+    def get_photos_for_property(id)
+      data = request('GET', "properties/#{id}/photos")['data']
+      data.map do |photo_data|
+        if photo_data['unitID'].nil? || photo_data['unitID'] == ''
+          PropertyPhoto.new(symbolize_data(photo_data))
+        else
+          UnitPhoto.new(symbolize_data(photo_data))
+        end
+      end
+    end
+
     private
+
+    # post_photos should only be called from property or unit, so we don't need
+    # to handle multiple properties
+    def post_property_photos(photos)
+      request('PUT', "properties/#{photos.first.propertyID}/photos", photos.map(&:to_hash))
+    end
+
+    def post_unit_photos(photos)
+      hash = {}
+      photos.each do |p|
+        if hash.keys.include?(p.unitID)
+          hash[p.unitID] << p
+        else
+          hash[p.unitID] = [p]
+        end
+      end
+
+      hash.each do |unitID, unit_photos|
+        request('PUT', "units/#{unitID}/photos", unit_photos.map(&:to_hash))
+      end
+    end
 
     def process_get(route)
       data = request('GET', route)['data']

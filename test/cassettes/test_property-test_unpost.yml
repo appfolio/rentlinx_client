@@ -40,8 +40,8 @@ http_interactions:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
-    http_version: 
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+    http_version:
   recorded_at: Mon, 29 Jun 2015 22:46:24 GMT
 - request:
     method: put
@@ -88,7 +88,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"type":"property","propertyID":"test_4123434124","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":null,"extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-50"}}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 29 Jun 2015 22:46:25 GMT
 - request:
     method: get
@@ -132,7 +132,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"type":"property","propertyID":"test_4123434124","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":null,"extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-50"}}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 29 Jun 2015 22:46:26 GMT
 - request:
     method: delete
@@ -173,7 +173,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 29 Jun 2015 22:46:26 GMT
 - request:
     method: get
@@ -216,6 +216,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"details":"Property not found.","title":null,"status":"NotFound"}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 29 Jun 2015 22:46:48 GMT
 recorded_with: VCR 2.9.3

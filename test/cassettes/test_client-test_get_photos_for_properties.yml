@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 10 Jul 2015 22:48:08 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 10 Jul 2015 22:44:36 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+    http_version:
+  recorded_at: Fri, 10 Jul 2015 22:48:21 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-id/photos
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 10 Jul 2015 22:48:21 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 10 Jul 2015 22:44:38 GMT
+      Content-Length:
+      - '667'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"photo","url":"http://alexstandke.com/img/me.png","caption":"This
+        is a photo of my house","position":0,"propertyID":"test-property-id","unitID":null},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-id"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-two"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-three"}]}'
+    http_version:
+  recorded_at: Fri, 10 Jul 2015 22:48:24 GMT
+recorded_with: VCR 2.9.3

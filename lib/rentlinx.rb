@@ -4,6 +4,9 @@ require 'rentlinx/errors'
 require 'rentlinx/models/base'
 require 'rentlinx/models/property'
 require 'rentlinx/models/unit'
+require 'rentlinx/models/base_photo'
+require 'rentlinx/models/property_photo'
+require 'rentlinx/models/unit_photo'
 
 module Rentlinx
   @username = nil
