@@ -16,7 +16,7 @@ module Rentlinx
 
   class InvalidObject < RentlinxError
     def initialize(object)
-      super("#{object.class} is invalid: #{object.missing_attributes}")
+      super("#{object.class} is invalid: #{object.error_messages}")
     end
   end
 

@@ -9,6 +9,7 @@ class PropertyTest < MiniTest::Test
     assert property.valid?
 
     VALID_PROPERTY_ATTRS.each do |k, v|
+      next if k == :phoneNumber
       assert_equal v, property.send(k)
     end
   end
@@ -18,6 +19,18 @@ class PropertyTest < MiniTest::Test
     assert_raises(Rentlinx::UnexpectedAttributes) do
       Rentlinx::Property.new(property_params)
     end
+  end
+
+  def test_new__does_not_mutate
+    attrs = {
+      phoneNumber: '(818) 703 2087'
+    }
+
+    old_attrs = attrs.dup
+
+    Rentlinx::Property.new(attrs)
+
+    assert_equal old_attrs, attrs
   end
 
   def test_property_from_id
@@ -60,7 +73,7 @@ class PropertyTest < MiniTest::Test
              city: 'Santa Barbara', state: 'CA', zip: '93117',
              marketingName: '', hideAddress: '', latitude: '', longitude: '',
              website: '', yearBuilt: '', numUnits: '',
-             phoneNumber: '(805) 555-5554', extension: '', faxNumber: '',
+             phoneNumber: '8054523214', extension: '', faxNumber: '',
              emailAddress: 'support@appfolio.com', acceptsHcv: '',
              propertyType: '', activeURL: '', companyName: 'test company' }
     assert_equal hash, property.to_hash
@@ -107,7 +120,7 @@ class PropertyTest < MiniTest::Test
     end
   end
 
-  def test_missing_attributes
+  def test_error_messages
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     assert prop.valid?
 
@@ -115,7 +128,86 @@ class PropertyTest < MiniTest::Test
     prop.address = nil
 
     assert !prop.valid?
-    assert_equal 'Missing required attributes: propertyID, address', prop.missing_attributes
+    expected_errors = {
+      propertyID: 'is missing',
+      address: 'is missing'
+    }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages__invalid_phone
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.phoneNumber = '3'
+    assert !prop.valid?
+    expected_errors = { phoneNumber: '3 is not a valid phone number' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.phoneNumber = '33413412341234123412344123412341240'
+    assert !prop.valid?
+    expected_errors = { phoneNumber: '33413412341234123412344123412341240 is not a valid phone number' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.phoneNumber = '7032087'
+    assert !prop.valid?
+    expected_errors = { phoneNumber: '7032087 is not a valid phone number' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.phoneNumber = '1111111111'
+    assert !prop.valid?
+    expected_errors = { phoneNumber: '1111111111 is not a valid phone number' }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages_invalid_state
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.state = 'Merica'
+    assert !prop.valid?
+    expected_errors = { state: 'Merica is not a valid state, states must be two characters (CA)' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.state = '49'
+    assert !prop.valid?
+    expected_errors = { state: '49 is not a valid state, states must be two characters (CA)' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.state = 'CA'
+    assert prop.valid?
+    expected_errors = {}
+    assert_equal expected_errors, prop.error_messages
+
+    prop.state = 'ny'
+    assert prop.valid?
+    expected_errors = {}
+    assert_equal expected_errors, prop.error_messages
+
+    prop.state = 'WW'
+    assert !prop.valid?
+    expected_errors = { state: 'WW is not a valid state, states must be two characters (CA)' }
+    assert_equal expected_errors, prop.error_messages
+  end
+
+  def test_error_messages_invalid_zip
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    assert prop.valid?
+
+    prop.zip = '3'
+    assert !prop.valid?
+    expected_errors = { zip: '3 is not a valid zip code, zip codes must be five digits (93117)' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.zip = '314159'
+    assert !prop.valid?
+    expected_errors = { zip: '314159 is not a valid zip code, zip codes must be five digits (93117)' }
+    assert_equal expected_errors, prop.error_messages
+
+    prop.zip = '91304'
+    assert prop.valid?
+    expected_errors = {}
+    assert_equal expected_errors, prop.error_messages
   end
 
   def test_class_unpost
