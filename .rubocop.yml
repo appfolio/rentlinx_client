@@ -8,7 +8,7 @@ Metrics/PerceivedComplexity:
   Max: 8
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
 
 Style/SignalException:
   EnforcedStyle: only_raise
