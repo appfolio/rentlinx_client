@@ -190,7 +190,7 @@ class ClientTest < MiniTest::Test
     use_vcr do
       Rentlinx.client.post_photos([prop_photo, unit_photo, unit_photo2, unit_photo3])
 
-      photos = Rentlinx.client.get_photos_for_property('test-property-id')
+      photos = Rentlinx.client.get_photos_for_property_id('test-property-id')
       assert_equal 4, photos.count
       assert_equal 1, photos.count { |p| p.is_a? Rentlinx::PropertyPhoto }
       assert_equal 3, photos.count { |p| p.is_a? Rentlinx::UnitPhoto }
@@ -202,7 +202,7 @@ class ClientTest < MiniTest::Test
 
   def test_get_photos_for_properties
     use_vcr do
-      photos = Rentlinx.client.get_photos_for_property('test-property-id')
+      photos = Rentlinx.client.get_photos_for_property_id('test-property-id')
       assert_equal 4, photos.size
     end
   end

@@ -239,4 +239,19 @@ class PropertyTest < MiniTest::Test
       end
     end
   end
+
+  def test_photos
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test-photos-test'
+
+      prop.photos = [Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS)]
+      prop.post_with_photos
+
+      rl_prop = Rentlinx::Property.from_id('test-photos-test')
+      rl_prop.photos
+      assert_equal 1, rl_prop.photos.size
+      assert_equal prop.photos.first.url, rl_prop.photos.first.url
+    end
+  end
 end

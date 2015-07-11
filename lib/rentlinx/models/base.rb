@@ -44,6 +44,10 @@ module Rentlinx
       Rentlinx.client.get_units_for_property_id(id)
     end
 
+    def get_photos_for_property_id(id)
+      Rentlinx.client.get_photos_for_property_id(id)
+    end
+
     def to_hash
       {}.tap do |hash|
         attributes.each do |at|

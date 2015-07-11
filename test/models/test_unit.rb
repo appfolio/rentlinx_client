@@ -111,4 +111,19 @@ class UnitTest < MiniTest::Test
       end
     end
   end
+
+  def test_photos
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.unitID = 'test-photos-test'
+
+      unit.photos = [Rentlinx::UnitPhoto.new(VALID_UNIT_PHOTO_ATTRS)]
+      unit.post_with_photos
+
+      rl_unit = Rentlinx::Unit.from_id('test-photos-test')
+      rl_unit.photos
+      assert_equal 1, rl_unit.photos.size
+      assert_equal unit.photos.first.url, rl_unit.photos.first.url
+    end
+  end
 end

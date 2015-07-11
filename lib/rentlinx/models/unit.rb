@@ -13,6 +13,23 @@ module Rentlinx
 
     attr_accessor(*ATTRIBUTES)
 
+    def photos
+      @photos ||= get_photos_for_property_id(propertyID).select { |p| p.unitID == unitID }
+    end
+
+    def photos=(photos)
+      @photos = photos.map do |photo|
+        photo.unitID = unitID
+        photo.propertyID = propertyID
+        photo
+      end
+    end
+
+    def post_with_photos
+      post
+      Rentlinx.client.post_photos(@photos)
+    end
+
     def self.from_id(id)
       get_from_id(:unit, id)
     end

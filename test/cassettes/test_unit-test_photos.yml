@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 11 Jul 2015 00:07:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 11 Jul 2015 00:04:04 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
+    http_version: 
+  recorded_at: Sat, 11 Jul 2015 00:07:50 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-photos-test
+    body:
+      encoding: UTF-8
+      string: '{"unitID":"test-photos-test","propertyID":"test-property-id","name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":"1600","maxRent":"","deposit":"3200","maxDeposit":"","squareFeet":"","maxSquareFeet":"","bedrooms":"3","fullBaths":"2","halfBaths":"","isMobilityAccessible":"","isVisionAccessible":"","isHearingAccessible":"","rentIsBasedOnIncome":"","isOpenToLease":true,"dateAvailable":"06/15/2015","dateLeasedThrough":"","numUnits":"","numAvailable":""}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 11 Jul 2015 00:07:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 11 Jul 2015 00:04:04 GMT
+      Content-Length:
+      - '532'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-photos-test","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":null,"numAvailable":null}}'
+    http_version: 
+  recorded_at: Sat, 11 Jul 2015 00:07:50 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-photos-test/photos
+    body:
+      encoding: UTF-8
+      string: '[{"url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit"}]'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 11 Jul 2015 00:07:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 11 Jul 2015 00:04:06 GMT
+      Content-Length:
+      - '193'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":"test-property-id","unitID":"test-photos-test"}]}'
+    http_version: 
+  recorded_at: Sat, 11 Jul 2015 00:07:52 GMT
+- request:
+    method: get
+    uri: http://localhost/units/test-photos-test
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 11 Jul 2015 00:07:52 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 11 Jul 2015 00:04:06 GMT
+      Content-Length:
+      - '544'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-photos-test","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":null,"numAvailable":null}}'
+    http_version: 
+  recorded_at: Sat, 11 Jul 2015 00:07:52 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-id/photos
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.4.4
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 11 Jul 2015 00:07:52 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 11 Jul 2015 00:04:06 GMT
+      Content-Length:
+      - '892'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"photo","url":"http://alexstandke.com/img/me.png","caption":"This
+        is a photo of my house","position":0,"propertyID":"test-property-id","unitID":null},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":"test-property-id","unitID":"test-photos-test"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":"test-property-id","unitID":"test-unit-id"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":"test-property-id","unitID":"test-unit-two"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
+        is a photo of my unit","position":0,"propertyID":"test-property-id","unitID":"test-unit-three"}]}'
+    http_version: 
+  recorded_at: Sat, 11 Jul 2015 00:07:53 GMT
+recorded_with: VCR 2.9.3

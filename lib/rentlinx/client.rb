@@ -62,11 +62,11 @@ module Rentlinx
       property_photos = photos.select { |p| p.is_a? Rentlinx::PropertyPhoto }
       unit_photos = photos - property_photos
 
-      post_property_photos(property_photos)
-      post_unit_photos(unit_photos)
+      post_property_photos(property_photos) unless property_photos.empty?
+      post_unit_photos(unit_photos) unless unit_photos.empty?
     end
 
-    def get_photos_for_property(id)
+    def get_photos_for_property_id(id)
       data = request('GET', "properties/#{id}/photos")['data']
       data.map do |photo_data|
         if photo_data['unitID'].nil? || photo_data['unitID'] == ''
