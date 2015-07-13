@@ -2,9 +2,16 @@ require 'httpclient'
 require 'json'
 require 'uri'
 require 'rentlinx/default'
+require 'rentlinx/modules/property_client_methods'
+require 'rentlinx/modules/unit_client_methods'
+require 'rentlinx/modules/photo_client_methods'
 
 module Rentlinx
   class Client
+    include Rentlinx::PropertyClientMethods
+    include Rentlinx::UnitClientMethods
+    include Rentlinx::PhotoClientMethods
+
     def initialize
       raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
                                        Rentlinx.password.nil? ||
@@ -49,56 +56,7 @@ module Rentlinx
       end
     end
 
-    def get_units_for_property_id(id)
-      data = request('GET', "properties/#{id}/units")['data']
-      data.map do |unit_data|
-        Unit.new(symbolize_data(unit_data))
-      end
-    end
-
-    def post_photos(photos)
-      return false unless photos.all?(&:valid?)
-      return false unless photos.all? { |p| p.propertyID == photos.first.propertyID }
-      property_photos = photos.select { |p| p.is_a? Rentlinx::PropertyPhoto }
-      unit_photos = photos - property_photos
-
-      post_property_photos(property_photos) unless property_photos.empty?
-      post_unit_photos(unit_photos) unless unit_photos.empty?
-    end
-
-    def get_photos_for_property_id(id)
-      data = request('GET', "properties/#{id}/photos")['data']
-      data.map do |photo_data|
-        if photo_data['unitID'].nil? || photo_data['unitID'] == ''
-          PropertyPhoto.new(symbolize_data(photo_data))
-        else
-          UnitPhoto.new(symbolize_data(photo_data))
-        end
-      end
-    end
-
     private
-
-    # post_photos should only be called from property or unit, so we don't need
-    # to handle multiple properties
-    def post_property_photos(photos)
-      request('PUT', "properties/#{photos.first.propertyID}/photos", photos.map(&:to_hash))
-    end
-
-    def post_unit_photos(photos)
-      hash = {}
-      photos.each do |p|
-        if hash.keys.include?(p.unitID)
-          hash[p.unitID] << p
-        else
-          hash[p.unitID] = [p]
-        end
-      end
-
-      hash.each do |unitID, unit_photos|
-        request('PUT', "units/#{unitID}/photos", unit_photos.map(&:to_hash))
-      end
-    end
 
     def process_get(route)
       data = request('GET', route)['data']
@@ -112,24 +70,6 @@ module Rentlinx
       end
       data.delete(:type)
       data
-    end
-
-    def post_property(prop)
-      return false unless prop.valid?
-      request('PUT', "properties/#{prop.propertyID}", prop.to_hash)
-    end
-
-    def post_unit(unit)
-      return false unless unit.valid?
-      request('PUT', "units/#{unit.unitID}", unit.to_hash)
-    end
-
-    def unpost_property(id)
-      request('DELETE', "properties/#{id}")
-    end
-
-    def unpost_unit(id)
-      request('DELETE', "units/#{id}")
     end
 
     def authenticate(username, password)

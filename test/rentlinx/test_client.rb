@@ -207,6 +207,38 @@ class ClientTest < MiniTest::Test
     end
   end
 
+  def test_unpost_photos
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_unpost_photos_property'
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.propertyID = 'test_unpost_photos_property'
+      unit.unitID = 'test_unpost_photos_unit'
+
+      prop_photo = Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS)
+      prop_photo.propertyID = prop.propertyID
+      prop_photo.url = 'https://upload.wikimedia.org/wikipedia/commons/f/fb/General_John_Shalikashvili_military_portrait,_1993.JPEG'
+
+      unit_photo = Rentlinx::UnitPhoto.new(VALID_UNIT_PHOTO_ATTRS)
+      unit_photo.propertyID = prop.propertyID
+      unit_photo.unitID = unit.unitID
+      unit_photo.url = 'http://img2.wikia.nocookie.net/__cb20120412095514/hitlerparody/images/2/27/897945-general-aladeen.jpg'
+
+      prop.post
+      unit.post
+      Rentlinx.client.post_photos([prop_photo, unit_photo])
+
+      photos = Rentlinx.client.get_photos_for_property_id(prop.propertyID)
+      assert_equal 2, photos.size
+      Rentlinx.client.unpost_photo(prop_photo)
+      Rentlinx.client.unpost_photo(unit_photo)
+
+      unposted_photos = Rentlinx.client.get_photos_for_property_id(prop.propertyID)
+      puts unposted_photos.inspect
+      assert_equal 0, unposted_photos.size
+    end
+  end
+
   private
 
   def response_stub(status_code, error_class)
