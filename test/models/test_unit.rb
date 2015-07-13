@@ -34,18 +34,6 @@ class UnitTest < MiniTest::Test
     assert !unit.valid?
   end
 
-  def test_valid_for_post
-    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
-
-    assert unit.valid?
-    assert unit.valid_for_post?
-
-    unit.propertyID = nil
-
-    assert unit.valid?
-    assert !unit.valid_for_post?
-  end
-
   def test_to_hash
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     hash = { propertyID: 'test-property-id', unitID: 'test-unit-id',

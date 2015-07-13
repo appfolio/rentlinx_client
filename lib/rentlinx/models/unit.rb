@@ -11,8 +11,6 @@ module Rentlinx
 
     REQUIRED_ATTRIBUTES = [:unitID]
 
-    REQUIRED_ATTRIBUTES_FOR_POST = REQUIRED_ATTRIBUTES + [:propertyID]
-
     attr_accessor(*ATTRIBUTES)
 
     include Rentlinx::Photoable

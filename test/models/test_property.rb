@@ -48,24 +48,6 @@ class PropertyTest < MiniTest::Test
     assert !property.valid?
   end
 
-  def test_valid_for_post
-    property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
-
-    assert property.valid?
-    assert property.valid_for_post?
-
-    property.companyID = nil
-
-    assert property.valid?
-    assert !property.valid_for_post?
-
-    property.companyID = 'test-company-id'
-    property.companyName = nil
-
-    assert property.valid?
-    assert !property.valid_for_post?
-  end
-
   def test_to_hash
     property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     hash = { companyID: 'test-id', propertyID: 'test-property-id',
