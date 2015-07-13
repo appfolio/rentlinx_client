@@ -126,4 +126,13 @@ class UnitTest < MiniTest::Test
       assert_equal unit.photos.first.url, rl_unit.photos.first.url
     end
   end
+
+  def test_add_photo
+    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+    unit.add_photo(url: 'http://asdf.com/wat.png', caption: 'this is a picture')
+    assert 1, unit.photos.size
+    assert_equal 'this is a picture', unit.photos.first.caption
+    assert_equal unit.propertyID, unit.photos.first.propertyID
+    assert_equal unit.unitID, unit.photos.first.unitID
+  end
 end

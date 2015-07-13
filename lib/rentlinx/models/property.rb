@@ -1,3 +1,5 @@
+require 'rentlinx/modules/photoable'
+
 module Rentlinx
   class Property < Base
     ATTRIBUTES = [:companyID, :propertyID, :description, :address, :city, :state,
@@ -29,24 +31,13 @@ module Rentlinx
       end
     end
 
-    def post_with_photos
-      post
-      Rentlinx.client.post_photos(@photos)
-    end
-
-    def photos
-      @photos ||= get_photos_for_property_id(propertyID)
-    end
-
-    def photos=(photo_list)
-      @photos = photo_list.map do |photo|
-        photo.propertyID = propertyID
-        photo
-      end
-    end
-
     def self.from_id(id)
       get_from_id(:property, id)
+    end
+
+    include Rentlinx::Photoable
+    def photo_class
+      Rentlinx::PropertyPhoto
     end
   end
 end

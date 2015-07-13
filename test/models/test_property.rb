@@ -254,4 +254,12 @@ class PropertyTest < MiniTest::Test
       assert_equal prop.photos.first.url, rl_prop.photos.first.url
     end
   end
+
+  def test_add_photo
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.add_photo(url: 'http://asdf.com/wat.png', caption: 'this is a picture')
+    assert 1, prop.photos.size
+    assert_equal 'this is a picture', prop.photos.first.caption
+    assert_equal prop.propertyID, prop.photos.first.propertyID
+  end
 end
