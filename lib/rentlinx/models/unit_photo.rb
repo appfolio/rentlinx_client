@@ -1,5 +1,5 @@
 module Rentlinx
-  class UnitPhoto < BasePhoto
+  class UnitPhoto < PropertyPhoto
     REQUIRED_ATTRIBUTES += [:unitID]
   end
 end

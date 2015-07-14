@@ -5,12 +5,14 @@ require 'rentlinx/default'
 require 'rentlinx/modules/property_client_methods'
 require 'rentlinx/modules/unit_client_methods'
 require 'rentlinx/modules/photo_client_methods'
+require 'rentlinx/modules/amenity_client_methods'
 
 module Rentlinx
   class Client
     include Rentlinx::PropertyClientMethods
     include Rentlinx::UnitClientMethods
     include Rentlinx::PhotoClientMethods
+    include Rentlinx::AmenityClientMethods
 
     def initialize
       raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||

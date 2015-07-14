@@ -12,9 +12,9 @@ module Rentlinx
 
     def get_photos_for_property_id(id)
       data = request('GET', "properties/#{id}/photos")['data']
-      puts data.inspect
       data.map do |photo_data|
         if photo_data['unitID'].nil? || photo_data['unitID'] == ''
+          photo_data.delete('unitID')
           PropertyPhoto.new(symbolize_data(photo_data))
         else
           UnitPhoto.new(symbolize_data(photo_data))
