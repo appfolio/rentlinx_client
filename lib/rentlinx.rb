@@ -8,7 +8,7 @@ require 'rentlinx/models/unit'
 module Rentlinx
   @username = nil
   @password = nil
-  @api_url_prefix = nil
+  @site_url = nil
 
   class << self
     def configure(&block)
@@ -31,11 +31,11 @@ module Rentlinx
       end
     end
 
-    def api_url_prefix(*args)
+    def site_url(*args)
       if args.empty?
-        @api_url_prefix
+        @site_url
       else
-        @api_url_prefix = args.first
+        @site_url = args.first
       end
     end
 

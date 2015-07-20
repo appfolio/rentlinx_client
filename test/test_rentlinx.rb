@@ -16,8 +16,8 @@ class TestRentlinx < MiniTest::Test
     Rentlinx.password('Test')
     assert_equal 'Test', Rentlinx.password
 
-    Rentlinx.api_url_prefix('Test')
-    assert_equal 'Test', Rentlinx.api_url_prefix
+    Rentlinx.site_url('Test')
+    assert_equal 'Test', Rentlinx.site_url
   end
 
   def test_version

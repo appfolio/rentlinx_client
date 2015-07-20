@@ -8,9 +8,9 @@ module Rentlinx
     def initialize
       raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
                                        Rentlinx.password.nil? ||
-                                       Rentlinx.api_url_prefix.nil?
+                                       Rentlinx.site_url.nil?
 
-      @url_prefix = (Rentlinx.api_url_prefix + '/').freeze  # Extra slashes are fine
+      @url_prefix = (Rentlinx.site_url + '/').freeze  # Extra slashes are fine
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
 
