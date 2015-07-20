@@ -37,5 +37,11 @@ module Rentlinx
     def photo_class
       Rentlinx::PropertyPhoto
     end
+
+    private
+
+    def get_units_for_property_id(id)
+      Rentlinx.client.get_units_for_property_id(id)
+    end
   end
 end

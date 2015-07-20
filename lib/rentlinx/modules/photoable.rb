@@ -23,5 +23,11 @@ module Rentlinx
       @photos ||= []
       @photos << photo_class.new(options)
     end
+
+    private
+
+    def get_photos_for_property_id(id)
+      Rentlinx.client.get_photos_for_property_id(id)
+    end
   end
 end
