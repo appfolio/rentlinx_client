@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class PropertyTest < MiniTest::Test
+class BaseTest < MiniTest::Test
   def test_new
     assert_raises(NameError) do
       Rentlinx::Base.new(fakeParam: '1234')

@@ -34,18 +34,6 @@ class UnitTest < MiniTest::Test
     assert !unit.valid?
   end
 
-  def test_valid_for_post
-    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
-
-    assert unit.valid?
-    assert unit.valid_for_post?
-
-    unit.propertyID = nil
-
-    assert unit.valid?
-    assert !unit.valid_for_post?
-  end
-
   def test_to_hash
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     hash = { propertyID: 'test-property-id', unitID: 'test-unit-id',
@@ -110,5 +98,29 @@ class UnitTest < MiniTest::Test
         Rentlinx::Unit.from_id('test_unit_unpost_method2')
       end
     end
+  end
+
+  def test_photos
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.unitID = 'test-photos-test'
+
+      unit.photos = [Rentlinx::UnitPhoto.new(VALID_UNIT_PHOTO_ATTRS)]
+      unit.post_with_photos
+
+      rl_unit = Rentlinx::Unit.from_id('test-photos-test')
+      rl_unit.photos
+      assert_equal 1, rl_unit.photos.size
+      assert_equal unit.photos.first.url, rl_unit.photos.first.url
+    end
+  end
+
+  def test_add_photo
+    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+    unit.add_photo(url: 'http://asdf.com/wat.png', caption: 'this is a picture')
+    assert 1, unit.photos.size
+    assert_equal 'this is a picture', unit.photos.first.caption
+    assert_equal unit.propertyID, unit.photos.first.propertyID
+    assert_equal unit.unitID, unit.photos.first.unitID
   end
 end

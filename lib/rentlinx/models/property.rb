@@ -1,3 +1,5 @@
+require 'rentlinx/modules/photoable'
+
 module Rentlinx
   class Property < Base
     ATTRIBUTES = [:companyID, :propertyID, :description, :address, :city, :state,
@@ -8,8 +10,6 @@ module Rentlinx
 
     REQUIRED_ATTRIBUTES = [:propertyID, :address, :city, :state, :zip,
                            :phoneNumber, :emailAddress]
-
-    REQUIRED_ATTRIBUTES_FOR_POST = REQUIRED_ATTRIBUTES + [:companyID, :companyName]
 
     attr_accessor(*ATTRIBUTES)
 
@@ -31,6 +31,17 @@ module Rentlinx
 
     def self.from_id(id)
       get_from_id(:property, id)
+    end
+
+    include Rentlinx::Photoable
+    def photo_class
+      Rentlinx::PropertyPhoto
+    end
+
+    private
+
+    def get_units_for_property_id(id)
+      Rentlinx.client.get_units_for_property_id(id)
     end
   end
 end

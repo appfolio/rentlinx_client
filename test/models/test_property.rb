@@ -48,24 +48,6 @@ class PropertyTest < MiniTest::Test
     assert !property.valid?
   end
 
-  def test_valid_for_post
-    property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
-
-    assert property.valid?
-    assert property.valid_for_post?
-
-    property.companyID = nil
-
-    assert property.valid?
-    assert !property.valid_for_post?
-
-    property.companyID = 'test-company-id'
-    property.companyName = nil
-
-    assert property.valid?
-    assert !property.valid_for_post?
-  end
-
   def test_to_hash
     property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     hash = { companyID: 'test-id', propertyID: 'test-property-id',
@@ -238,5 +220,28 @@ class PropertyTest < MiniTest::Test
         Rentlinx::Property.from_id('test_4123434124')
       end
     end
+  end
+
+  def test_photos
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test-photos-test'
+
+      prop.photos = [Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS)]
+      prop.post_with_photos
+
+      rl_prop = Rentlinx::Property.from_id('test-photos-test')
+      rl_prop.photos
+      assert_equal 1, rl_prop.photos.size
+      assert_equal prop.photos.first.url, rl_prop.photos.first.url
+    end
+  end
+
+  def test_add_photo
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.add_photo(url: 'http://asdf.com/wat.png', caption: 'this is a picture')
+    assert 1, prop.photos.size
+    assert_equal 'this is a picture', prop.photos.first.caption
+    assert_equal prop.propertyID, prop.photos.first.propertyID
   end
 end

@@ -20,10 +20,6 @@ module Rentlinx
       self.class::REQUIRED_ATTRIBUTES
     end
 
-    def required_attributes_for_post
-      self.class::REQUIRED_ATTRIBUTES_FOR_POST
-    end
-
     def post
       Rentlinx.client.post(self)
     end
@@ -40,10 +36,6 @@ module Rentlinx
       Rentlinx.client.get(type.to_sym, id)
     end
 
-    def get_units_for_property_id(id)
-      Rentlinx.client.get_units_for_property_id(id)
-    end
-
     def to_hash
       {}.tap do |hash|
         attributes.each do |at|
@@ -54,10 +46,6 @@ module Rentlinx
 
     def valid?
       error_messages.empty?
-    end
-
-    def valid_for_post?
-      required_attributes_for_post.none? { |at| blank?(send(at)) }
     end
 
     def error_messages

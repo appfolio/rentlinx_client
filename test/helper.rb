@@ -92,3 +92,32 @@ VALID_UNIT_ATTRS = {
   numUnits: '',
   numAvailable: ''
 }
+
+VALID_PROPERTY_PHOTO_ATTRS = {
+  propertyID: 'test-property-id',
+  unitID: nil,
+  url: 'http://alexstandke.com/img/me.png',
+  caption: 'This is a photo of my house',
+  # position: 1,
+}
+
+VALID_UNIT_PHOTO_ATTRS = {
+  propertyID: 'test-property-id',
+  unitID: 'test-unit-id',
+  url: 'http://alexstandke.com/img/contact-banner.jpg',
+  caption: 'This is a photo of my unit',
+  # position: 1,
+}
+
+VALID_PROPERTY_AMENITY_ATTRS = {
+  propertyID: 'test-property-amenity-id',
+  name: 'Garbage Disposal',
+  details: 'Some details about your garbage'
+}
+
+VALID_UNIT_AMENITY_ATTRS = {
+  propertyID: 'test-property-amenity-id',
+  unitID: 'test-unit-amenity-id',
+  name: 'No Dogs Allowed',
+  details: 'We do not like dogs'
+}

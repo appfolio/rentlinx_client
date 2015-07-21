@@ -2,9 +2,18 @@ require 'httpclient'
 require 'json'
 require 'uri'
 require 'rentlinx/default'
+require 'rentlinx/modules/property_client_methods'
+require 'rentlinx/modules/unit_client_methods'
+require 'rentlinx/modules/photo_client_methods'
+require 'rentlinx/modules/amenity_client_methods'
 
 module Rentlinx
   class Client
+    include Rentlinx::PropertyClientMethods
+    include Rentlinx::UnitClientMethods
+    include Rentlinx::PhotoClientMethods
+    include Rentlinx::AmenityClientMethods
+
     def initialize
       raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
                                        Rentlinx.password.nil? ||
@@ -49,13 +58,6 @@ module Rentlinx
       end
     end
 
-    def get_units_for_property_id(id)
-      data = request('GET', "properties/#{id}/units")['data']
-      data.map do |unit_data|
-        Unit.new(symbolize_data(unit_data))
-      end
-    end
-
     private
 
     def process_get(route)
@@ -70,24 +72,6 @@ module Rentlinx
       end
       data.delete(:type)
       data
-    end
-
-    def post_property(prop)
-      return false unless prop.valid?
-      request('PUT', "properties/#{prop.propertyID}", prop.to_hash)
-    end
-
-    def post_unit(unit)
-      return false unless unit.valid?
-      request('PUT', "units/#{unit.unitID}", unit.to_hash)
-    end
-
-    def unpost_property(id)
-      request('DELETE', "properties/#{id}")
-    end
-
-    def unpost_unit(id)
-      request('DELETE', "units/#{id}")
     end
 
     def authenticate(username, password)
