@@ -2,6 +2,10 @@ module Rentlinx
   module Photoable
     def post_with_photos
       post
+      post_photos
+    end
+
+    def post_photos
       Rentlinx.client.post_photos(@photos)
     end
 
