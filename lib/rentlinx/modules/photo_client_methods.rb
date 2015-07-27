@@ -3,7 +3,7 @@ module Rentlinx
     def post_photos(photos)
       return false unless photos.all?(&:valid?)
       return false unless photos.all? { |p| p.propertyID == photos.first.propertyID }
-      property_photos = photos.select { |p| p.is_a? Rentlinx::PropertyPhoto }
+      property_photos = photos.select { |p| p.class == Rentlinx::PropertyPhoto }
       unit_photos = photos - property_photos
 
       post_property_photos(property_photos) unless property_photos.empty?
@@ -24,12 +24,12 @@ module Rentlinx
 
     def unpost_photo(photo)
       case photo
-      when Rentlinx::PropertyPhoto
-        unpost_property_photo(photo.propertyID, photo.url)
       when Rentlinx::UnitPhoto
         unpost_unit_photo(photo.unitID, photo.url)
+      when Rentlinx::PropertyPhoto
+        unpost_property_photo(photo.propertyID, photo.url)
       else
-        raise TypeError, "Invalid type: #{type}"
+        raise TypeError, "Invalid type: #{photo.class}"
       end
     end
 
