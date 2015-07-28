@@ -1,0 +1,223 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:27:44 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:24:24 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:27:49 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-unit-amenities
+    body:
+      encoding: UTF-8
+      string: '{"unitID":"test-unit-amenities","propertyID":"test-property-id","name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":"1600","maxRent":"","deposit":"3200","maxDeposit":"","squareFeet":"","maxSquareFeet":"","bedrooms":"3","fullBaths":"2","halfBaths":"","isMobilityAccessible":"","isVisionAccessible":"","isHearingAccessible":"","rentIsBasedOnIncome":"","isOpenToLease":true,"dateAvailable":"06/15/2015","dateLeasedThrough":"","numUnits":"","numAvailable":""}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:27:49 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:24:24 GMT
+      Content-Length:
+      - '529'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-amenities","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:27:49 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-unit-amenities/amenities
+    body:
+      encoding: UTF-8
+      string: '[{"details":"We do not like dogs","name":"No Dogs Allowed"}]'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:27:49 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:24:26 GMT
+      Content-Length:
+      - '149'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"amenity","name":"No Dogs Allowed","details":"We do
+        not like dogs","propertyID":"test-property-id","unitID":"test-unit-amenities"}]}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:27:50 GMT
+- request:
+    method: get
+    uri: http://localhost/units/test-unit-amenities
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:27:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:24:26 GMT
+      Content-Length:
+      - '541'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-amenities","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:27:50 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-id/amenities
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:27:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:24:27 GMT
+      Content-Length:
+      - '149'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"amenity","name":"No Dogs Allowed","details":"We do
+        not like dogs","propertyID":"test-property-id","unitID":"test-unit-amenities"}]}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:27:51 GMT
+recorded_with: VCR 2.9.3

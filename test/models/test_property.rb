@@ -244,4 +244,29 @@ class PropertyTest < MiniTest::Test
     assert_equal 'this is a picture', prop.photos.first.caption
     assert_equal prop.propertyID, prop.photos.first.propertyID
   end
+
+  def test_amenities
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test-property-amenities'
+
+      prop.amenities = [Rentlinx::PropertyAmenity.new(VALID_PROPERTY_AMENITY_ATTRS)]
+      prop.post_with_amenities
+
+      rl_prop = Rentlinx::Property.from_id('test-property-amenities')
+      rl_prop.amenities
+      assert_equal 1, rl_prop.amenities.size
+      assert_equal prop.amenities.first.name, 'Garbage Disposal'
+    end
+  end
+
+  def test_add_amenity
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.add_amenity(name: '12 Months', details: 'We like long-term commitments')
+
+    assert 1, prop.amenities.size
+    assert_equal '12 Months', prop.amenities.first.name
+    assert_equal 'We like long-term commitments', prop.amenities.first.details
+    assert_equal prop.propertyID, prop.amenities.first.propertyID
+  end
 end

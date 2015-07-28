@@ -123,4 +123,30 @@ class UnitTest < MiniTest::Test
     assert_equal unit.propertyID, unit.photos.first.propertyID
     assert_equal unit.unitID, unit.photos.first.unitID
   end
+
+  def test_amenities
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.unitID = 'test-unit-amenities'
+
+      unit.amenities = [Rentlinx::UnitAmenity.new(VALID_UNIT_AMENITY_ATTRS)]
+      unit.post_with_amenities
+
+      rl_unit = Rentlinx::Unit.from_id('test-unit-amenities')
+      rl_unit.amenities
+      assert_equal 1, rl_unit.amenities.size
+      assert_equal 'No Dogs Allowed', unit.amenities.first.name
+    end
+  end
+
+  def test_add_amenity
+    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+    unit.add_amenity(name: '12 Months', details: 'We like long-term commitments')
+
+    assert 1, unit.amenities.size
+    assert_equal '12 Months', unit.amenities.first.name
+    assert_equal 'We like long-term commitments', unit.amenities.first.details
+    assert_equal unit.propertyID, unit.amenities.first.propertyID
+    assert_equal unit.unitID, unit.amenities.first.unitID
+  end
 end
