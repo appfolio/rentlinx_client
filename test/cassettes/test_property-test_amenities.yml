@@ -1,0 +1,181 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://localhost/properties/test-property-amenities
+    body:
+      encoding: UTF-8
+      string: '{"companyID":"test-id","propertyID":"test-property-amenities","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"8054523214","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
+        company"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:55:01 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:51:37 GMT
+      Content-Length:
+      - '529'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"property","propertyID":"test-property-amenities","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":null,"hideAddress":null,"latitude":null,"longitude":null,"website":null,"yearBuilt":null,"numUnits":null,"phoneNumber":"8054523214","extension":null,"faxNumber":null,"emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-42"}}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:55:01 GMT
+- request:
+    method: put
+    uri: http://localhost/properties/test-property-amenities/amenities
+    body:
+      encoding: UTF-8
+      string: '[{"details":"Some details about your garbage","name":"Garbage Disposal"}]'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:55:01 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:51:37 GMT
+      Content-Length:
+      - '152'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"amenity","name":"Garbage Disposal","details":"Some
+        details about your garbage","propertyID":"test-property-amenities","unitID":null}]}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:55:02 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-amenities
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:55:02 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:51:37 GMT
+      Content-Length:
+      - '529'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"property","propertyID":"test-property-amenities","description":"This
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":null,"hideAddress":null,"latitude":null,"longitude":null,"website":null,"yearBuilt":null,"numUnits":null,"phoneNumber":"8054523214","extension":null,"faxNumber":null,"emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-42"}}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:55:02 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-amenities/amenities
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Jul 2015 23:55:02 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 27 Jul 2015 23:51:37 GMT
+      Content-Length:
+      - '152'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"amenity","name":"Garbage Disposal","details":"Some
+        details about your garbage","propertyID":"test-property-amenities","unitID":null}]}'
+    http_version:
+  recorded_at: Mon, 27 Jul 2015 23:55:02 GMT
+recorded_with: VCR 2.9.3
