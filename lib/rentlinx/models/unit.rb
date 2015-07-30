@@ -1,5 +1,6 @@
 require 'rentlinx/modules/photoable'
 require 'rentlinx/modules/amenityable'
+require 'rentlinx/modules/linkable'
 
 module Rentlinx
   class Unit < Base
@@ -22,6 +23,11 @@ module Rentlinx
     include Rentlinx::Amenityable
     def amenity_class
       Rentlinx::UnitAmenity
+    end
+
+    include Rentlinx::Linkable
+    def link_class
+      Rentlinx::UnitLink
     end
 
     def photos
