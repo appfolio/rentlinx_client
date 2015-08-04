@@ -29,7 +29,7 @@ module Rentlinx
 
     def get_links_for_unit(unit)
       links = get_links_for_property_id(unit.propertyID)
-      links.select { |a| defined? a.unitID && a.unitID == unit.unitID }
+      links.select { |link| defined? link.unitID && link.unitID == unit.unitID }
     end
 
     def unpost_link(link)

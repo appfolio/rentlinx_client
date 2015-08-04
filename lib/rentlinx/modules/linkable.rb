@@ -10,9 +10,7 @@ module Rentlinx
     end
 
     def links
-      return @links if @links
-
-      @links =
+      @links ||=
         if defined? unitID
           Rentlinx.client.get_links_for_unit(self)
         else

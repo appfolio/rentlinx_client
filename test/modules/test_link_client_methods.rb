@@ -119,10 +119,12 @@ class LinkClientMethodsTest < MiniTest::Test
 
   def test_post_invalid_link_raises_an_exception
     use_vcr do
-      invalid_link = Rentlinx::UnitLink.new(unitID: @unit.unitID, url: 'I am not a URL!')
-      assert_raises(Rentlinx::InvalidObject) do
+      invalid_link = Rentlinx::UnitLink.new(propertyID: @prop.propertyID, unitID: @unit.unitID, url: 'I am not a URL!')
+      err = assert_raises(Rentlinx::InvalidObject) do
         Rentlinx.client.post_links([invalid_link])
       end
+
+      assert_equal err.message, 'Rentlinx::UnitLink is invalid: {:title=>"is missing"}'
     end
   end
 
