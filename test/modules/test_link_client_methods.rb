@@ -128,6 +128,17 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_amenities__to_different_properties_raises_error
+    prop_link2 = Rentlinx::PropertyLink.new(VALID_PROPERTY_LINK_ATTRS.merge(propertyID: 'another-property-id'))
+
+    use_vcr do
+      exception = assert_raises(Rentlinx::IncompatibleGroupOfObjectsForPost) do
+        Rentlinx.client.post_links([@prop_link, prop_link2])
+      end
+      assert_equal 'These objects cannot be grouped together (\'propertyID\' differ).', exception.message
+    end
+  end
+
   def setup
     super
 
