@@ -149,7 +149,7 @@ class UnitTest < MiniTest::Test
     assert_equal unit.propertyID, unit.amenities.first.propertyID
     assert_equal unit.unitID, unit.amenities.first.unitID
   end
-  
+
   def test_links
     use_vcr do
       unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)

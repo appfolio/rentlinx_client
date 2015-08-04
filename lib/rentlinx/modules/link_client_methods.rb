@@ -31,12 +31,12 @@ module Rentlinx
 
     def unpost_link(link)
       case link
-        when Rentlinx::UnitLink
-          unpost_unit_link(link.unitID, link.url)
-        when Rentlinx::PropertyLink
-          unpost_property_link(link.propertyID, link.url)
-        else
-          raise TypeError, "Invalid type: #{link.class}"
+      when Rentlinx::UnitLink
+        unpost_unit_link(link.unitID, link.url)
+      when Rentlinx::PropertyLink
+        unpost_property_link(link.propertyID, link.url)
+      else
+        raise TypeError, "Invalid type: #{link.class}"
       end
     end
 
@@ -62,11 +62,11 @@ module Rentlinx
     end
 
     def unpost_property_link(id, url)
-      request('DELETE', URI.encode("properties/#{id}/links/"), { url: url })
+      request('DELETE', URI.encode("properties/#{id}/links/"), url: url)
     end
 
     def unpost_unit_link(id, url)
-      request('DELETE', URI.encode("units/#{id}/links/"), { url: url })
+      request('DELETE', URI.encode("units/#{id}/links/"), url: url)
     end
   end
 end
