@@ -20,9 +20,35 @@ class AmenityClientMethodsTest < MiniTest::Test
   def test_post_amenities__nil_does_not_post
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     prop.propertyID = 'test_post_amenities_nil_property'
-    Rentlinx::Client.any_instance.expects(:post_property_photos).never
+    Rentlinx::Client.any_instance.expects(:post_amenities).once
+    Rentlinx::Client.any_instance.expects(:post_property_amenities).never
     use_vcr do
       prop.post_amenities
+    end
+  end
+
+  def test_post_amenities__invalid_amenity_raises_invalid_object
+    invalid_amenity_attrs = VALID_PROPERTY_AMENITY_ATTRS.dup
+    invalid_amenity_attrs.delete(:name)
+    prop_amenity = Rentlinx::PropertyAmenity.new(invalid_amenity_attrs)
+
+    use_vcr do
+      exception = assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx.client.post_amenities([prop_amenity])
+      end
+      assert_equal 'Rentlinx::PropertyAmenity is invalid: {:name=>"is missing"}', exception.message
+    end
+  end
+
+  def test_post_amenities__to_different_properties_raises_invalid_object
+    prop_amenity = Rentlinx::PropertyAmenity.new(VALID_PROPERTY_AMENITY_ATTRS.merge(propertyID: 'another-property-id'))
+    prop_amenity2 = Rentlinx::PropertyAmenity.new(VALID_PROPERTY_AMENITY_ATTRS)
+
+    use_vcr do
+      exception = assert_raises(Rentlinx::IncompatibleGroupOfObjectsForPost) do
+        Rentlinx.client.post_amenities([prop_amenity, prop_amenity2])
+      end
+      assert_equal 'These objects cannot be grouped together (\'propertyID\' differ).', exception.message
     end
   end
 
