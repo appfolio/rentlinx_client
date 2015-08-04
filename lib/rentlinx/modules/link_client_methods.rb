@@ -1,8 +1,11 @@
 module Rentlinx
   module LinkClientMethods
     def post_links(links)
+      return if links.nil?
+
       raise Rentlinx::InvalidObject, links.find { |a| !a.valid? } unless links.all?(&:valid?)
       raise Rentlinx::InvalidObject, links unless links.all? { |p| p.propertyID == links.first.propertyID }
+
       property_links = links.select { |l| l.class == Rentlinx::PropertyLink }
       unit_links = links - property_links
 

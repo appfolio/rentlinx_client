@@ -17,6 +17,16 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_links__nil_does_not_post
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.propertyID = 'test_post_links_nil_property'
+    Rentlinx::Client.any_instance.expects(:post_property_links).never
+
+    use_vcr do
+      prop.post_links
+    end
+  end
+
   def test_get_links_for_property
     use_vcr do
       links = Rentlinx.client.get_links_for_property_id(@prop.propertyID)
