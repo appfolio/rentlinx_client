@@ -41,7 +41,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"AccessToken":"6635D770-45DD-4455-9006-8B08F7E234C6"}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 14 Jul 2015 23:55:54 GMT
 - request:
     method: get
@@ -85,6 +85,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"type":"amenity","name":"Garbage Disposal","details":"Some
         details about your garbage","propertyID":"test_post_amenity_property","unitID":null}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 14 Jul 2015 23:55:54 GMT
 recorded_with: VCR 2.9.3

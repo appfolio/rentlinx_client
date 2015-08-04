@@ -24,6 +24,41 @@ class PhotoClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_photos__nil_does_not_post
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.propertyID = 'test_post_photos_nil_property'
+    Rentlinx::Client.any_instance.expects(:post_photos).once
+    Rentlinx::Client.any_instance.expects(:post_property_photos).never
+    use_vcr do
+      prop.post_photos
+    end
+  end
+
+  def test_post_photos__invalid_photo_raises_invalid_object
+    invalid_photo_attrs = VALID_PROPERTY_PHOTO_ATTRS.dup
+    invalid_photo_attrs.delete(:url)
+    prop_photo = Rentlinx::PropertyPhoto.new(invalid_photo_attrs)
+
+    use_vcr do
+      exception = assert_raises(Rentlinx::InvalidObject) do
+        Rentlinx.client.post_photos([prop_photo])
+      end
+      assert_equal 'Rentlinx::PropertyPhoto is invalid: {:url=>"is missing"}', exception.message
+    end
+  end
+
+  def test_post_photos__to_different_properties_raises_invalid_object
+    prop_photo = Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS.merge(propertyID: 'another-property-id'))
+    prop_photo2 = Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS)
+
+    use_vcr do
+      exception = assert_raises(Rentlinx::IncompatibleGroupOfObjectsForPost) do
+        Rentlinx.client.post_photos([prop_photo, prop_photo2])
+      end
+      assert_equal 'These objects cannot be grouped together (\'propertyID\' differ).', exception.message
+    end
+  end
+
   def test_get_photos_for_property
     use_vcr do
       photos = Rentlinx.client.get_photos_for_property_id('test-property-id')

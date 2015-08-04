@@ -1,8 +1,10 @@
 module Rentlinx
   module PhotoClientMethods
     def post_photos(photos)
-      return false unless photos.all?(&:valid?)
-      return false unless photos.all? { |p| p.propertyID == photos.first.propertyID }
+      return if photos.nil?
+      raise(Rentlinx::InvalidObject, photos.find { |p| !p.valid? }) unless photos.all?(&:valid?)
+      raise(Rentlinx::IncompatibleGroupOfObjectsForPost, 'propertyID') unless photos.all? { |p| p.propertyID == photos.first.propertyID }
+
       property_photos = photos.select { |p| p.class == Rentlinx::PropertyPhoto }
       unit_photos = photos - property_photos
 

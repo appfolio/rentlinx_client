@@ -20,6 +20,12 @@ module Rentlinx
     end
   end
 
+  class IncompatibleGroupOfObjectsForPost < RentlinxError
+    def initialize(property)
+      super("These objects cannot be grouped together ('#{property}' differ).")
+    end
+  end
+
   class HTTPError < RentlinxError
     attr_reader :response
 

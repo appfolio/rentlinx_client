@@ -1,8 +1,10 @@
 module Rentlinx
   module AmenityClientMethods
     def post_amenities(amenities)
-      raise Rentlinx::InvalidObject, amenities.find { |a| !a.valid? } unless amenities.all?(&:valid?)
-      raise Rentlinx::InvalidObject, amenities unless amenities.all? { |p| p.propertyID == amenities.first.propertyID }
+      return if amenities.nil?
+      raise(Rentlinx::InvalidObject, amenities.find { |a| !a.valid? }) unless amenities.all?(&:valid?)
+      raise(Rentlinx::IncompatibleGroupOfObjectsForPost, 'propertyID') unless amenities.all? { |p| p.propertyID == amenities.first.propertyID }
+
       property_amenities = amenities.select { |p| p.class == Rentlinx::PropertyAmenity }
       unit_amenities = amenities - property_amenities
 
