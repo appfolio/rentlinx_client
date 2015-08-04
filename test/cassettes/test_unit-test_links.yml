@@ -1,0 +1,221 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 16:03:34 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 04 Aug 2015 16:02:51 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"F49B4B03-BBB1-4DF3-923A-038C730A7E03"}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 16:03:34 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-unit-links
+    body:
+      encoding: UTF-8
+      string: '{"unitID":"test-unit-links","propertyID":"test-property-id","name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":"1600","maxRent":"","deposit":"3200","maxDeposit":"","squareFeet":"","maxSquareFeet":"","bedrooms":"3","fullBaths":"2","halfBaths":"","isMobilityAccessible":"","isVisionAccessible":"","isHearingAccessible":"","rentIsBasedOnIncome":"","isOpenToLease":true,"dateAvailable":"06/15/2015","dateLeasedThrough":"","numUnits":"","numAvailable":""}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 16:03:34 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 04 Aug 2015 16:02:51 GMT
+      Content-Length:
+      - '525'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-links","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 16:03:34 GMT
+- request:
+    method: put
+    uri: http://localhost/units/test-unit-links/links
+    body:
+      encoding: UTF-8
+      string: '[{"url":"http://youtube.com/","title":"Only You Can Prevent Wildfires!"}]'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 16:03:34 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 04 Aug 2015 16:02:51 GMT
+      Content-Length:
+      - '155'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"link","title":"Only You Can Prevent Wildfires!","url":"http://youtube.com/","propertyID":"test-property-id","unitID":"test-unit-links"}]}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 16:03:34 GMT
+- request:
+    method: get
+    uri: http://localhost/units/test-unit-links
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 16:03:34 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 04 Aug 2015 16:02:51 GMT
+      Content-Length:
+      - '537'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"unit","unitID":"test-unit-links","propertyID":"test-property-id","isOpenToLease":true,"name":"My
+        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 16:03:34 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-id/links
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 16:03:34 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 04 Aug 2015 16:02:51 GMT
+      Content-Length:
+      - '155'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"link","title":"Only You Can Prevent Wildfires!","url":"http://youtube.com/","propertyID":"test-property-id","unitID":"test-unit-links"}]}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 16:03:34 GMT
+recorded_with: VCR 2.9.3

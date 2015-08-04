@@ -62,11 +62,11 @@ module Rentlinx
     end
 
     def unpost_property_link(id, url)
-      request('DELETE', URI.encode("properties/#{id}/links/#{url}"))
+      request('DELETE', URI.encode("properties/#{id}/links/"), { url: url })
     end
 
     def unpost_unit_link(id, url)
-      request('DELETE', URI.encode("units/#{id}/links/#{url}"))
+      request('DELETE', URI.encode("units/#{id}/links/"), { url: url })
     end
   end
 end

@@ -55,18 +55,6 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
-  def test_post_twice_the_same_link_does_not_add_it_twice
-    use_vcr do
-      assert_equal 0, Rentlinx.client.get_links_for_unit(@unit).size
-
-      Rentlinx.client.post_links([@unit_link])
-      Rentlinx.client.post_links([@unit_link])
-
-      new_links = Rentlinx.client.get_links_for_unit(@unit)
-      assert_equal 1, new_links.size
-    end
-  end
-
   def test_get_links_for_unit
     use_vcr do
       links = Rentlinx.client.get_links_for_unit(@unit)
@@ -80,8 +68,23 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_link_title_gets_escaped
+    use_vcr do
+      links = Rentlinx.client.get_links_for_unit(@unit)
+      assert_equal 0, links.size
+
+      link = Rentlinx::UnitLink.new(unitID: @unit.unitID, propertyID: @unit.propertyID, url: 'http://www.appfolio.com', title: 'D@pper Duck & Gilly the Goose')
+      Rentlinx.client.post_links([link])
+
+      new_links = Rentlinx.client.get_links_for_unit(@unit)
+      assert_equal 1, new_links.size
+    end
+  end
+
   def test_unpost_links_from_unit
     use_vcr do
+      Rentlinx.client.post_links([@unit_link])
+
       links = Rentlinx.client.get_links_for_unit(@unit)
       assert_equal 1, links.size
 
@@ -92,25 +95,24 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_twice_the_same_link_does_not_add_it_twice
+    use_vcr do
+      assert_equal 0, Rentlinx.client.get_links_for_unit(@unit).size
+
+      Rentlinx.client.post_links([@unit_link])
+      Rentlinx.client.post_links([@unit_link])
+
+      new_links = Rentlinx.client.get_links_for_unit(@unit)
+      assert_equal 1, new_links.size
+    end
+  end
+
   def test_post_invalid_link_raises_an_exception
     use_vcr do
       invalid_link = Rentlinx::UnitLink.new(unitID: @unit.unitID, url: 'I am not a URL!')
       assert_raises(Rentlinx::InvalidObject) do
         Rentlinx.client.post_links([invalid_link])
       end
-    end
-  end
-
-  def test_post_link_title_gets_escaped
-    use_vcr do
-      links = Rentlinx.client.get_links_for_unit(@unit)
-      assert_equal 1, links.size
-
-      link = Rentlinx::UnitLink.new(unitID: @unit.unitID, propertyID: @unit.propertyID, title: 'Washer & Dryer On-Site')
-      Rentlinx.client.post_links([link])
-
-      new_links = Rentlinx.client.get_links_for_unit(@unit)
-      assert_equal 2, new_links.size
     end
   end
 

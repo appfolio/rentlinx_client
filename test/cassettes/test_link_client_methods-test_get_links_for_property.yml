@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 00:00:33 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 03 Aug 2015 23:59:52 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 00:00:33 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test_post_link_property/links
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.6.3
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Aug 2015 00:00:33 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 03 Aug 2015 23:59:52 GMT
+      Content-Length:
+      - '126'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"link","title":"Ring ding","url":"http://google.com/","propertyID":"test_post_link_property","unitID":null}]}'
+    http_version: 
+  recorded_at: Tue, 04 Aug 2015 00:00:33 GMT
+recorded_with: VCR 2.9.3

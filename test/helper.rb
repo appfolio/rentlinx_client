@@ -131,6 +131,6 @@ VALID_PROPERTY_LINK_ATTRS = {
 VALID_UNIT_LINK_ATTRS = {
   propertyID: 'test-property-link-id',
   unitID: 'sebastiens forest hut',
-  url: 'http://youtube.com/search?name=forest+fire',
+  url: 'http://youtube.com/',
   title: 'Only You Can Prevent Wildfires!'
 }
