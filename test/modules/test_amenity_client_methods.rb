@@ -40,7 +40,7 @@ class AmenityClientMethodsTest < MiniTest::Test
     end
   end
 
-  def test_post_amenities__to_different_properties_raises_invalid_object
+  def test_post_amenities__to_different_properties_raises_error
     prop_amenity = Rentlinx::PropertyAmenity.new(VALID_PROPERTY_AMENITY_ATTRS.merge(propertyID: 'another-property-id'))
     prop_amenity2 = Rentlinx::PropertyAmenity.new(VALID_PROPERTY_AMENITY_ATTRS)
 
