@@ -149,4 +149,30 @@ class UnitTest < MiniTest::Test
     assert_equal unit.propertyID, unit.amenities.first.propertyID
     assert_equal unit.unitID, unit.amenities.first.unitID
   end
+
+  def test_links
+    use_vcr do
+      unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+      unit.unitID = 'test-unit-links'
+
+      unit.links = [Rentlinx::UnitLink.new(VALID_UNIT_LINK_ATTRS)]
+      unit.post_with_links
+
+      rl_unit = Rentlinx::Unit.from_id('test-unit-links')
+      rl_unit.links
+      assert_equal 1, rl_unit.links.size
+      assert_equal 'Only You Can Prevent Wildfires!', unit.links.first.title
+    end
+  end
+
+  def test_add_link
+    unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
+    unit.add_link(title: '12 Months', url: 'http://www.youtube.com/')
+
+    assert 1, unit.links.size
+    assert_equal '12 Months', unit.links.first.title
+    assert_equal 'http://www.youtube.com/', unit.links.first.url
+    assert_equal unit.propertyID, unit.links.first.propertyID
+    assert_equal unit.unitID, unit.links.first.unitID
+  end
 end

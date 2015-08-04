@@ -8,6 +8,8 @@ require 'rentlinx/models/property_photo'
 require 'rentlinx/models/unit_photo'
 require 'rentlinx/models/property_amenity'
 require 'rentlinx/models/unit_amenity'
+require 'rentlinx/models/property_link'
+require 'rentlinx/models/unit_link'
 
 module Rentlinx
   @username = nil

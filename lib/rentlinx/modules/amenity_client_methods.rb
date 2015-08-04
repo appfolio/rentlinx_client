@@ -36,7 +36,7 @@ module Rentlinx
       when Rentlinx::PropertyAmenity
         unpost_property_amenity(amenity.propertyID, amenity.name)
       else
-        raise TypeError, "Invalid type: #{type}"
+        raise TypeError, "Invalid type: #{amenity.class}"
       end
     end
 

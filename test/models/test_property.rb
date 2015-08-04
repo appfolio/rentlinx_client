@@ -269,4 +269,29 @@ class PropertyTest < MiniTest::Test
     assert_equal 'We like long-term commitments', prop.amenities.first.details
     assert_equal prop.propertyID, prop.amenities.first.propertyID
   end
+
+  def test_links
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test-property-links'
+
+      prop.links = [Rentlinx::PropertyLink.new(VALID_PROPERTY_LINK_ATTRS)]
+      prop.post_with_links
+
+      rl_prop = Rentlinx::Property.from_id('test-property-links')
+      rl_prop.links
+      assert_equal 1, rl_prop.links.size
+      assert_equal prop.links.first.title, 'Ring ding'
+    end
+  end
+
+  def test_add_link
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.add_link(title: '12 Months', url: 'http://www.youtube.com/')
+
+    assert 1, prop.links.size
+    assert_equal '12 Months', prop.links.first.title
+    assert_equal 'http://www.youtube.com/', prop.links.first.url
+    assert_equal prop.propertyID, prop.links.first.propertyID
+  end
 end

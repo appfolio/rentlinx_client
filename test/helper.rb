@@ -121,3 +121,16 @@ VALID_UNIT_AMENITY_ATTRS = {
   name: 'No Dogs Allowed',
   details: 'We do not like dogs'
 }
+
+VALID_PROPERTY_LINK_ATTRS = {
+  propertyID: 'test-property-link-id',
+  url: 'http://google.com/',
+  title: 'Ring ding'
+}
+
+VALID_UNIT_LINK_ATTRS = {
+  propertyID: 'test-property-link-id',
+  unitID: 'sebastiens forest hut',
+  url: 'http://youtube.com/',
+  title: 'Only You Can Prevent Wildfires!'
+}

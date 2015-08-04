@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.2.0
+      - Rentlinx Ruby Client 0.6.3
       Accept:
       - "*/*"
       Date:
-      - Fri, 19 Jun 2015 00:46:28 GMT
+      - Tue, 04 Aug 2015 00:00:33 GMT
       Content-Type:
       - application/json
   response:
@@ -29,33 +29,33 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 19 Jun 2015 00:42:37 GMT
+      - Mon, 03 Aug 2015 23:59:52 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
       string: '{"AccessToken":"<AUTH-TOKEN>"}'
     http_version: 
-  recorded_at: Fri, 19 Jun 2015 00:46:28 GMT
+  recorded_at: Tue, 04 Aug 2015 00:00:33 GMT
 - request:
     method: get
-    uri: http://localhost/units/test-unit-id
+    uri: http://localhost/properties/test_post_link_property/links
     body:
       encoding: UTF-8
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.2.0
+      - Rentlinx Ruby Client 0.6.3
       Accept:
       - "*/*"
       Date:
-      - Fri, 19 Jun 2015 00:46:28 GMT
+      - Tue, 04 Aug 2015 00:00:33 GMT
       Content-Type:
       - application/json
   response:
@@ -72,19 +72,18 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 19 Jun 2015 00:42:37 GMT
+      - Mon, 03 Aug 2015 23:59:52 GMT
       Content-Length:
-      - '534'
+      - '126'
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"unit","unitID":"test-unit-id","propertyID":"test-property-id","isOpenToLease":true,"name":"My
-        new unit","description":"Fabulous unit on the ocean side","rent":1600.0000,"maxRent":1600.0000,"deposit":3200.0000,"maxDeposit":3200.0000,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":1,"numAvailable":1}}'
+      string: '{"data":[{"type":"link","title":"Ring ding","url":"http://google.com/","propertyID":"test_post_link_property","unitID":null}]}'
     http_version: 
-  recorded_at: Fri, 19 Jun 2015 00:46:28 GMT
+  recorded_at: Tue, 04 Aug 2015 00:00:33 GMT
 recorded_with: VCR 2.9.3
