@@ -24,6 +24,15 @@ class PhotoClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_photos__nil_does_not_post
+    prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+    prop.propertyID = 'test_post_photos_nil_property'
+    Rentlinx::Client.any_instance.expects(:post_property_photos).never
+    use_vcr do
+      prop.post_photos
+    end
+  end
+
   def test_get_photos_for_property
     use_vcr do
       photos = Rentlinx.client.get_photos_for_property_id('test-property-id')
