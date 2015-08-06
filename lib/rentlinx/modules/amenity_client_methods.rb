@@ -12,6 +12,17 @@ module Rentlinx
       post_unit_amenities(unit_amenities) unless unit_amenities.empty?
     end
 
+    def unpost_amenities_for(object)
+      case object
+      when Rentlinx::Unit
+        post_amenities_for_unit_id(object.unitID, [])
+      when Rentlinx::Property
+        post_amenities_for_property_id(object.propertyID, [])
+      else
+        raise TypeError, "Type not permitted: #{object.class}"
+      end
+    end
+
     def get_amenities_for_property_id(id)
       data = request('GET', "properties/#{id}/amenities")['data']
       data.map do |amenity_data|
@@ -47,7 +58,11 @@ module Rentlinx
     # post_amenities should only be called from property or unit, so we don't need
     # to handle multiple properties
     def post_property_amenities(amenities)
-      request('PUT', "properties/#{amenities.first.propertyID}/amenities", amenities.map(&:to_hash))
+      post_amenities_for_property_id(amenities.first.propertyID, amenities)
+    end
+
+    def post_amenities_for_property_id(id, amenities)
+      request('PUT', "properties/#{id}/amenities", amenities.map(&:to_hash))
     end
 
     def post_unit_amenities(amenities)
@@ -61,8 +76,12 @@ module Rentlinx
       end
 
       hash.each do |unitID, unit_amenities|
-        request('PUT', "units/#{unitID}/amenities", unit_amenities.map(&:to_hash))
+        post_amenities_for_unit_id(unitID, unit_amenities)
       end
+    end
+
+    def post_amenities_for_unit_id(id, amenities)
+      request('PUT', "units/#{id}/amenities", amenities.map(&:to_hash))
     end
 
     def unpost_property_amenity(id, name)

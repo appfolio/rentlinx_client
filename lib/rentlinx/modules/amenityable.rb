@@ -6,7 +6,13 @@ module Rentlinx
     end
 
     def post_amenities
-      Rentlinx.client.post_amenities(@amenities)
+      return if @amenities.nil?
+
+      if @amenities.length == 0
+        Rentlinx.client.unpost_amenities_for(self)
+      else
+        Rentlinx.client.post_amenities(@amenities)
+      end
     end
 
     def amenities

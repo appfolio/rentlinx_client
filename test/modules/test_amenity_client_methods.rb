@@ -17,10 +17,41 @@ class AmenityClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_amenities__with_empty_array_unpost_unit_amenities
+    use_vcr do
+      assert_equal 0, Rentlinx.client.get_amenities_for_unit(@unit).size
+
+      @unit.amenities = [@unit_amenity]
+      @unit.post_amenities
+
+      assert_equal 1, Rentlinx.client.get_amenities_for_unit(@unit).size
+
+      @unit.amenities = []
+      @unit.post_amenities
+
+      assert_equal 0, Rentlinx.client.get_amenities_for_unit(@unit).size
+    end
+  end
+
+  def test_post_amenities__with_empty_array_unpost_property_amenities
+    use_vcr do
+      assert_equal 0, Rentlinx.client.get_amenities_for_property_id(@prop.propertyID).size
+
+      Rentlinx.client.post_amenities([@prop_amenity])
+
+      assert_equal 1, Rentlinx.client.get_amenities_for_property_id(@prop.propertyID).size
+
+      @prop.amenities = []
+      @prop.post_amenities
+
+      assert_equal 0, Rentlinx.client.get_amenities_for_property_id(@prop.propertyID).size
+    end
+  end
+
   def test_post_amenities__nil_does_not_post
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     prop.propertyID = 'test_post_amenities_nil_property'
-    Rentlinx::Client.any_instance.expects(:post_amenities).once
+    Rentlinx::Client.any_instance.expects(:post_amenities).never
     Rentlinx::Client.any_instance.expects(:post_property_amenities).never
     use_vcr do
       prop.post_amenities
@@ -63,7 +94,7 @@ class AmenityClientMethodsTest < MiniTest::Test
     end
   end
 
-  def test_unpost_amenities_from_property
+  def test_unpost_amenity_from_property
     use_vcr do
       amenities = Rentlinx.client.get_amenities_for_property_id(@prop.propertyID)
       assert_equal 1, amenities.size
@@ -115,7 +146,7 @@ class AmenityClientMethodsTest < MiniTest::Test
     end
   end
 
-  def test_unpost_amenities_from_unit
+  def test_unpost_amenity_from_unit
     use_vcr do
       amenities = Rentlinx.client.get_amenities_for_unit(@unit)
       assert_equal 1, amenities.size
