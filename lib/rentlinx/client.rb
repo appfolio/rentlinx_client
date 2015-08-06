@@ -21,7 +21,7 @@ module Rentlinx
                                        Rentlinx.password.nil? ||
                                        Rentlinx.site_url.nil?
 
-      @url_prefix = (Rentlinx.site_url + '/').freeze  # Extra slashes are fine
+      @url_prefix = (Rentlinx.site_url + '/').freeze # Extra slashes are fine
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
 
