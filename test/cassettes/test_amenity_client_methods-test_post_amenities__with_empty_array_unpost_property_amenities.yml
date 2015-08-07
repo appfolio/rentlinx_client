@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Tue, 14 Jul 2015 23:51:42 GMT
+      - Thu, 06 Aug 2015 23:21:40 GMT
       Content-Type:
       - application/json
   response:
@@ -29,20 +29,20 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 14 Jul 2015 23:47:42 GMT
+      - Thu, 06 Aug 2015 23:21:42 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
       string: '{"AccessToken":"<AUTH-TOKEN>"}'
-    http_version: 
-  recorded_at: Tue, 14 Jul 2015 23:51:42 GMT
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:40 GMT
 - request:
     method: get
     uri: http://localhost/properties/test_post_amenity_property/amenities
@@ -51,11 +51,11 @@ http_interactions:
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Tue, 14 Jul 2015 23:51:42 GMT
+      - Thu, 06 Aug 2015 23:21:40 GMT
       Content-Type:
       - application/json
   response:
@@ -72,20 +72,20 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 14 Jul 2015 23:47:42 GMT
+      - Thu, 06 Aug 2015 23:21:42 GMT
       Content-Length:
       - '11'
     body:
       encoding: UTF-8
       string: '{"data":[]}'
-    http_version: 
-  recorded_at: Tue, 14 Jul 2015 23:51:42 GMT
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:41 GMT
 - request:
     method: put
     uri: http://localhost/properties/test_post_amenity_property/amenities
@@ -94,11 +94,11 @@ http_interactions:
       string: '[{"details":"Some details about your garbage","name":"Garbage Disposal"}]'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Tue, 14 Jul 2015 23:51:42 GMT
+      - Thu, 06 Aug 2015 23:21:41 GMT
       Content-Type:
       - application/json
   response:
@@ -115,21 +115,21 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 14 Jul 2015 23:47:42 GMT
+      - Thu, 06 Aug 2015 23:21:42 GMT
       Content-Length:
       - '155'
     body:
       encoding: UTF-8
       string: '{"data":[{"type":"amenity","name":"Garbage Disposal","details":"Some
         details about your garbage","propertyID":"test_post_amenity_property","unitID":null}]}'
-    http_version: 
-  recorded_at: Tue, 14 Jul 2015 23:51:42 GMT
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:41 GMT
 - request:
     method: get
     uri: http://localhost/properties/test_post_amenity_property/amenities
@@ -138,11 +138,11 @@ http_interactions:
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Tue, 14 Jul 2015 23:51:42 GMT
+      - Thu, 06 Aug 2015 23:21:41 GMT
       Content-Type:
       - application/json
   response:
@@ -159,19 +159,105 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 14 Jul 2015 23:47:42 GMT
+      - Thu, 06 Aug 2015 23:21:42 GMT
       Content-Length:
       - '155'
     body:
       encoding: UTF-8
       string: '{"data":[{"type":"amenity","name":"Garbage Disposal","details":"Some
         details about your garbage","propertyID":"test_post_amenity_property","unitID":null}]}'
-    http_version: 
-  recorded_at: Tue, 14 Jul 2015 23:51:43 GMT
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:41 GMT
+- request:
+    method: put
+    uri: http://localhost/properties/test_post_amenity_property/amenities
+    body:
+      encoding: UTF-8
+      string: "[]"
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.7.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 06 Aug 2015 23:21:41 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 06 Aug 2015 23:21:42 GMT
+      Content-Length:
+      - '11'
+    body:
+      encoding: UTF-8
+      string: '{"data":[]}'
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:41 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test_post_amenity_property/amenities
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.7.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 06 Aug 2015 23:21:41 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 06 Aug 2015 23:21:42 GMT
+      Content-Length:
+      - '11'
+    body:
+      encoding: UTF-8
+      string: '{"data":[]}'
+    http_version:
+  recorded_at: Thu, 06 Aug 2015 23:21:41 GMT
 recorded_with: VCR 2.9.3

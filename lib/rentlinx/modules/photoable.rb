@@ -6,7 +6,13 @@ module Rentlinx
     end
 
     def post_photos
-      Rentlinx.client.post_photos(@photos)
+      return if @photos.nil?
+
+      if @photos.length == 0
+        Rentlinx.client.unpost_photos_for(self)
+      else
+        Rentlinx.client.post_photos(@photos)
+      end
     end
 
     def photos

@@ -6,7 +6,13 @@ module Rentlinx
     end
 
     def post_links
-      Rentlinx.client.post_links(@links)
+      return if @links.nil?
+
+      if @links.length == 0
+        Rentlinx.client.unpost_links_for(self)
+      else
+        Rentlinx.client.post_links(@links)
+      end
     end
 
     def links

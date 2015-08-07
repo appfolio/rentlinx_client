@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Wed, 15 Jul 2015 00:35:25 GMT
+      - Fri, 07 Aug 2015 00:21:00 GMT
       Content-Type:
       - application/json
   response:
@@ -29,33 +29,33 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 15 Jul 2015 00:31:26 GMT
+      - Fri, 07 Aug 2015 00:21:02 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"F49B4B03-BBB1-4DF3-923A-038C730A7E03"}'
     http_version: 
-  recorded_at: Wed, 15 Jul 2015 00:35:26 GMT
+  recorded_at: Fri, 07 Aug 2015 00:21:00 GMT
 - request:
     method: get
-    uri: http://localhost/properties/test_post_amenity_property/amenities
+    uri: http://localhost/properties/test_post_link_property/links
     body:
       encoding: UTF-8
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Wed, 15 Jul 2015 00:35:26 GMT
+      - Fri, 07 Aug 2015 00:21:00 GMT
       Content-Type:
       - application/json
   response:
@@ -72,33 +72,33 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 15 Jul 2015 00:31:28 GMT
+      - Fri, 07 Aug 2015 00:21:02 GMT
       Content-Length:
       - '11'
     body:
       encoding: UTF-8
       string: '{"data":[]}'
     http_version: 
-  recorded_at: Wed, 15 Jul 2015 00:35:28 GMT
+  recorded_at: Fri, 07 Aug 2015 00:21:00 GMT
 - request:
     method: put
-    uri: http://localhost/units/test_post_amenity_unit/amenities
+    uri: http://localhost/properties/test_post_link_property/links
     body:
       encoding: UTF-8
-      string: '[{"details":"We do not like dogs","name":"No Dogs Allowed"}]'
+      string: '[{"url":"http://google.com/","title":"Ring ding"}]'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Wed, 15 Jul 2015 00:35:28 GMT
+      - Fri, 07 Aug 2015 00:21:00 GMT
       Content-Type:
       - application/json
   response:
@@ -115,78 +115,33 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 15 Jul 2015 00:31:30 GMT
+      - Fri, 07 Aug 2015 00:21:02 GMT
       Content-Length:
-      - '162'
+      - '126'
     body:
       encoding: UTF-8
-      string: '{"data":[{"type":"amenity","name":"No Dogs Allowed","details":"We do
-        not like dogs","propertyID":"test_post_amenity_property","unitID":"test_post_amenity_unit"}]}'
+      string: '{"data":[{"type":"link","title":"Ring ding","url":"http://google.com/","propertyID":"test_post_link_property","unitID":null}]}'
     http_version: 
-  recorded_at: Wed, 15 Jul 2015 00:35:30 GMT
-- request:
-    method: put
-    uri: http://localhost/units/test_post_amenity_unit/amenities
-    body:
-      encoding: UTF-8
-      string: '[{"details":"We do not like dogs","name":"No Dogs Allowed"}]'
-    headers:
-      User-Agent:
-      - Rentlinx Ruby Client 0.4.4
-      Accept:
-      - "*/*"
-      Date:
-      - Wed, 15 Jul 2015 00:35:30 GMT
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache
-      Pragma:
-      - no-cache
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - "-1"
-      Server:
-      - Microsoft-IIS/8.0
-      X-Aspnet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-      Date:
-      - Wed, 15 Jul 2015 00:31:30 GMT
-      Content-Length:
-      - '162'
-    body:
-      encoding: UTF-8
-      string: '{"data":[{"type":"amenity","name":"No Dogs Allowed","details":"We do
-        not like dogs","propertyID":"test_post_amenity_property","unitID":"test_post_amenity_unit"}]}'
-    http_version: 
-  recorded_at: Wed, 15 Jul 2015 00:35:30 GMT
+  recorded_at: Fri, 07 Aug 2015 00:21:00 GMT
 - request:
     method: get
-    uri: http://localhost/properties/test_post_amenity_property/amenities
+    uri: http://localhost/properties/test_post_link_property/links
     body:
       encoding: UTF-8
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.7.1
       Accept:
       - "*/*"
       Date:
-      - Wed, 15 Jul 2015 00:35:30 GMT
+      - Fri, 07 Aug 2015 00:21:00 GMT
       Content-Type:
       - application/json
   response:
@@ -203,19 +158,104 @@ http_interactions:
       Expires:
       - "-1"
       Server:
-      - Microsoft-IIS/8.0
+      - Microsoft-IIS/8.5
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 15 Jul 2015 00:31:30 GMT
+      - Fri, 07 Aug 2015 00:21:02 GMT
       Content-Length:
-      - '162'
+      - '126'
     body:
       encoding: UTF-8
-      string: '{"data":[{"type":"amenity","name":"No Dogs Allowed","details":"We do
-        not like dogs","propertyID":"test_post_amenity_property","unitID":"test_post_amenity_unit"}]}'
+      string: '{"data":[{"type":"link","title":"Ring ding","url":"http://google.com/","propertyID":"test_post_link_property","unitID":null}]}'
     http_version: 
-  recorded_at: Wed, 15 Jul 2015 00:35:30 GMT
+  recorded_at: Fri, 07 Aug 2015 00:21:01 GMT
+- request:
+    method: put
+    uri: http://localhost/properties/test_post_link_property/links
+    body:
+      encoding: UTF-8
+      string: "[]"
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.7.1
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 07 Aug 2015 00:21:01 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 07 Aug 2015 00:21:02 GMT
+      Content-Length:
+      - '11'
+    body:
+      encoding: UTF-8
+      string: '{"data":[]}'
+    http_version: 
+  recorded_at: Fri, 07 Aug 2015 00:21:01 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test_post_link_property/links
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.7.1
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 07 Aug 2015 00:21:01 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 07 Aug 2015 00:21:02 GMT
+      Content-Length:
+      - '11'
+    body:
+      encoding: UTF-8
+      string: '{"data":[]}'
+    http_version: 
+  recorded_at: Fri, 07 Aug 2015 00:21:01 GMT
 recorded_with: VCR 2.9.3

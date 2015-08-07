@@ -24,10 +24,31 @@ class PhotoClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_photos__with_empty_array_unpost_property_photos
+    use_vcr do
+      prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
+      prop.propertyID = 'test_unpost_photos_property'
+      prop.post
+      prop_photo = Rentlinx::PropertyPhoto.new(VALID_PROPERTY_PHOTO_ATTRS)
+      prop_photo.propertyID = prop.propertyID
+
+      assert_equal 0, Rentlinx.client.get_photos_for_property_id(prop.propertyID).size
+
+      Rentlinx.client.post_photos([prop_photo])
+
+      assert_equal 1, Rentlinx.client.get_photos_for_property_id(prop.propertyID).size
+
+      prop.photos = []
+      prop.post_photos
+
+      assert_equal 0, Rentlinx.client.get_photos_for_property_id(prop.propertyID).size
+    end
+  end
+
   def test_post_photos__nil_does_not_post
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     prop.propertyID = 'test_post_photos_nil_property'
-    Rentlinx::Client.any_instance.expects(:post_photos).once
+    Rentlinx::Client.any_instance.expects(:post_photos).never
     Rentlinx::Client.any_instance.expects(:post_property_photos).never
     use_vcr do
       prop.post_photos

@@ -12,6 +12,17 @@ module Rentlinx
       post_unit_photos(unit_photos) unless unit_photos.empty?
     end
 
+    def unpost_photos_for(object)
+      case object
+      when Rentlinx::Unit
+        post_photos_for_unit_id(object.unitID, [])
+      when Rentlinx::Property
+        post_photos_for_property_id(object.propertyID, [])
+      else
+        raise TypeError, "Type not permitted: #{object.class}"
+      end
+    end
+
     def get_photos_for_property_id(id)
       data = request('GET', "properties/#{id}/photos")['data']
       data.map do |photo_data|
@@ -40,7 +51,11 @@ module Rentlinx
     # post_photos should only be called from property or unit, so we don't need
     # to handle multiple properties
     def post_property_photos(photos)
-      request('PUT', "properties/#{photos.first.propertyID}/photos", photos.map(&:to_hash))
+      post_photos_for_property_id(photos.first.propertyID, photos)
+    end
+
+    def post_photos_for_property_id(id, photos)
+      request('PUT', "properties/#{id}/photos", photos.map(&:to_hash))
     end
 
     def post_unit_photos(photos)
@@ -54,8 +69,12 @@ module Rentlinx
       end
 
       hash.each do |unitID, unit_photos|
-        request('PUT', "units/#{unitID}/photos", unit_photos.map(&:to_hash))
+        post_photos_for_unit_id(unitID, unit_photos)
       end
+    end
+
+    def post_photos_for_unit_id(id, photos)
+      request('PUT', "units/#{id}/photos", photos.map(&:to_hash))
     end
 
     def unpost_property_photo(id, url)
