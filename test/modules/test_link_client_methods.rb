@@ -17,9 +17,41 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_post_links__with_empty_array_unpost_unit_links
+    use_vcr do
+      assert_equal 0, Rentlinx.client.get_links_for_unit(@unit).size
+
+      @unit.links = [@unit_link]
+      @unit.post_links
+
+      assert_equal 1, Rentlinx.client.get_links_for_unit(@unit).size
+
+      @unit.links = []
+      @unit.post_links
+
+      assert_equal 0, Rentlinx.client.get_links_for_unit(@unit).size
+    end
+  end
+
+  def test_post_links__with_empty_array_unpost_property_links
+    use_vcr do
+      assert_equal 0, Rentlinx.client.get_links_for_property_id(@prop.propertyID).size
+
+      Rentlinx.client.post_links([@prop_link])
+
+      assert_equal 1, Rentlinx.client.get_links_for_property_id(@prop.propertyID).size
+
+      @prop.links = []
+      @prop.post_links
+
+      assert_equal 0, Rentlinx.client.get_links_for_property_id(@prop.propertyID).size
+    end
+  end
+
   def test_post_links__nil_does_not_post
     prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
     prop.propertyID = 'test_post_links_nil_property'
+    Rentlinx::Client.any_instance.expects(:post_links).never
     Rentlinx::Client.any_instance.expects(:post_property_links).never
 
     use_vcr do
@@ -128,7 +160,7 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
-  def test_post_amenities__to_different_properties_raises_error
+  def test_post_links__to_different_properties_raises_error
     prop_link2 = Rentlinx::PropertyLink.new(VALID_PROPERTY_LINK_ATTRS.merge(propertyID: 'another-property-id'))
 
     use_vcr do

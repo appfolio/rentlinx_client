@@ -13,6 +13,17 @@ module Rentlinx
       post_unit_links(unit_links) unless unit_links.empty?
     end
 
+    def unpost_links_for(object)
+      case object
+      when Rentlinx::Unit
+        post_links_for_unit_id(object.unitID, [])
+      when Rentlinx::Property
+        post_links_for_property_id(object.propertyID, [])
+      else
+        raise TypeError, 'Type not permitted: #{object.class}'
+      end
+    end
+
     def get_links_for_property_id(id)
       data = request('GET', "properties/#{id}/links")['data']
       data.map do |link_data|
@@ -46,7 +57,11 @@ module Rentlinx
     private
 
     def post_property_links(links)
-      request('PUT', "properties/#{links.first.propertyID}/links", links.map(&:to_hash))
+      post_links_for_property_id(links.first.propertyID, links)
+    end
+
+    def post_links_for_property_id(id, links)
+      request('PUT', "properties/#{id}/links", links.map(&:to_hash))
     end
 
     def post_unit_links(links)
@@ -60,8 +75,12 @@ module Rentlinx
       end
 
       hash.each do |unitID, unit_links|
-        request('PUT', "units/#{unitID}/links", unit_links.map(&:to_hash))
+        post_links_for_unit_id(unitID, unit_links)
       end
+    end
+
+    def post_links_for_unit_id(id, links)
+      request('PUT', "units/#{id}/links", links.map(&:to_hash))
     end
 
     def unpost_property_link(id, url)
