@@ -110,6 +110,32 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  def test_get_links_for_unit__only_gets_for_unit
+    use_vcr do
+      unit2 = @unit.dup
+
+      @unit.unitID = 'test_get_links_for_unit__only_gets_for_unit'
+      @unit.post
+      @unit.links = [@unit_link]
+      @unit.post_with_links
+
+      # New unit on the same property
+      unit2.unitID = 'test_get_links_for_unit__only_gets_for_unit_2'
+      unit2.add_link(title: 'Test Link', url: 'http://ec2-52-27-51-241.us-west-2.compute.amazonaws.com/')
+
+      unit2.post_with_links
+
+      links = Rentlinx.client.get_links_for_unit(@unit)
+
+      assert_equal 1, links.size
+      assert_equal links.first.class, Rentlinx::UnitLink
+      assert_equal @unit_link.propertyID, links.first.propertyID
+      assert_equal @unit_link.unitID, links.first.unitID
+      assert_equal @unit_link.title, links.first.title
+      assert_equal @unit_link.url, links.first.url
+    end
+  end
+
   def test_post_link_title_gets_escaped
     use_vcr do
       links = Rentlinx.client.get_links_for_unit(@unit)
