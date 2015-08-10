@@ -133,6 +133,12 @@ class LinkClientMethodsTest < MiniTest::Test
       assert_equal @unit_link.unitID, links.first.unitID
       assert_equal @unit_link.title, links.first.title
       assert_equal @unit_link.url, links.first.url
+
+      links = Rentlinx.client.get_links_for_unit(unit2)
+
+      assert_equal 1, links.size
+      assert_equal links.first.class, Rentlinx::UnitLink
+      assert_equal 'Test Link', links.first.title
     end
   end
 
