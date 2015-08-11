@@ -1,5 +1,3 @@
-require 'phony'
-
 module Rentlinx
   class PhoneValidator < BaseValidator
     def processed_value
