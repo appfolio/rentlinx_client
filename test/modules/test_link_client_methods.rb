@@ -88,12 +88,7 @@ class LinkClientMethodsTest < MiniTest::Test
 
       Rentlinx.client.post_links([@unit_link])
 
-      new_links = Rentlinx.client.get_links_for_unit(@unit)
-      assert_equal 1, new_links.size
-      assert_equal @unit_link.propertyID, new_links.first.propertyID
-      assert_equal @unit_link.unitID, new_links.first.unitID
-      assert_equal @unit_link.title, new_links.first.title
-      assert_equal @unit_link.url, new_links.first.url
+      assert_unit_links_equal @unit_link, Rentlinx.client.get_links_for_unit(@unit)
     end
   end
 
@@ -101,12 +96,7 @@ class LinkClientMethodsTest < MiniTest::Test
     use_vcr do
       links = Rentlinx.client.get_links_for_unit(@unit)
 
-      assert_equal 1, links.size
-      assert_equal links.first.class, Rentlinx::UnitLink
-      assert_equal @unit_link.propertyID, links.first.propertyID
-      assert_equal @unit_link.unitID, links.first.unitID
-      assert_equal @unit_link.title, links.first.title
-      assert_equal @unit_link.url, links.first.url
+      assert_unit_links_equal @unit_link, links
     end
   end
 
@@ -122,23 +112,10 @@ class LinkClientMethodsTest < MiniTest::Test
       # New unit on the same property
       unit2.unitID = 'test_get_links_for_unit__only_gets_for_unit_2'
       unit2.add_link(title: 'Test Link', url: 'http://ec2-52-27-51-241.us-west-2.compute.amazonaws.com/')
-
       unit2.post_with_links
 
-      links = Rentlinx.client.get_links_for_unit(@unit)
-
-      assert_equal 1, links.size
-      assert_equal links.first.class, Rentlinx::UnitLink
-      assert_equal @unit_link.propertyID, links.first.propertyID
-      assert_equal @unit_link.unitID, links.first.unitID
-      assert_equal @unit_link.title, links.first.title
-      assert_equal @unit_link.url, links.first.url
-
-      links = Rentlinx.client.get_links_for_unit(unit2)
-
-      assert_equal 1, links.size
-      assert_equal links.first.class, Rentlinx::UnitLink
-      assert_equal 'Test Link', links.first.title
+      assert_unit_links_equal @unit_link, Rentlinx.client.get_links_for_unit(@unit)
+      assert_unit_links_equal unit2.links.first, Rentlinx.client.get_links_for_unit(unit2)
     end
   end
 
@@ -203,6 +180,8 @@ class LinkClientMethodsTest < MiniTest::Test
     end
   end
 
+  private
+
   def setup
     super
 
@@ -215,5 +194,15 @@ class LinkClientMethodsTest < MiniTest::Test
 
     @prop_link = Rentlinx::PropertyLink.new(VALID_PROPERTY_LINK_ATTRS.merge(propertyID: @prop.propertyID))
     @unit_link = Rentlinx::UnitLink.new(VALID_UNIT_LINK_ATTRS.merge(propertyID: @prop.propertyID, unitID: @unit.unitID))
+  end
+
+  def assert_unit_links_equal(expected, given_arr)
+    assert_equal 1, given_arr.size
+    given = given_arr.first
+    assert_equal given.class, Rentlinx::UnitLink
+    assert_equal expected.propertyID, given.propertyID
+    assert_equal expected.unitID, given.unitID
+    assert_equal expected.title, given.title
+    assert_equal expected.url, given.url
   end
 end
