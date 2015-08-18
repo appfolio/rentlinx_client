@@ -2,6 +2,7 @@ require 'rentlinx/validators/base_validator'
 require 'rentlinx/validators/phone_validator'
 require 'rentlinx/validators/state_validator'
 require 'rentlinx/validators/zip_validator'
+require 'rentlinx/validators/url_validator'
 
 module Rentlinx
   class AttributeProcessor
@@ -17,7 +18,8 @@ module Rentlinx
     def process
       validators = { phoneNumber: PhoneValidator,
                      state: StateValidator,
-                     zip: ZipValidator }
+                     zip: ZipValidator,
+                     leadsURL: URLValidator }
 
       @attrs.each do |field, val|
         next unless validators.keys.include?(field)
