@@ -57,7 +57,8 @@ class PropertyTest < MiniTest::Test
              website: '', yearBuilt: '', numUnits: '',
              phoneNumber: '8054523214', extension: '', faxNumber: '',
              emailAddress: 'support@appfolio.com', acceptsHcv: '',
-             propertyType: '', activeURL: '', companyName: 'test company' }
+             propertyType: '', activeURL: '', companyName: 'test company',
+             leadsURL: nil }
     assert_equal hash, property.to_hash
   end
 

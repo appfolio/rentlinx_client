@@ -1,9 +1,9 @@
 module Rentlinx
-  class URLValidator < BaseValidator
+  class UrlValidator < BaseValidator
     private
 
     def validate
-      return if value_blank? || @value.match(/^https?:\/\/.*\.(com|net|org|us)\/.*$/)
+      return if value_blank? || @value.match(%r{^https?:\/\/.*\.(com|net|org|us)\/.*$})
       @error = "#{@value} is not a valid URL"
     end
   end

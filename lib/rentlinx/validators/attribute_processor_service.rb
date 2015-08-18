@@ -19,7 +19,7 @@ module Rentlinx
       validators = { phoneNumber: PhoneValidator,
                      state: StateValidator,
                      zip: ZipValidator,
-                     leadsURL: URLValidator }
+                     leadsURL: UrlValidator }
 
       @attrs.each do |field, val|
         next unless validators.keys.include?(field)
