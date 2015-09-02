@@ -159,6 +159,10 @@ class ClientTest < MiniTest::Test
     response_stub(404, Rentlinx::NotFound)
   end
 
+  def test_409_raises_conflict
+    response_stub(409, Rentlinx::Conflict)
+  end
+
   def test_500_raises_server_error
     response_stub(500, Rentlinx::ServerError)
   end
