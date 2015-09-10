@@ -47,6 +47,12 @@ module Rentlinx
     end
   end
 
+  class Conflict < HTTPError
+    def initialize(response)
+      super(response, 'There was a conflict on the remote server.')
+    end
+  end
+
   class Forbidden < HTTPError
     def initialize(response)
       super(response, 'You are not permitted to access the item you requested.')

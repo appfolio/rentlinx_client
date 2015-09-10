@@ -102,6 +102,8 @@ module Rentlinx
         raise Rentlinx::Forbidden, response
       when 404
         raise Rentlinx::NotFound, response
+      when 409
+        raise Rentlinx::Conflict, response
       when 500, 501, 502, 503, 504, 505
         raise Rentlinx::ServerError, response
       else
