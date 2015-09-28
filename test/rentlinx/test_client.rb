@@ -136,15 +136,40 @@ class ClientTest < MiniTest::Test
     end
   end
 
-  def test_400_raises_bad_request
+  def test_400_raises_bad_request__with_details
     request_mock = mock
     request_mock.expects(:status).returns(400)
-    request_mock.expects(:body).returns({ details: 'There was an error.' }.to_json)
+    request_mock.expects(:body).returns({ details: 'This is a custom error message.' }.to_json)
     HTTPClient.any_instance.expects(:request).returns(request_mock)
 
-    assert_raises(Rentlinx::BadRequest) do
+    exception = assert_raises(Rentlinx::BadRequest) do
       Rentlinx::Client.new
     end
+    assert_equal 'This is a custom error message.', exception.message
+  end
+
+  def test_400_raises_bad_request__without_details
+    request_mock = mock
+    request_mock.expects(:status).returns(400)
+    request_mock.expects(:body).returns({}.to_json)
+    HTTPClient.any_instance.expects(:request).returns(request_mock)
+
+    exception = assert_raises(Rentlinx::BadRequest) do
+      Rentlinx::Client.new
+    end
+    assert_equal 'The request sent to the server was invalid.', exception.message
+  end
+
+  def test_400_raises_bad_request__with_bad_json
+    request_mock = mock
+    request_mock.expects(:status).returns(400)
+    request_mock.expects(:body).returns('this is not json')
+    HTTPClient.any_instance.expects(:request).returns(request_mock)
+
+    exception = assert_raises(Rentlinx::BadRequest) do
+      Rentlinx::Client.new
+    end
+    assert_equal 'The request sent to the server was invalid.', exception.message
   end
 
   def test_http_errors_are_httperrors
