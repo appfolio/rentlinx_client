@@ -1,3 +1,5 @@
+require 'json'
+
 module Rentlinx
   class RentlinxError < StandardError
   end
@@ -36,8 +38,14 @@ module Rentlinx
   end
 
   class BadRequest < HTTPError
-    def initialize(response, message = nil)
-      super(response, message || 'The request sent to the server was invalid.')
+    def initialize(response)
+      default_message = 'The request sent to the server was invalid.'
+      begin
+        message = JSON.parse(response.body)['details'] || default_message
+      rescue JSON::ParserError
+        message = default_message
+      end
+      super(response, message)
     end
   end
 
