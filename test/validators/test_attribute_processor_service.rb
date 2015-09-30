@@ -29,7 +29,7 @@ class AttributeProcessorServiceTest < MiniTest::Test
 
     expected = { phoneNumber: '+1 805-123-1212 0012 is not a valid phone number',
                  state: 'California is not a valid state, states must be two characters (CA)',
-                 zip: 'whut is not a valid zip code, zip codes must be five digits (93117)' }
+                 zip: 'whut is not a valid zip code, zip codes must be five digits (93117) or five digits, a dash, and four digits (93117-1234)' }
     assert_equal expected, processor.errors
   end
 end
