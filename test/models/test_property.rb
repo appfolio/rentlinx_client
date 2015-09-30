@@ -179,12 +179,12 @@ class PropertyTest < MiniTest::Test
 
     prop.zip = '3'
     assert !prop.valid?
-    expected_errors = { zip: '3 is not a valid zip code, zip codes must be five digits (93117)' }
+    expected_errors = { zip: '3 is not a valid zip code, zip codes must be five digits (93117) or five digits, a dash, and four digits (93117-1234)' }
     assert_equal expected_errors, prop.error_messages
 
     prop.zip = '314159'
     assert !prop.valid?
-    expected_errors = { zip: '314159 is not a valid zip code, zip codes must be five digits (93117)' }
+    expected_errors = { zip: '314159 is not a valid zip code, zip codes must be five digits (93117) or five digits, a dash, and four digits (93117-1234)' }
     assert_equal expected_errors, prop.error_messages
 
     prop.zip = '91304'
