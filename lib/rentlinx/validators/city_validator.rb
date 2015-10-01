@@ -1,4 +1,7 @@
 module Rentlinx
+  # Validator for cities
+  #
+  # Ensures they are three or more characters.
   class CityValidator < BaseValidator
     private
 

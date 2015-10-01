@@ -1,7 +1,9 @@
 require 'phony'
 
 module Rentlinx
+  # Validator for phone numbers
   class PhoneValidator < BaseValidator
+    # Validates and normalizes the phone number with Phony
     def processed_value
       return '' if value_blank?
       return @value unless valid?

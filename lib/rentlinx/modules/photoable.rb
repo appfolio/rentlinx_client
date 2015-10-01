@@ -1,4 +1,8 @@
 module Rentlinx
+  # A module that encapsulates all photo related logic for {Rentlinx::Property} and
+  # {Rentlinx::Unit} objects. All of these methods can be called on Properties and Units.
+  #
+  # TODO: Refactor into BaseAble class along with {Linkable} and {Amenityable}
   module Photoable
     def post_with_photos
       post

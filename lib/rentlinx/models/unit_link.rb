@@ -1,4 +1,5 @@
 module Rentlinx
+  # A link on a unit
   class UnitLink < PropertyLink
     ATTRIBUTES += [:unitID]
 

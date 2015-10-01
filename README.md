@@ -9,7 +9,38 @@ _rentlinx_client_ is a ruby wrapper for the RentLinx API.
 
 ## Installation
 
+To install from the command line, run: 
+
     gem install rentlinx
+
+To include in a rails app, include this line in your gemfile:
+
+    gem 'rentlinx'
+
+### Usage
+
+Configure like so:
+
+    Rentlinx.configure do |rentlinx|
+      rentlinx.username ENV['RENTLINX_USERNAME']
+      rentlinx.password ENV['RENTLINX_PASSWORD']
+      rentlinx.site_url 'https://rentlinx.com/api/v2'
+      rentlinx.log_level :error
+    end
+
+For all endpoints, attributes are defined by the API: https://www.rentlinx.com/mongoose/help
+
+Properties:
+
+    prop = Property.new(attributes)
+    prop.post # creates
+
+    prop.website = 'http://example.com'
+    prop.post # updates
+
+    prop = Property.from_id('property-id') # fetches
+
+Objects can be created for all endpoints supported by the Rentlinx API, including Units, Amenities, Photos, and Links. For more detailed information, see the [full documentation on rubygems](http://www.rubydoc.info/gems/rentlinx).
 
 ## Contributing and development
 
@@ -36,6 +67,12 @@ Not all rubocop's rules are set in stone, so once you are receiving only
 warnings testing rules that may not make sense, please comment on your pull
 request indicating you think the rules should be adjusted with your reasoning.
 
+### Documentation
+
+All new classes, modules, and public methods should be documented in the style
+of [yard](http://yardoc.org/). Modified classes and methods should have their
+documentation updated accordingly. Tests do not need documentation.
+
 ### Testing: Unit tests
 
 The second suite is running minitest. The simplest way to invoke our minitest
@@ -47,22 +84,6 @@ The default rake task actually maps to `rake test`. Additionally individual
 test files can be executed via:
 
     ruby -Ilib:test test/FILENAME.rb
-
-
-### Usage
-
-For all endpoints, attributes are defined by the API: https://www.rentlinx.com/mongoose/help
-
-Properties can be created, updated, and fetched from Rentlinx like so:
-
-    prop = Property.new(attributes)
-    prop.post # creates
-
-    prop.website = 'http://example.com'
-    prop.post # updates
-
-    prop = Property.from_id('property-id') # fetches
-
 
 ## Copyright and license
 

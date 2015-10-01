@@ -11,16 +11,29 @@ require 'rentlinx/models/unit_amenity'
 require 'rentlinx/models/property_link'
 require 'rentlinx/models/unit_link'
 
+# This is the main rentlinx module. All Rentlinx objects
+# and methods are namespaced under this module.
 module Rentlinx
   @username = nil
   @password = nil
   @site_url = nil
 
   class << self
+    # Allows the configuration of Rentlinx in a configure-block
+    # style.
+    #
+    # @example
+    #   Rentlinx.configure do |rentlinx|
+    #     rentlinx.username ENV['RENTLINX_USERNAME']
+    #     rentlinx.password ENV['RENTLINX_PASSWORD']
+    #     rentlinx.site_url 'https://rentlinx.com/api/v2'
+    #     rentlinx.log_level :error
+    #   end
     def configure(&block)
       block.call(self)
     end
 
+    # Sets and retrieves the username used to log in to Rentlinx
     def username(*args)
       if args.empty?
         @username
@@ -29,6 +42,7 @@ module Rentlinx
       end
     end
 
+    # Sets and retrieves the password used to log in to Rentlinx
     def password(*args)
       if args.empty?
         @password
@@ -37,6 +51,7 @@ module Rentlinx
       end
     end
 
+    # Sets and retrieves the URL where the API is hosted.
     def site_url(*args)
       if args.empty?
         @site_url
@@ -45,6 +60,8 @@ module Rentlinx
       end
     end
 
+    # Sets and retrieves the log level, currently only :error
+    # and :debug are supported
     def log_level(*args)
       if args.empty?
         @log_level
@@ -53,10 +70,12 @@ module Rentlinx
       end
     end
 
+    # The client object used for communicating with Rentlinx
     def client
       @client ||= Rentlinx::Client.new
     end
 
+    # The logger object
     def logger
       lgr = Logging.logger(STDOUT)
       lgr.level = (@log_level || :error)

@@ -14,7 +14,8 @@ Style/SignalException:
   EnforcedStyle: only_raise
 
 Documentation:
-  Enabled: false
+  Exclude:
+    - 'test/**/*'
 
 Metrics/LineLength:
   Enabled: false

@@ -1,4 +1,5 @@
 module Rentlinx
+  # Validator for US postal codes
   class ZipValidator < BaseValidator
     private
 
