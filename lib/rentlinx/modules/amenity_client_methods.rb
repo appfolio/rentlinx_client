@@ -1,5 +1,11 @@
 module Rentlinx
+  # Client methods for amenities
+  #
+  # TODO: Refactor into AttachmentClientMethods
   module AmenityClientMethods
+    # Submits amenities to the batch endpoint on Rentlinx
+    #
+    # @param amenities [Array] an array of amenity objects
     def post_amenities(amenities)
       return if amenities.nil?
       raise(Rentlinx::InvalidObject, amenities.find { |a| !a.valid? }) unless amenities.all?(&:valid?)
@@ -12,6 +18,11 @@ module Rentlinx
       post_unit_amenities(unit_amenities) unless unit_amenities.empty?
     end
 
+    # Unposts all amenities for a unit or property by posting
+    # an empty list to the batch update endpoint.
+    #
+    # @param object [Rentlinx::Property, Rentlinx::Unit] the object
+    #               whos amenities should be unposted
     def unpost_amenities_for(object)
       case object
       when Rentlinx::Unit
@@ -23,6 +34,11 @@ module Rentlinx
       end
     end
 
+    # Gets all the amenities for a property, dividing them into
+    # {Rentlinx::PropertyAmenity} and {Rentlinx::UnitAmenity} objects
+    #
+    # @param id [String] an ID for a property posted to Rentlinx
+    # @return an array of unit and property amenities
     def get_amenities_for_property_id(id)
       data = request('GET', "properties/#{id}/amenities")['data']
       data.map do |amenity_data|
@@ -37,11 +53,19 @@ module Rentlinx
       return []
     end
 
+    # Gets all the amenities for a unit
+    #
+    # @param unit [Rentlinx::Unit] the unit to fetch amenities for
+    # @return an array of unit amenities
     def get_amenities_for_unit(unit)
       amenities = get_amenities_for_property_id(unit.propertyID)
       amenities.select { |a| defined? a.unitID && a.unitID == unit.unitID }
     end
 
+    # Unposts a single amenity
+    #
+    # @param amenity [Rentlinx::UnitAmenity, Rentlinx::PropertyAmenity] the
+    #   amenity to be unposted
     def unpost_amenity(amenity)
       case amenity
       when Rentlinx::UnitAmenity

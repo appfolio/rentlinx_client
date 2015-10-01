@@ -1,4 +1,5 @@
 module Rentlinx
+  # An amenity on a unit
   class UnitAmenity < PropertyAmenity
     ATTRIBUTES += [:unitID]
 

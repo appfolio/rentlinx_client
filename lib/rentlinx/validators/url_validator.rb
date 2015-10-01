@@ -1,4 +1,5 @@
 module Rentlinx
+  # Validator for URLs
   class UrlValidator < BaseValidator
     private
 

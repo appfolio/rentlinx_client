@@ -1,4 +1,5 @@
 module Rentlinx
+  # Client methods for units. No public methods.
   module UnitClientMethods
     private
 

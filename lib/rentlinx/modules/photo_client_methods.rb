@@ -1,4 +1,7 @@
 module Rentlinx
+  # Client methods for photos
+  #
+  # TODO: Refactor into AttachmentClientMethods
   module PhotoClientMethods
     def post_photos(photos)
       return if photos.nil?

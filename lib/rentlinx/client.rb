@@ -9,6 +9,11 @@ require 'rentlinx/modules/amenity_client_methods'
 require 'rentlinx/modules/link_client_methods'
 
 module Rentlinx
+  # This class and its included modules encapsulate all
+  # communication directly with the Rentlinx API.
+  #
+  # It should not be interacted with, the objects provide
+  # all the functionality necessary to work with Rentlinx.
   class Client
     include Rentlinx::PropertyClientMethods
     include Rentlinx::UnitClientMethods
@@ -16,6 +21,14 @@ module Rentlinx
     include Rentlinx::AmenityClientMethods
     include Rentlinx::LinkClientMethods
 
+    # Returns a new instance of client. Avoid using.
+    #
+    # Note that the method {Rentlinx.client} initializes and caches
+    # an instance of the Rentlinx client. This method should be used
+    # instead of this one when interacting directly with the client
+    # to avoid making multiple connections to Rentlinx.
+    #
+    # Rentlinx must be configured before invoking this method.
     def initialize
       raise Rentlinx::NotConfigured if Rentlinx.username.nil? ||
                                        Rentlinx.password.nil? ||
@@ -25,6 +38,9 @@ module Rentlinx
       @api_token ||= authenticate(Rentlinx.username, Rentlinx.password)
     end
 
+    # Pushes an object's attributes out to Rentlinx
+    #
+    # @param object [Rentlinx::Base] the object to be posted
     def post(object)
       case object
       when Rentlinx::Property
@@ -38,6 +54,10 @@ module Rentlinx
       end
     end
 
+    # Unposts an object from Rentlinx
+    #
+    # @param type [Symbol] the type of object to be unposted
+    # @param id [String] the rentlinx id of the object to be unposted
     def unpost(type, id)
       case type
       when :property
@@ -49,6 +69,10 @@ module Rentlinx
       end
     end
 
+    # Pulls the attributes for an object from Rentlinx and instantiates it
+    #
+    # @param type [Symbol] the type of object to be fetched
+    # @param id [String] the rentlinx id of the object to be fetched
     def get(type, id)
       case type
       when :property
