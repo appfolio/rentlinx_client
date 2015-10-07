@@ -138,7 +138,7 @@ class ClientTest < MiniTest::Test
 
   def test_400_raises_bad_request__with_details
     request_mock = mock
-    request_mock.expects(:status).returns(400)
+    request_mock.expects(:status).returns(400).at_least(1)
     request_mock.expects(:body).returns({ details: 'This is a custom error message.' }.to_json)
     HTTPClient.any_instance.expects(:request).returns(request_mock)
 
@@ -150,7 +150,7 @@ class ClientTest < MiniTest::Test
 
   def test_400_raises_bad_request__without_details
     request_mock = mock
-    request_mock.expects(:status).returns(400)
+    request_mock.expects(:status).returns(400).at_least(1)
     request_mock.expects(:body).returns({}.to_json)
     HTTPClient.any_instance.expects(:request).returns(request_mock)
 
@@ -162,7 +162,7 @@ class ClientTest < MiniTest::Test
 
   def test_400_raises_bad_request__with_bad_json
     request_mock = mock
-    request_mock.expects(:status).returns(400)
+    request_mock.expects(:status).returns(400).at_least(1)
     request_mock.expects(:body).returns('this is not json')
     HTTPClient.any_instance.expects(:request).returns(request_mock)
 
@@ -212,7 +212,7 @@ class ClientTest < MiniTest::Test
 
   def response_stub(status_code, error_class)
     request_mock = mock
-    request_mock.expects(:status).returns(status_code)
+    request_mock.expects(:status).returns(status_code).at_least(1)
     HTTPClient.any_instance.expects(:request).returns(request_mock)
 
     assert_raises(error_class) do
