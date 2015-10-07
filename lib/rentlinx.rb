@@ -76,10 +76,13 @@ module Rentlinx
     end
 
     # The logger object
-    def logger
-      lgr = Logging.logger(STDOUT)
-      lgr.level = (@log_level || :error)
-      lgr
+    def logger(*args)
+      if args.empty?
+        @logger ||= Logging.logger(STDOUT)
+        @logger
+      else
+        @logger = args.first
+      end
     end
   end
 end
