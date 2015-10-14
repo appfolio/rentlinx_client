@@ -22,4 +22,11 @@ class PhoneValidatorTest < MiniTest::Test
     v = Rentlinx::PhoneValidator.new(nil)
     assert_equal '', v.processed_value
   end
+
+  def test_with_number_phony_thinks_is_invalid
+    # Phony will strip the zero out of this phone number :(
+    v = Rentlinx::PhoneValidator.new('3105555555')
+    assert v.valid?
+    assert_equal '3105555555', v.processed_value
+  end
 end

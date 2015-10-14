@@ -7,7 +7,6 @@ require 'mocha'
 require 'mocha/mini_test'
 require 'rentlinx'
 require 'vcr'
-require 'phony'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'
