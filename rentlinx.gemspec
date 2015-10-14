@@ -12,6 +12,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'httpclient', '~> 2.6.0'
   s.add_runtime_dependency 'json', '~> 1.8'
-  s.add_runtime_dependency 'phony', '~> 2.12'
   s.add_runtime_dependency 'logging', '~> 2.0.0'
 end
