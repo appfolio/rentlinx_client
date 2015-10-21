@@ -9,7 +9,7 @@ module Rentlinx
                   :zip, :marketingName, :hideAddress, :latitude, :longitude,
                   :website, :yearBuilt, :numUnits, :phoneNumber, :extension,
                   :faxNumber, :emailAddress, :acceptsHcv, :propertyType,
-                  :activeURL, :companyName, :leadsURL]
+                  :activeURL, :companyName, :leadsURL, :premium, :customCapAmount]
 
     REQUIRED_ATTRIBUTES = [:propertyID, :address, :city, :state, :zip,
                            :phoneNumber, :emailAddress]

@@ -58,7 +58,7 @@ class PropertyTest < MiniTest::Test
              phoneNumber: '8054523214', extension: '', faxNumber: '',
              emailAddress: 'support@appfolio.com', acceptsHcv: '',
              propertyType: '', activeURL: '', companyName: 'test company',
-             leadsURL: nil }
+             leadsURL: nil, premium: nil, customCapAmount: nil }
     assert_equal hash, property.to_hash
   end
 
@@ -67,6 +67,8 @@ class PropertyTest < MiniTest::Test
       prop = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
       prop.propertyID = 'test_property_post_method_posts_and_updates'
       prop.marketingName = 'Hello this is mad dog'
+      prop.premium = true
+      prop.customCapAmount = 1000.00
       prop.post
 
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
@@ -74,13 +76,19 @@ class PropertyTest < MiniTest::Test
       assert_equal 'Hello this is mad dog', prop.marketingName
       assert_equal 'test_property_post_method_posts_and_updates', prop.propertyID
       assert_equal 'This is a test property.', prop.description
+      assert prop.premium
+      assert_equal 1000.00, prop.customCapAmount
 
       prop.description = 'This is the new description'
+      prop.premium = false
+      prop.customCapAmount = nil
       prop.post
 
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
 
       assert_equal 'This is the new description', prop.description
+      assert_equal false, prop.premium
+      assert_nil prop.customCapAmount
     end
   end
 

@@ -42,6 +42,12 @@ module SetupMethods
   end
 end
 
+VALID_COMPANY_ATTRS = {
+  companyID: 'test-company-id',
+  capAmount: 1000.00,
+  propertyFlatCapAmount: 500.00
+}
+
 VALID_PROPERTY_ATTRS = {
   propertyID: 'test-property-id',
   description: 'This is a test property.',

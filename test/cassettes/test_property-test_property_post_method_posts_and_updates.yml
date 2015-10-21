@@ -51,7 +51,7 @@ http_interactions:
       string: '{"companyID":"test-id","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
-        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
+        555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","premium":true,"customCapAmount":1000.00,"companyName":"test
         company"}'
     headers:
       User-Agent:
@@ -90,7 +90,7 @@ http_interactions:
       string: '{"data":{"type":"property","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4"}}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4","premium":true,"customCapAmount":1000.00}}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 21:21:38 GMT
 - request:
@@ -136,7 +136,7 @@ http_interactions:
       string: '{"data":{"type":"property","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4"}}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4","premium":true,"customCapAmount":1000.00}}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 21:21:38 GMT
 - request:
@@ -147,7 +147,7 @@ http_interactions:
       string: '{"companyID":null,"propertyID":"test_property_post_method_posts_and_updates","description":"This
         is the new description","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4","companyName":null}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4","premium":false,"customCapAmount":null,"companyName":null}'
     headers:
       User-Agent:
       - Rentlinx Ruby Client 0.2.0
@@ -185,7 +185,7 @@ http_interactions:
       string: '{"data":{"type":"property","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is the new description","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5"}}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5","premium":false,"customCapAmount":null}}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 21:21:39 GMT
 - request:
@@ -231,7 +231,7 @@ http_interactions:
       string: '{"data":{"type":"property","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is the new description","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.2924940,"longitude":42.2924940,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
-        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5"}}'
+        555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-5","premium":false,"customCapAmount":null}}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 21:21:40 GMT
 recorded_with: VCR 2.9.3
