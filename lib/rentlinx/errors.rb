@@ -28,7 +28,7 @@ module Rentlinx
   # to post or update
   class InvalidObject < RentlinxError
     def initialize(object)
-      super("#{object.class} is invalid: #{object.error_messages}")
+      super("#{object.class} is invalid: #{object.validate}")
     end
   end
 

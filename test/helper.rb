@@ -42,6 +42,11 @@ module SetupMethods
   end
 end
 
+VALID_COMPANY_ATTRS = {
+  companyID: 'test-company-id',
+  companyCapAmount: '1000.00'
+}
+
 VALID_PROPERTY_ATTRS = {
   propertyID: 'test-property-id',
   description: 'This is a test property.',
@@ -49,21 +54,9 @@ VALID_PROPERTY_ATTRS = {
   city: 'Santa Barbara',
   state: 'CA',
   zip: '93117',
-  marketingName: '',
-  hideAddress: '',
-  latitude: '',
-  longitude: '',
-  website: '',
-  yearBuilt: '',
-  numUnits: '',
   phoneNumber: '(805) 452-3214',
-  extension: '',
-  faxNumber: '',
   emailAddress: 'support@appfolio.com',
-  acceptsHcv: '',
-  propertyType: '',
-  activeURL: '',
-  companyID: 'test-id',
+  companyID: 'test-company-id',
   companyName: 'test company'
 }
 

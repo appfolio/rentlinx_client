@@ -2,6 +2,7 @@ require 'httpclient'
 require 'json'
 require 'uri'
 require 'rentlinx/default'
+require 'rentlinx/modules/company_client_methods'
 require 'rentlinx/modules/property_client_methods'
 require 'rentlinx/modules/unit_client_methods'
 require 'rentlinx/modules/photo_client_methods'
@@ -15,6 +16,7 @@ module Rentlinx
   # It should not be interacted with, the objects provide
   # all the functionality necessary to work with Rentlinx.
   class Client
+    include Rentlinx::CompanyClientMethods
     include Rentlinx::PropertyClientMethods
     include Rentlinx::UnitClientMethods
     include Rentlinx::PhotoClientMethods
@@ -40,9 +42,25 @@ module Rentlinx
 
     # Pushes an object's attributes out to Rentlinx
     #
+    # @param object [Rentlinx::Base] the object to be patched
+    def patch(object)
+      case object
+      when Rentlinx::Property
+        raise Rentlinx::InvalidObject, object unless object.patch_valid?
+        patch_property(object)
+      else
+        raise TypeError, "Type not permitted: #{object.class}"
+      end
+    end
+
+    # Pushes an object's attributes out to Rentlinx
+    #
     # @param object [Rentlinx::Base] the object to be posted
     def post(object)
       case object
+      when Rentlinx::Company
+        raise Rentlinx::InvalidObject, object unless object.valid?
+        post_company(object)
       when Rentlinx::Property
         raise Rentlinx::InvalidObject, object unless object.valid?
         post_property(object)
@@ -60,6 +78,8 @@ module Rentlinx
     # @param id [String] the rentlinx id of the object to be unposted
     def unpost(type, id)
       case type
+      when :company
+        unpost_company(id)
       when :property
         unpost_property(id)
       when :unit
@@ -75,6 +95,8 @@ module Rentlinx
     # @param id [String] the rentlinx id of the object to be fetched
     def get(type, id)
       case type
+      when :company
+        Company.new(process_get("companies/#{id}"))
       when :property
         Property.new(process_get("properties/#{id}"))
       when :unit
