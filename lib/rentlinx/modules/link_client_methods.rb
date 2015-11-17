@@ -98,8 +98,8 @@ module Rentlinx
         end
       end
 
-      hash.each do |unitID, unit_links|
-        post_links_for_unit_id(unitID, unit_links)
+      hash.each do |unit_id, unit_links|
+        post_links_for_unit_id(unit_id, unit_links)
       end
     end
 
