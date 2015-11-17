@@ -11,10 +11,14 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'
   config.hook_into :webmock
-  config.filter_sensitive_data('<AUTH_KEY>') { ENV['RENTLINX_AUTH_KEY'] }
   config.filter_sensitive_data('<PASSWORD>') { ENV['RENTLINX_PASSWORD'] }
   config.filter_sensitive_data('<USERNAME>') { ENV['RENTLINX_USERNAME'] }
   config.filter_sensitive_data('http://localhost') { ENV['RENTLINX_SITE_URL'] }
+
+  config.filter_sensitive_data('{"AccessToken":"<ACCESS_TOKEN>"}') do |i|
+    body = i.response.body
+    body =~ /{"AccessToken":"([A-Z0-9-]+)"}/ ? body : nil
+  end
 
   config.before_record do |i|
     i.request.headers.delete('Authentication-Token')

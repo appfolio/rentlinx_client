@@ -40,7 +40,7 @@ http_interactions:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"<ACCESS_TOKEN>"}'
     http_version:
   recorded_at: Fri, 26 Jun 2015 23:55:20 GMT
 - request:
