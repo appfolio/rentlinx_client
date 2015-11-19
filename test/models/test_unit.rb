@@ -77,7 +77,7 @@ class UnitTest < MiniTest::Test
 
     assert !unit.valid?
     expected = { unitID: 'is missing' }
-    assert_equal expected, unit.error_messages
+    assert_equal expected, unit.validate
   end
 
   def test_unit_unpost_method

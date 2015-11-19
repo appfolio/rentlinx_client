@@ -40,7 +40,7 @@ http_interactions:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"AccessToken":"<AUTH-TOKEN>"}'
+      string: '{"AccessToken":"<ACCESS_TOKEN>"}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 21:21:37 GMT
 - request:
@@ -48,7 +48,7 @@ http_interactions:
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
     body:
       encoding: UTF-8
-      string: '{"companyID":"test-id","propertyID":"test_property_post_method_posts_and_updates","description":"This
+      string: '{"companyID":"test-company-id","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":"","latitude":"","longitude":"","website":"","yearBuilt":"","numUnits":"","phoneNumber":"(805)
         555-5554","extension":"","faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":"","propertyType":"","activeURL":"","companyName":"test
@@ -144,7 +144,7 @@ http_interactions:
     uri: http://localhost/properties/test_property_post_method_posts_and_updates
     body:
       encoding: UTF-8
-      string: '{"companyID":null,"propertyID":"test_property_post_method_posts_and_updates","description":"This
+      string: '{"companyID":"test-company-id","propertyID":"test_property_post_method_posts_and_updates","description":"This
         is the new description","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"Hello
         this is mad dog","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":"(805)
         555-5554","extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-4","companyName":null}'

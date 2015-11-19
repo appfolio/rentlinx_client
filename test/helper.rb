@@ -11,10 +11,14 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'
   config.hook_into :webmock
-  config.filter_sensitive_data('<AUTH_KEY>') { ENV['RENTLINX_AUTH_KEY'] }
   config.filter_sensitive_data('<PASSWORD>') { ENV['RENTLINX_PASSWORD'] }
   config.filter_sensitive_data('<USERNAME>') { ENV['RENTLINX_USERNAME'] }
   config.filter_sensitive_data('http://localhost') { ENV['RENTLINX_SITE_URL'] }
+
+  config.filter_sensitive_data('{"AccessToken":"<ACCESS_TOKEN>"}') do |i|
+    body = i.response.body
+    body =~ /{"AccessToken":"([A-Z0-9-]+)"}/ ? body : nil
+  end
 
   config.before_record do |i|
     i.request.headers.delete('Authentication-Token')
@@ -42,6 +46,11 @@ module SetupMethods
   end
 end
 
+VALID_COMPANY_ATTRS = {
+  companyID: 'test-company-id',
+  companyCapAmount: '1000.00'
+}
+
 VALID_PROPERTY_ATTRS = {
   propertyID: 'test-property-id',
   description: 'This is a test property.',
@@ -49,21 +58,9 @@ VALID_PROPERTY_ATTRS = {
   city: 'Santa Barbara',
   state: 'CA',
   zip: '93117',
-  marketingName: '',
-  hideAddress: '',
-  latitude: '',
-  longitude: '',
-  website: '',
-  yearBuilt: '',
-  numUnits: '',
   phoneNumber: '(805) 452-3214',
-  extension: '',
-  faxNumber: '',
   emailAddress: 'support@appfolio.com',
-  acceptsHcv: '',
-  propertyType: '',
-  activeURL: '',
-  companyID: 'test-id',
+  companyID: 'test-company-id',
   companyName: 'test company'
 }
 

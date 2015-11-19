@@ -8,11 +8,11 @@ http_interactions:
       string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.1.0
       Accept:
       - "*/*"
       Date:
-      - Fri, 10 Jul 2015 22:48:08 GMT
+      - Thu, 18 Jun 2015 17:47:21 GMT
       Content-Type:
       - application/json
   response:
@@ -35,27 +35,27 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 10 Jul 2015 22:44:36 GMT
+      - Thu, 18 Jun 2015 17:43:32 GMT
       Content-Length:
       - '54'
     body:
       encoding: UTF-8
       string: '{"AccessToken":"<ACCESS_TOKEN>"}'
     http_version:
-  recorded_at: Fri, 10 Jul 2015 22:48:21 GMT
+  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
 - request:
     method: get
-    uri: http://localhost/properties/test-property-id/photos
+    uri: http://localhost/companies/test-company-id
     body:
       encoding: UTF-8
       string: 'null'
     headers:
       User-Agent:
-      - Rentlinx Ruby Client 0.4.4
+      - Rentlinx Ruby Client 0.1.0
       Accept:
       - "*/*"
       Date:
-      - Fri, 10 Jul 2015 22:48:21 GMT
+      - Thu, 18 Jun 2015 17:47:21 GMT
       Content-Type:
       - application/json
   response:
@@ -78,16 +78,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 10 Jul 2015 22:44:38 GMT
+      - Thu, 18 Jun 2015 17:43:32 GMT
       Content-Length:
-      - '667'
+      - '529'
     body:
       encoding: UTF-8
-      string: '{"data":[{"type":"photo","url":"http://alexstandke.com/img/me.png","caption":"This
-        is a photo of my house","position":0,"propertyID":"test-property-id","unitID":null},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
-        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-id"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
-        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-two"},{"type":"photo","url":"http://alexstandke.com/img/contact-banner.jpg","caption":"This
-        is a photo of my unit","position":0,"propertyID":null,"unitID":"test-unit-three"}]}'
+      string: '{"data":{"type":"company","companyID":"test-company-id","companyCapAmount":"1000.00"}}'
     http_version:
-  recorded_at: Fri, 10 Jul 2015 22:48:24 GMT
+  recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
 recorded_with: VCR 2.9.3

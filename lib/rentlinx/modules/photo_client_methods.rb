@@ -71,8 +71,8 @@ module Rentlinx
         end
       end
 
-      hash.each do |unitID, unit_photos|
-        post_photos_for_unit_id(unitID, unit_photos)
+      hash.each do |unit_id, unit_photos|
+        post_photos_for_unit_id(unit_id, unit_photos)
       end
     end
 

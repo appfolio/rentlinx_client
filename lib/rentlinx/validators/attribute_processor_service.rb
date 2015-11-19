@@ -1,5 +1,6 @@
 require 'rentlinx/validators/base_validator'
 require 'rentlinx/validators/address_validator'
+require 'rentlinx/validators/amount_validator'
 require 'rentlinx/validators/city_validator'
 require 'rentlinx/validators/phone_validator'
 require 'rentlinx/validators/state_validator'
@@ -37,7 +38,9 @@ module Rentlinx
                      zip: ZipValidator,
                      leadsURL: UrlValidator,
                      city: CityValidator,
-                     address: AddressValidator }
+                     address: AddressValidator,
+                     capAmount: AmountValidator,
+                     companyCapAmount: AmountValidator }
 
       @attrs.each do |field, val|
         next unless validators.keys.include?(field)

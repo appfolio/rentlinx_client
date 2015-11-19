@@ -14,6 +14,12 @@ module Rentlinx
 
     private
 
+    def patch_property(prop)
+      return false unless prop.patch_valid?
+      # TODO: change to 'PATCH' once Rentlinx supports it
+      request('PUT', "properties/#{prop.propertyID}", prop.to_hash)
+    end
+
     def post_property(prop)
       return false unless prop.valid?
       request('PUT', "properties/#{prop.propertyID}", prop.to_hash)

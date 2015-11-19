@@ -16,6 +16,7 @@ module Rentlinx
     #
     # @param attrs [Hash] a hash of attributes to save.
     def initialize(attrs)
+      @original_attrs = attrs.dup
       @processor = AttributeProcessor.new(attrs.dup)
       attrs = @processor.process
       attributes.each do |at|
@@ -43,6 +44,15 @@ module Rentlinx
     #
     # @example
     #     prop = Rentlinx::Property.new(attrs)
+    #     prop.patch
+    def patch
+      Rentlinx.client.patch(self)
+    end
+
+    # Sends the object to Rentlinx
+    #
+    # @example
+    #     prop = Rentlinx::Property.new(attrs)
     #     prop.post
     def post
       Rentlinx.client.post(self)
@@ -54,7 +64,7 @@ module Rentlinx
     #     prop = Rentlinx::Property.new(attrs)
     #     prop.unpost
     def unpost
-      Rentlinx.client.unpost(type, send(type.to_s + 'ID'))
+      Rentlinx.client.unpost(type, send(identity))
     end
 
     # Converts the object to a hash
@@ -62,30 +72,44 @@ module Rentlinx
     # @return a hash including the attributes and values
     def to_hash
       {}.tap do |hash|
-        attributes.each do |at|
+        @original_attrs.keys.each do |at|
           hash[at] = send(at)
         end
       end
     end
 
-    # Determines the validity of the object
+    # Determines the validity of the object for post
     #
     # @return true if valid, false if invalid
     def valid?
-      error_messages.empty?
+      validate.empty?
+    end
+
+    # Determines the validity of the object for patch
+    #
+    # @return true if valid, false if invalid
+    def patch_valid?
+      validate(false).empty?
     end
 
     # Provides error messages on invalid objects
     #
+    # @param check_required_attributes whether to check for required attributes
     # @return a hash of error messages
-    def error_messages
+    def validate(check_required_attributes = true)
       @processor = AttributeProcessor.new(to_hash)
       @processor.process
 
-      missing_attrs = required_attributes.select { |at| blank?(send(at)) }
+      # object identity is always required, even for patches
+      missing_errors = {}
+      missing_errors[identity.to_sym] = 'is missing' if self.class.method_defined?(identity) && blank?(send(identity))
 
-      missing_errors = missing_attrs.each_with_object({}) do |at, obj|
-        obj[at] = 'is missing'
+      if check_required_attributes
+        missing_attrs = required_attributes.select { |at| blank?(send(at)) }
+
+        missing_attrs.each do |at|
+          missing_errors[at] = 'is missing'
+        end
       end
 
       @processor.errors.merge(missing_errors)
@@ -107,6 +131,10 @@ module Rentlinx
 
     def self.type
       name.split('::').last.downcase.to_sym
+    end
+
+    def identity
+      type.to_s + 'ID'
     end
 
     def blank?(str)

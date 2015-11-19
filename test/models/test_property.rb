@@ -50,15 +50,12 @@ class PropertyTest < MiniTest::Test
 
   def test_to_hash
     property = Rentlinx::Property.new(VALID_PROPERTY_ATTRS)
-    hash = { companyID: 'test-id', propertyID: 'test-property-id',
+    hash = { companyID: 'test-company-id', propertyID: 'test-property-id',
              description: 'This is a test property.', address: '55 Castilian',
              city: 'Santa Barbara', state: 'CA', zip: '93117',
-             marketingName: '', hideAddress: '', latitude: '', longitude: '',
-             website: '', yearBuilt: '', numUnits: '',
-             phoneNumber: '8054523214', extension: '', faxNumber: '',
-             emailAddress: 'support@appfolio.com', acceptsHcv: '',
-             propertyType: '', activeURL: '', companyName: 'test company',
-             leadsURL: nil }
+             phoneNumber: '8054523214',
+             emailAddress: 'support@appfolio.com',
+             companyName: 'test company' }
     assert_equal hash, property.to_hash
   end
 
@@ -81,6 +78,30 @@ class PropertyTest < MiniTest::Test
       prop = Rentlinx::Property.from_id('test_property_post_method_posts_and_updates')
 
       assert_equal 'This is the new description', prop.description
+    end
+  end
+
+  def test_property_patch_method
+    use_vcr do
+      h = {
+        propertyID: 'test-property-id',
+        address: '55 Castilian',
+        city: 'Santa Barbara',
+        state: 'CA',
+        zip: '93117',
+        phoneNumber: '(805) 452-3214',
+        emailAddress: 'support@appfolio.com'
+      }
+      prop = Rentlinx::Property.new(h)
+      prop.post
+
+      h2 = {
+        propertyID: 'test-property-id',
+        premium: true,
+        capAmount: '100.00'
+      }
+      prop2 = Rentlinx::Property.new(h2)
+      prop2.patch
     end
   end
 
@@ -115,7 +136,7 @@ class PropertyTest < MiniTest::Test
       propertyID: 'is missing',
       address: 'is missing'
     }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
   end
 
   def test_error_messages__invalid_phone
@@ -125,22 +146,22 @@ class PropertyTest < MiniTest::Test
     prop.phoneNumber = '3'
     assert !prop.valid?
     expected_errors = { phoneNumber: '3 is not a valid phone number' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.phoneNumber = '33413412341234123412344123412341240'
     assert !prop.valid?
     expected_errors = { phoneNumber: '33413412341234123412344123412341240 is not a valid phone number' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.phoneNumber = '7032087'
     assert !prop.valid?
     expected_errors = { phoneNumber: '7032087 is not a valid phone number' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.phoneNumber = '1111111111'
     assert !prop.valid?
     expected_errors = { phoneNumber: '1111111111 is not a valid phone number' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
   end
 
   def test_error_messages_invalid_state
@@ -150,27 +171,27 @@ class PropertyTest < MiniTest::Test
     prop.state = 'Merica'
     assert !prop.valid?
     expected_errors = { state: 'Merica is not a valid state, states must be two characters (CA)' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.state = '49'
     assert !prop.valid?
     expected_errors = { state: '49 is not a valid state, states must be two characters (CA)' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.state = 'CA'
     assert prop.valid?
     expected_errors = {}
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.state = 'ny'
     assert prop.valid?
     expected_errors = {}
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.state = 'WW'
     assert !prop.valid?
     expected_errors = { state: 'WW is not a valid state, states must be two characters (CA)' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
   end
 
   def test_error_messages_invalid_zip
@@ -180,17 +201,17 @@ class PropertyTest < MiniTest::Test
     prop.zip = '3'
     assert !prop.valid?
     expected_errors = { zip: '3 is not a valid zip code, zip codes must be five digits (93117) or five digits, a dash, and four digits (93117-1234)' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.zip = '314159'
     assert !prop.valid?
     expected_errors = { zip: '314159 is not a valid zip code, zip codes must be five digits (93117) or five digits, a dash, and four digits (93117-1234)' }
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
 
     prop.zip = '91304'
     assert prop.valid?
     expected_errors = {}
-    assert_equal expected_errors, prop.error_messages
+    assert_equal expected_errors, prop.validate
   end
 
   def test_class_unpost
