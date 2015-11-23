@@ -6,8 +6,7 @@ module Rentlinx
     private
 
     def validate
-      @value.sub!(/^0+/, '') unless @value.nil?
-      return if @value.to_s =~ /[1-9]\d*(\.\d{1,2})?/
+      return if !@value.nil? && @value.is_a?(Numeric) && @value >= 0
       @error = "'#{@value}' is not a valid amount."
     end
   end

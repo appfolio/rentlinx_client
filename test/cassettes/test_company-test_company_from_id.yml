@@ -83,7 +83,7 @@ http_interactions:
       - '529'
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"company","companyID":"test-company-id","companyCapAmount":"1000.00"}}'
+      string: '{"data":{"type":"company","companyID":"test-company-id","companyCapAmount":0.1E4}}'
     http_version:
   recorded_at: Thu, 18 Jun 2015 17:47:21 GMT
 recorded_with: VCR 2.9.3

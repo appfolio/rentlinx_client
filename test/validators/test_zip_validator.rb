@@ -22,9 +22,9 @@ class ZipValidatorTest < MiniTest::Test
 
   def test_processed_value
     v = Rentlinx::ZipValidator.new('93101')
-    assert '93101', v.processed_value
+    assert_equal '93101', v.processed_value
 
     v = Rentlinx::ZipValidator.new('93101-1234')
-    assert '93101-1234', v.processed_value
+    assert_equal '93101-1234', v.processed_value
   end
 end

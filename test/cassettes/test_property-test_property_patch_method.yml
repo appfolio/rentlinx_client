@@ -93,7 +93,7 @@ http_interactions:
     uri: http://localhost/properties/test-property-id
     body:
       encoding: UTF-8
-      string: '{"propertyID":"test-property-id","premium":true,"capAmount":"100.00"}'
+      string: '{"propertyID":"test-property-id","premium":true,"capAmount":100.0}'
     headers:
       User-Agent:
       - Rentlinx Ruby Client 0.9.3

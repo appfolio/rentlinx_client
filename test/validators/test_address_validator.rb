@@ -16,6 +16,6 @@ class AddressValidatorTest < MiniTest::Test
 
   def test_processed_value
     v = Rentlinx::AddressValidator.new('50 Castilian Dr.')
-    assert '50 Castilian Dr.', v.processed_value
+    assert_equal '50 Castilian Dr.', v.processed_value
   end
 end

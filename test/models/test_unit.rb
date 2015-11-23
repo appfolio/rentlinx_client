@@ -118,7 +118,7 @@ class UnitTest < MiniTest::Test
   def test_add_photo
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     unit.add_photo(url: 'http://asdf.com/wat.png', caption: 'this is a picture')
-    assert 1, unit.photos.size
+    assert_equal 1, unit.photos.size
     assert_equal 'this is a picture', unit.photos.first.caption
     assert_equal unit.propertyID, unit.photos.first.propertyID
     assert_equal unit.unitID, unit.photos.first.unitID
@@ -143,7 +143,7 @@ class UnitTest < MiniTest::Test
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     unit.add_amenity(name: '12 Months', details: 'We like long-term commitments')
 
-    assert 1, unit.amenities.size
+    assert_equal 1, unit.amenities.size
     assert_equal '12 Months', unit.amenities.first.name
     assert_equal 'We like long-term commitments', unit.amenities.first.details
     assert_equal unit.propertyID, unit.amenities.first.propertyID
@@ -169,7 +169,7 @@ class UnitTest < MiniTest::Test
     unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
     unit.add_link(title: '12 Months', url: 'http://www.youtube.com/')
 
-    assert 1, unit.links.size
+    assert_equal 1, unit.links.size
     assert_equal '12 Months', unit.links.first.title
     assert_equal 'http://www.youtube.com/', unit.links.first.url
     assert_equal unit.propertyID, unit.links.first.propertyID
