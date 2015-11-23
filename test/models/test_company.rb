@@ -24,7 +24,7 @@ class CompanyTest < MiniTest::Test
     use_vcr do
       prop = Rentlinx::Company.from_id('test-company-id')
 
-      assert prop.valid?
+      assert_empty prop.validate
       assert_equal 'test-company-id', prop.companyID
     end
   end

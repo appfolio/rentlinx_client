@@ -16,6 +16,6 @@ class CityValidatorTest < MiniTest::Test
 
   def test_processed_value
     v = Rentlinx::CityValidator.new('Los Angeles')
-    assert 'Los Angeles', v.processed_value
+    assert_equal 'Los Angeles', v.processed_value
   end
 end

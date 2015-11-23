@@ -48,7 +48,7 @@ end
 
 VALID_COMPANY_ATTRS = {
   companyID: 'test-company-id',
-  companyCapAmount: '1000.00'
+  companyCapAmount: BigDecimal.new('1000.00')
 }
 
 VALID_PROPERTY_ATTRS = {

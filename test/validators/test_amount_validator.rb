@@ -16,24 +16,9 @@ class AmountValidatorTest < MiniTest::Test
   end
 
   def test_validate__valid
-    v = Rentlinx::AmountValidator.new('050')
+    v = Rentlinx::AmountValidator.new(BigDecimal.new('05.2'))
     assert v.valid?
-    assert '50', v.processed_value
-
-    v = Rentlinx::AmountValidator.new('50')
-    assert v.valid?
-    assert '50', v.processed_value
-
-    v = Rentlinx::AmountValidator.new('50.0')
-    assert v.valid?
-    assert '50.0', v.processed_value
-
-    v = Rentlinx::AmountValidator.new('50.01')
-    assert v.valid?
-    assert '50.01', v.processed_value
-
-    v = Rentlinx::AmountValidator.new('100.00')
-    assert v.valid?
-    assert '100.00', v.processed_value
+    assert_equal BigDecimal, v.processed_value.class
+    assert_equal '0.52E1', v.processed_value.to_s
   end
 end
