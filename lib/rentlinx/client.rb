@@ -8,6 +8,7 @@ require 'rentlinx/modules/unit_client_methods'
 require 'rentlinx/modules/photo_client_methods'
 require 'rentlinx/modules/amenity_client_methods'
 require 'rentlinx/modules/link_client_methods'
+require 'rentlinx/modules/lead_client_methods'
 
 module Rentlinx
   # This class and its included modules encapsulate all
@@ -22,6 +23,7 @@ module Rentlinx
     include Rentlinx::PhotoClientMethods
     include Rentlinx::AmenityClientMethods
     include Rentlinx::LinkClientMethods
+    include Rentlinx::LeadClientMethods
 
     # Returns a new instance of client. Avoid using.
     #
@@ -57,16 +59,17 @@ module Rentlinx
     #
     # @param object [Rentlinx::Base] the object to be posted
     def post(object)
+      raise Rentlinx::InvalidObject, object if object.respond_to?(:valid?) && !object.valid?
+
       case object
       when Rentlinx::Company
-        raise Rentlinx::InvalidObject, object unless object.valid?
         post_company(object)
       when Rentlinx::Property
-        raise Rentlinx::InvalidObject, object unless object.valid?
         post_property(object)
       when Rentlinx::Unit
-        raise Rentlinx::InvalidObject, object unless object.valid?
         post_unit(object)
+      when Rentlinx::Lead
+        post_lead(object)
       else
         raise TypeError, "Type not permitted: #{object.class}"
       end
