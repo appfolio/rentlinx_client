@@ -31,8 +31,8 @@ module Rentlinx
     #     rentlinx.site_url 'https://rentlinx.com/api/v2'
     #     rentlinx.log_level :error
     #   end
-    def configure(&block)
-      block.call(self)
+    def configure
+      yield(self)
     end
 
     # Sets and retrieves the username used to log in to Rentlinx

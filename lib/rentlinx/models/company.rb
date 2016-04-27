@@ -1,9 +1,9 @@
 module Rentlinx
   # An object that represents a Rentlinx company.
   class Company < Base
-    ATTRIBUTES = [:companyID, :companyCapAmount]
+    ATTRIBUTES = [:companyID, :companyCapAmount].freeze
 
-    REQUIRED_ATTRIBUTES = [:companyID]
+    REQUIRED_ATTRIBUTES = [:companyID].freeze
 
     attr_accessor(*ATTRIBUTES)
 

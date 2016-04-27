@@ -1,9 +1,9 @@
 module Rentlinx
   # A photo on a property
   class PropertyPhoto < Base
-    ATTRIBUTES = [:url, :caption, :position, :propertyID, :unitID]
+    ATTRIBUTES = [:url, :caption, :position, :propertyID, :unitID].freeze
 
-    REQUIRED_ATTRIBUTES = [:url, :propertyID]
+    REQUIRED_ATTRIBUTES = [:url, :propertyID].freeze
 
     attr_accessor(*ATTRIBUTES)
 

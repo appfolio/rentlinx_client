@@ -10,10 +10,10 @@ module Rentlinx
                   :website, :yearBuilt, :numUnits, :phoneNumber, :extension,
                   :faxNumber, :emailAddress, :acceptsHcv, :propertyType,
                   :activeURL, :companyName, :leadsURL,
-                  :premium, :capAmount]
+                  :premium, :capAmount].freeze
 
     REQUIRED_ATTRIBUTES = [:propertyID, :address, :city, :state, :zip,
-                           :phoneNumber, :emailAddress]
+                           :phoneNumber, :emailAddress].freeze
 
     attr_accessor(*ATTRIBUTES)
 
