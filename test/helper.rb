@@ -49,7 +49,7 @@ end
 VALID_COMPANY_ATTRS = {
   companyID: 'test-company-id',
   companyCapAmount: BigDecimal.new('1000.00')
-}
+}.freeze
 
 VALID_PROPERTY_ATTRS = {
   propertyID: 'test-property-id',
@@ -62,7 +62,7 @@ VALID_PROPERTY_ATTRS = {
   emailAddress: 'support@appfolio.com',
   companyID: 'test-company-id',
   companyName: 'test company'
-}
+}.freeze
 
 VALID_UNIT_ATTRS = {
   propertyID: 'test-property-id',
@@ -87,7 +87,7 @@ VALID_UNIT_ATTRS = {
   dateLeasedThrough: '',
   numUnits: '',
   numAvailable: ''
-}
+}.freeze
 
 VALID_PROPERTY_PHOTO_ATTRS = {
   propertyID: 'test-property-id',
@@ -95,7 +95,7 @@ VALID_PROPERTY_PHOTO_ATTRS = {
   url: 'http://alexstandke.com/img/me.png',
   caption: 'This is a photo of my house',
   # position: 1,
-}
+}.freeze
 
 VALID_UNIT_PHOTO_ATTRS = {
   propertyID: 'test-property-id',
@@ -103,30 +103,30 @@ VALID_UNIT_PHOTO_ATTRS = {
   url: 'http://alexstandke.com/img/contact-banner.jpg',
   caption: 'This is a photo of my unit',
   # position: 1,
-}
+}.freeze
 
 VALID_PROPERTY_AMENITY_ATTRS = {
   propertyID: 'test-property-amenity-id',
   name: 'Garbage Disposal',
   details: 'Some details about your garbage'
-}
+}.freeze
 
 VALID_UNIT_AMENITY_ATTRS = {
   propertyID: 'test-property-amenity-id',
   unitID: 'test-unit-amenity-id',
   name: 'No Dogs Allowed',
   details: 'We do not like dogs'
-}
+}.freeze
 
 VALID_PROPERTY_LINK_ATTRS = {
   propertyID: 'test-property-link-id',
   url: 'http://google.com/',
   title: 'Ring ding'
-}
+}.freeze
 
 VALID_UNIT_LINK_ATTRS = {
   propertyID: 'test-property-link-id',
   unitID: 'sebastiens forest hut',
   url: 'http://youtube.com/',
   title: 'Only You Can Prevent Wildfires!'
-}
+}.freeze

@@ -12,7 +12,7 @@ module Rentlinx
     def post_photos
       return if @photos.nil?
 
-      if @photos.length == 0
+      if @photos.empty?
         Rentlinx.client.unpost_photos_for(self)
       else
         Rentlinx.client.post_photos(@photos)
@@ -32,8 +32,8 @@ module Rentlinx
     end
 
     def add_photo(options)
-      options.merge!(propertyID: propertyID)
-      options.merge!(unitID: unitID) if defined? unitID
+      options[:propertyID] = propertyID
+      options[:unitID] = unitID if defined? unitID
       @photos ||= []
       @photos << photo_class.new(options)
     end

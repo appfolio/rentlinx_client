@@ -10,9 +10,9 @@ module Rentlinx
                   :bedrooms, :fullBaths, :halfBaths, :isMobilityAccessible,
                   :isVisionAccessible, :isHearingAccessible, :rentIsBasedOnIncome,
                   :isOpenToLease, :dateAvailable, :dateLeasedThrough, :numUnits,
-                  :numAvailable]
+                  :numAvailable].freeze
 
-    REQUIRED_ATTRIBUTES = [:unitID]
+    REQUIRED_ATTRIBUTES = [:unitID].freeze
 
     attr_accessor(*ATTRIBUTES)
 

@@ -56,7 +56,7 @@ module Rentlinx
     #
     # @return [Boolean] true if valid, false if not
     def valid?
-      @errors.size == 0
+      @errors.empty?
     end
   end
 end

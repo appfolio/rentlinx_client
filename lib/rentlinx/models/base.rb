@@ -23,7 +23,7 @@ module Rentlinx
         send("#{at}=", attrs[at])
       end
       remaining_attrs = attrs.keys - attributes
-      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" if remaining_attrs.compact.size > 0
+      raise UnexpectedAttributes, "Unexpected Attributes: #{remaining_attrs.join(', ')}" unless remaining_attrs.compact.empty?
     end
 
     # Provides a list of attributes supported by the class.
@@ -117,20 +117,22 @@ module Rentlinx
 
     private
 
-    def self.unpost(id)
-      Rentlinx.client.unpost(type, id)
-    end
+    class << self
+      def unpost(id)
+        Rentlinx.client.unpost(type, id)
+      end
 
-    def self.get_from_id(type, id)
-      Rentlinx.client.get(type.to_sym, id)
+      def get_from_id(type, id)
+        Rentlinx.client.get(type.to_sym, id)
+      end
+
+      def type
+        name.split('::').last.downcase.to_sym
+      end
     end
 
     def type
       self.class.type
-    end
-
-    def self.type
-      name.split('::').last.downcase.to_sym
     end
 
     def identity
