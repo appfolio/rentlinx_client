@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost/authentication/login
+    body:
+      encoding: UTF-8
+      string: '{"username":"<USERNAME>","password":"<PASSWORD>"}'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.9.6
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 27 Apr 2016 21:03:18 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 27 Apr 2016 21:03:14 GMT
+      Content-Length:
+      - '54'
+    body:
+      encoding: UTF-8
+      string: '{"AccessToken":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Wed, 27 Apr 2016 21:03:18 GMT
+- request:
+    method: get
+    uri: http://localhost/properties/test-property-id/websites
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Rentlinx Ruby Client 0.9.6
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 27 Apr 2016 21:03:18 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 27 Apr 2016 21:03:16 GMT
+      Content-Length:
+      - '9568'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":"http://www.showmetherent.rentlinx.com/Property.aspx?PropertyID=2216547","listing_name":"Show
+        Me The Rent","error_id":0,"error_remark":null,"status":"Live Now","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":"http://www.rentalads.rentlinx.com/Property.aspx?PropertyID=2216547","listing_name":"RentalAds.com","error_id":0,"error_remark":null,"status":"Live
+        Now","placement":"Exclusive","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":"http://www.e7d40b6bbfc24abcb14744646d6b6e1a.rentlinx.com/Property.aspx?PropertyID=2216547","listing_name":"test
+        company","error_id":0,"error_remark":null,"status":"Live Now","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Abodo","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Apartable","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Apartment
+        Guide","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":"RentPath
+        Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Apartment
+        List","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Apartments.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"CallitHome","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"CampusCribz","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Condo.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"EveryRent","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Homes.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"HotPads","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":"Zillow
+        Rental Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"House
+        Rentals","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Houses.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":"Condo.com"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Hunt","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"iRent.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Listanza","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Lovely","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Move.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"MyNewPlace.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Nestigator","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"PadMapper","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RadPad","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RealRentals","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Realtor.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Rent
+        MLS","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Rent.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":"RentPath
+        Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentalHouses.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":"RentPath
+        Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Rentals.com","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":"RentPath
+        Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentFocus","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentHop","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentJungle","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentLingo","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"RentPath
+        Network","error_id":0,"error_remark":null,"status":"Submitted","placement":"Exclusive","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Trovit","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Trulia","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":"Zillow
+        Rental Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"uCribs","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Uloop","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"USAA
+        Home Circle","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":"Vast"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Vast","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Walk
+        Score","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Zillow","error_id":0,"error_remark":null,"status":"Submitted","placement":"Free","network":"Zillow
+        Rental Network"},{"type":"property_website","property_id":"test-property-id","unit_id":null,"url":null,"listing_name":"Zumper","error_id":0,"error_remark":null,"status":"Submitted","placement":"Featured","network":null}]}'
+    http_version: 
+  recorded_at: Wed, 27 Apr 2016 21:03:20 GMT
+recorded_with: VCR 2.9.3

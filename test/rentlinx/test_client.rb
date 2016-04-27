@@ -208,6 +208,22 @@ class ClientTest < MiniTest::Test
     end
   end
 
+  def test_websites
+    use_vcr do
+      client = Rentlinx::Client.new
+
+      data = client.get_websites('test-property-id')
+      assert data.is_a?(Array)
+      assert_equal 45, data.size
+
+      website = data.first
+      assert website.is_a?(Hash)
+      assert_equal 'property_website', website['type']
+      assert_equal 'Featured', website['placement']
+      assert_equal 'Live Now', website['status']
+    end
+  end
+
   private
 
   def response_stub(status_code, error_class)
