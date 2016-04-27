@@ -6,8 +6,8 @@ group :test do
   gem 'coveralls'
   gem 'minitest'
   gem 'rake'
-  gem 'vcr'
-  gem 'webmock'
+  gem 'vcr', '2.9.3'
+  gem 'webmock', '1.22.6'
   gem 'mocha'
 end
 
