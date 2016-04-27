@@ -17,7 +17,7 @@ module Rentlinx
     def post_links
       return if @links.nil?
 
-      if @links.length == 0
+      if @links.empty?
         Rentlinx.client.unpost_links_for(self)
       else
         Rentlinx.client.post_links(@links)
@@ -45,8 +45,8 @@ module Rentlinx
     end
 
     def add_link(options)
-      options.merge!(propertyID: propertyID)
-      options.merge!(unitID: unitID) if defined? unitID
+      options[:propertyID] = propertyID
+      options[:unitID] = unitID if defined? unitID
       @links ||= []
       @links << link_class.new(options)
     end

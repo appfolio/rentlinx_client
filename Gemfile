@@ -6,11 +6,11 @@ group :test do
   gem 'coveralls'
   gem 'minitest'
   gem 'rake'
-  gem 'vcr'
-  gem 'webmock'
+  gem 'vcr', '2.9.3'
+  gem 'webmock', '1.22.6'
   gem 'mocha'
 end
 
 group :development do
-  gem 'rubocop'
+  gem 'rubocop', '0.39.0'
 end

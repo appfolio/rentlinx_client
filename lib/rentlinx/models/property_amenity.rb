@@ -1,9 +1,9 @@
 module Rentlinx
   # An amenity on a propery
   class PropertyAmenity < Base
-    ATTRIBUTES = [:details, :name, :propertyID]
+    ATTRIBUTES = [:details, :name, :propertyID].freeze
 
-    REQUIRED_ATTRIBUTES = [:name, :propertyID]
+    REQUIRED_ATTRIBUTES = [:name, :propertyID].freeze
 
     attr_accessor(*ATTRIBUTES)
 

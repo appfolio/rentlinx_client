@@ -17,7 +17,7 @@ module Rentlinx
     def post_amenities
       return if @amenities.nil?
 
-      if @amenities.length == 0
+      if @amenities.empty?
         Rentlinx.client.unpost_amenities_for(self)
       else
         Rentlinx.client.post_amenities(@amenities)
@@ -58,8 +58,8 @@ module Rentlinx
     #   {Rentlinx::PropertyAmenity}
     # @return the updated list of amenities on the object
     def add_amenity(options)
-      options.merge!(propertyID: propertyID)
-      options.merge!(unitID: unitID) if defined? unitID
+      options[:propertyID] = propertyID
+      options[:unitID] = unitID if defined? unitID
       @amenities ||= []
       @amenities << amenity_class.new(options)
     end

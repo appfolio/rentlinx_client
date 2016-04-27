@@ -1,9 +1,9 @@
 module Rentlinx
   # A link on a property
   class PropertyLink < Base
-    ATTRIBUTES = [:propertyID, :title, :url]
+    ATTRIBUTES = [:propertyID, :title, :url].freeze
 
-    REQUIRED_ATTRIBUTES = [:propertyID, :title, :url]
+    REQUIRED_ATTRIBUTES = [:propertyID, :title, :url].freeze
 
     attr_accessor(*ATTRIBUTES)
 
