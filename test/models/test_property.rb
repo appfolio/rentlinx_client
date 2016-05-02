@@ -316,4 +316,9 @@ class PropertyTest < MiniTest::Test
     assert_equal 'http://www.youtube.com/', prop.links.first.url
     assert_equal prop.propertyID, prop.links.first.propertyID
   end
+
+  def test_websites
+    Rentlinx::Client.any_instance.expects(:get_websites).with('test-id').returns('data' => [])
+    Rentlinx::Property.websites('test-id')
+  end
 end

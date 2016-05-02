@@ -58,6 +58,14 @@ module Rentlinx
       get_from_id(:property, id)
     end
 
+    # Asks rentlinx for a list of places where the property is posted
+    #
+    # @param id [String] the rentlinx id of the property
+    # @return a list of hashes
+    def self.websites(id)
+      Rentlinx.client.get_websites(id)
+    end
+
     include Rentlinx::Photoable
     # For internal use.
     def photo_class

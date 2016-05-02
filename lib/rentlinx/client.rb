@@ -9,6 +9,7 @@ require 'rentlinx/modules/photo_client_methods'
 require 'rentlinx/modules/amenity_client_methods'
 require 'rentlinx/modules/link_client_methods'
 require 'rentlinx/modules/lead_client_methods'
+require 'rentlinx/modules/websites_client_methods'
 
 module Rentlinx
   # This class and its included modules encapsulate all
@@ -24,6 +25,7 @@ module Rentlinx
     include Rentlinx::AmenityClientMethods
     include Rentlinx::LinkClientMethods
     include Rentlinx::LeadClientMethods
+    include Rentlinx::WebsitesClientMethods
 
     # Returns a new instance of client. Avoid using.
     #
