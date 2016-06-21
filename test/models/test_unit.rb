@@ -53,6 +53,7 @@ class UnitTest < MiniTest::Test
       unit = Rentlinx::Unit.new(VALID_UNIT_ATTRS)
       unit.unitID = 'test_unit_post_method_posts_and_updates'
       unit.description = 'Hello this is mad dog'
+      unit.address = '123 Super Fake Street'
       unit.post
 
       unit = Rentlinx::Unit.from_id('test_unit_post_method_posts_and_updates')
@@ -61,6 +62,7 @@ class UnitTest < MiniTest::Test
       assert_equal 'test_unit_post_method_posts_and_updates', unit.unitID
 
       unit.description = 'This is the new description'
+      unit.address = '123 Super Fake Street'
       unit.post
 
       unit = Rentlinx::Unit.from_id('test_unit_post_method_posts_and_updates')
