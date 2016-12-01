@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'appraisal'
+gem 'af_gems', '~> 5.6', source: "https://gemini.atl.appfolio.net"
+
 group :test do
   gem 'coveralls'
   gem 'minitest'
