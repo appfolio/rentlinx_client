@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary = 'API Wrapper for the Rentlinx API'
   s.version = Rentlinx::VERSION
 
-  s.add_runtime_dependency 'httpclient', '~> 2.6.0'
+  s.add_runtime_dependency 'httpclient', '~> 2.6'
   s.add_runtime_dependency 'json', '~> 1.8'
   s.add_runtime_dependency 'logging', '~> 2.0.0'
 end
