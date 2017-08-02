@@ -135,13 +135,13 @@ module Rentlinx
 
     def request(method, path, data = nil)
       options = { body: data.to_json, header: authenticated_headers }
-      Rentlinx.logger.info "#{method} Request to Rentlinx: #{path}\n#{options.inspect}"
+      log "#{method} Request to Rentlinx: #{path}\n#{options.inspect}"
       response = session.request(method, URI.join(@url_prefix, path), options)
       response_handler(response)
     end
 
     def response_handler(response)
-      Rentlinx.logger.info "#{response.status} Response from Rentlinx:\n#{response.inspect}"
+      log "#{response.status} Response from Rentlinx:\n#{response.inspect}"
       case response.status
       when 200, 201, 202
         JSON.parse(response.body)
@@ -170,6 +170,11 @@ module Rentlinx
 
     def session
       @session ||= HTTPClient.new
+    end
+
+    def log(message)
+      message = message.gsub(Rentlinx.username, '<filtered_username>').gsub(Rentlinx.password, '<filtered_password>')
+      Rentlinx.logger.info message
     end
   end
 end
