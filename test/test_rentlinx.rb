@@ -30,4 +30,16 @@ class TestRentlinx < MiniTest::Test
     # Test the version string
     assert_match(version_regex, Rentlinx::VERSION)
   end
+
+  def test_log
+    Rentlinx.username 'secret_username'
+    Rentlinx.password 'hunter2'
+
+    out, _err = capture_subprocess_io do
+      Rentlinx.log('Hello this is secret_username and my password is hunter2')
+    end
+
+    message = 'Hello this is <filtered_username> and my password is <filtered_password>'
+    assert out.include?(message), "Expected\n===\n#{out}\n===\nTo include\n#{message}"
+  end
 end
