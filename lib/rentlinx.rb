@@ -86,5 +86,11 @@ module Rentlinx
         @logger = args.first
       end
     end
+
+    # Write to the log with filtered output
+    def log(message)
+      message = message.gsub(Rentlinx.username, '<filtered_username>').gsub(Rentlinx.password, '<filtered_password>')
+      Rentlinx.logger.info message
+    end
   end
 end
