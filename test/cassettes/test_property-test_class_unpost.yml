@@ -41,7 +41,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"AccessToken":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 26 Jun 2015 21:09:20 GMT
 - request:
     method: put
@@ -87,8 +87,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"type":"property","propertyID":"test_class_unpost","description":"This
-        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":null,"extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-31"}}'
-    http_version: 
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":"","hideAddress":null,"latitude":42.292494,"longitude":42.292494,"website":"","yearBuilt":null,"numUnits":null,"phoneNumber":null,"extension":null,"faxNumber":"","emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-31","rentlinxID":54321}}'
+    http_version:
   recorded_at: Fri, 26 Jun 2015 21:09:21 GMT
 - request:
     method: delete
@@ -129,7 +129,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Fri, 26 Jun 2015 21:09:22 GMT
 - request:
     method: get
@@ -172,6 +172,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"details":"Property not found.","title":null,"status":"NotFound"}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 26 Jun 2015 21:09:53 GMT
 recorded_with: VCR 2.9.3
