@@ -55,7 +55,7 @@ class PropertyTest < MiniTest::Test
              city: 'Santa Barbara', state: 'CA', zip: '93117',
              phoneNumber: '8054523214',
              emailAddress: 'support@appfolio.com',
-             companyName: 'test company' }
+             companyName: 'test company', rentlinxID: 54_321 }
     assert_equal hash, property.to_hash
   end
 
