@@ -10,7 +10,7 @@ module Rentlinx
                   :website, :yearBuilt, :numUnits, :phoneNumber, :extension,
                   :faxNumber, :emailAddress, :acceptsHcv, :propertyType,
                   :activeURL, :companyName, :leadsURL,
-                  :premium, :capAmount].freeze
+                  :premium, :capAmount, :rentlinxID].freeze
 
     REQUIRED_ATTRIBUTES = [:propertyID, :address, :city, :state, :zip,
                            :phoneNumber, :emailAddress].freeze

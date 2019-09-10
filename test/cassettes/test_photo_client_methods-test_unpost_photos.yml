@@ -41,7 +41,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"AccessToken":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:23 GMT
 - request:
     method: put
@@ -86,8 +86,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"type":"property","propertyID":"test_unpost_photos_property","description":"This
-        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":null,"hideAddress":null,"latitude":null,"longitude":null,"website":null,"yearBuilt":null,"numUnits":null,"phoneNumber":"8054523214","extension":null,"faxNumber":null,"emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-32"}}'
-    http_version: 
+        is a test property.","address":"55 Castilian","city":"Santa Barbara","state":"CA","zip":"93117","marketingName":null,"hideAddress":null,"latitude":null,"longitude":null,"website":null,"yearBuilt":null,"numUnits":null,"phoneNumber":"8054523214","extension":null,"faxNumber":null,"emailAddress":"support@<USERNAME>.com","acceptsHcv":null,"propertyType":"","activeURL":"http://showmetherent.rentlinxdev.com/55-Castilian-Santa-Barbara-CA-93117-32","rentlinxID":54321}}'
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:23 GMT
 - request:
     method: put
@@ -132,7 +132,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"type":"unit","unitID":"test_unpost_photos_unit","propertyID":"test_unpost_photos_property","isOpenToLease":true,"name":"My
         new unit","description":"Fabulous unit on the ocean side","rent":1600.0,"maxRent":1600.0,"deposit":3200.0,"maxDeposit":3200.0,"squareFeet":null,"maxSquareFeet":null,"bedrooms":3,"fullBaths":2,"halfBaths":null,"isMobilityAccessible":null,"isVisionAccessible":null,"isHearingAccessible":null,"rentIsBasedOnIncome":null,"dateAvailable":"2015-06-15T00:00:00","dateLeasedThrough":null,"numUnits":null,"numAvailable":null}}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:23 GMT
 - request:
     method: put
@@ -177,7 +177,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"type":"photo","url":"https://upload.wikimedia.org/wikipedia/commons/f/fb/General_John_Shalikashvili_military_portrait,_1993.JPEG","caption":"This
         is a photo of my house","position":0,"propertyID":"test_unpost_photos_property","unitID":null}]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:27 GMT
 - request:
     method: put
@@ -222,7 +222,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"type":"photo","url":"http://img2.wikia.nocookie.net/__cb20120412095514/hitlerparody/images/2/27/897945-general-aladeen.jpg","caption":"This
         is a photo of my unit","position":0,"propertyID":"test_unpost_photos_property","unitID":"test_unpost_photos_unit"}]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:27 GMT
 - request:
     method: get
@@ -267,7 +267,7 @@ http_interactions:
       string: '{"data":[{"type":"photo","url":"https://upload.wikimedia.org/wikipedia/commons/f/fb/General_John_Shalikashvili_military_portrait,_1993.JPEG","caption":"This
         is a photo of my house","position":0,"propertyID":"test_unpost_photos_property","unitID":null},{"type":"photo","url":"http://img2.wikia.nocookie.net/__cb20120412095514/hitlerparody/images/2/27/897945-general-aladeen.jpg","caption":"This
         is a photo of my unit","position":0,"propertyID":"test_unpost_photos_property","unitID":"test_unpost_photos_unit"}]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:27 GMT
 - request:
     method: delete
@@ -306,7 +306,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:29 GMT
 - request:
     method: get
@@ -350,7 +350,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"type":"photo","url":"http://img2.wikia.nocookie.net/__cb20120412095514/hitlerparody/images/2/27/897945-general-aladeen.jpg","caption":"This
         is a photo of my unit","position":0,"propertyID":"test_unpost_photos_property","unitID":"test_unpost_photos_unit"}]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:29 GMT
 - request:
     method: delete
@@ -389,7 +389,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:31 GMT
 - request:
     method: get
@@ -432,6 +432,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":[]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 18:52:31 GMT
 recorded_with: VCR 2.9.3

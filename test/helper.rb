@@ -61,7 +61,8 @@ VALID_PROPERTY_ATTRS = {
   phoneNumber: '(805) 452-3214',
   emailAddress: 'support@appfolio.com',
   companyID: 'test-company-id',
-  companyName: 'test company'
+  companyName: 'test company',
+  rentlinxID: 54_321
 }.freeze
 
 VALID_UNIT_ATTRS = {
