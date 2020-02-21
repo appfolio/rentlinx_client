@@ -4,7 +4,7 @@ if ENV['TRAVIS']
 end
 require 'minitest/autorun'
 require 'mocha'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'rentlinx'
 require 'vcr'
 
