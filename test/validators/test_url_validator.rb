@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class UrlValidatorTest < MiniTest::Test
+class UrlValidatorTest < Minitest::Test
   def test_validate
     v = Rentlinx::UrlValidator.new('wrong')
     refute v.valid?

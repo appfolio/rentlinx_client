@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class PhotoClientMethodsTest < MiniTest::Test
+class PhotoClientMethodsTest < Minitest::Test
   include SetupMethods
 
   def test_post_photos

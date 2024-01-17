@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class LinkClientMethodsTest < MiniTest::Test
+class LinkClientMethodsTest < Minitest::Test
   include SetupMethods
 
   def test_post_links_to_property

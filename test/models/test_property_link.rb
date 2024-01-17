@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class PropertyLinkTest < MiniTest::Test
+class PropertyLinkTest < Minitest::Test
   include SetupMethods
 
   def test_new

@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestRentlinx < MiniTest::Test
+class TestRentlinx < Minitest::Test
   include SetupMethods
 
   def test_client

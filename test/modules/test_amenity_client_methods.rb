@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class AmenityClientMethodsTest < MiniTest::Test
+class AmenityClientMethodsTest < Minitest::Test
   include SetupMethods
 
   def test_post_amenities_to_property

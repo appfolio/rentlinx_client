@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class ZipValidatorTest < MiniTest::Test
+class ZipValidatorTest < Minitest::Test
   def test_validate
     v = Rentlinx::ZipValidator.new('475888')
     refute v.valid?
