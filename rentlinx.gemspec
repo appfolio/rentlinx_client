@@ -13,4 +13,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'httpclient', '~> 2.6'
   s.add_runtime_dependency 'json', '~> 2.3.0'
   s.add_runtime_dependency 'logging', '~> 2.0.0'
+
+  s.required_ruby_version = '>= 3'
 end
