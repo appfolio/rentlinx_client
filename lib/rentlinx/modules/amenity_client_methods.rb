@@ -109,11 +109,11 @@ module Rentlinx
     end
 
     def unpost_property_amenity(id, name)
-      request('DELETE', URI.encode("properties/#{id}/amenities/#{name}"))
+      request('DELETE', "properties/#{ERB::Util.url_encode (id)}/amenities/#{ERB::Util.url_encode (name)}")
     end
 
     def unpost_unit_amenity(id, name)
-      request('DELETE', URI.encode("units/#{id}/amenities/#{name}"))
+      request('DELETE', "units/#{ERB::Util.url_encode (id)}/amenities/#{ERB::Util.url_encode (name)}")
     end
   end
 end
