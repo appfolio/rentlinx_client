@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class LeadTest < MiniTest::Test
+class LeadTest < Minitest::Test
   include SetupMethods
 
   def test_post

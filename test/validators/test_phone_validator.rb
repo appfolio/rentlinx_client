@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class PhoneValidatorTest < MiniTest::Test
+class PhoneValidatorTest < Minitest::Test
   def test_valid_phone_numbers
     valid_numbers = [
       '+1-805-555-5555',

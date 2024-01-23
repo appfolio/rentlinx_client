@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class PropertyTest < MiniTest::Test
+class PropertyTest < Minitest::Test
   include SetupMethods
 
   def test_new
@@ -98,7 +98,7 @@ class PropertyTest < MiniTest::Test
       h2 = {
         propertyID: 'test-property-id',
         premium: true,
-        capAmount: BigDecimal.new('100.00')
+        capAmount: BigDecimal('100.00')
       }
       prop2 = Rentlinx::Property.new(h2)
       prop2.patch

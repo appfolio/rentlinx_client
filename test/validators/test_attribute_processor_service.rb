@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class AttributeProcessorServiceTest < MiniTest::Test
+class AttributeProcessorServiceTest < Minitest::Test
   def test_process_valid_attrs
     attrs = {
       phoneNumber: '+1 805-323-1212',

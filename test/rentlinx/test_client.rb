@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class ClientTest < MiniTest::Test
+class ClientTest < Minitest::Test
   include SetupMethods
 
   def test_initialize

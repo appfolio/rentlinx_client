@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class CityValidatorTest < MiniTest::Test
+class CityValidatorTest < Minitest::Test
   def test_validate
     v = Rentlinx::CityValidator.new('LA')
     refute v.valid?

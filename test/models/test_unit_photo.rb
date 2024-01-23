@@ -1,6 +1,6 @@
 require_relative '../helper'
 
-class UnitPhotoTest < MiniTest::Test
+class UnitPhotoTest < Minitest::Test
   include SetupMethods
 
   def test_new
