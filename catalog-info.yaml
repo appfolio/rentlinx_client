@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  title: rentlinx_client
+  description: This catalog entity description has been auto-generated
+  tags: []
+  annotations:
+    appfolio.com/package-location: url:https://github.com/appfolio/rentlinx/pkgs/rubygems/rentlinx
+    appfolio.com/package-type: gem
+  name: rentlinx-client
+spec:
+  type: library
+  lifecycle: maintenance
+  owner: vi-kings
+  dependsOn:
+    - component:rentlinx
